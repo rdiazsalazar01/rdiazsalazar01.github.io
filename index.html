@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rodrigo Diaz — Mechanical Engineering Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Rodrigo <span>Diaz</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="projects/index.html">Projects <span class="nav-dropdown-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="projects/index.html"><span class="nav-dropdown-num">All</span> All Projects</a>
+          <a href="projects/mars-rover.html"><span class="nav-dropdown-num">01</span> Mars Rover EDL Optimization</a>
+          <a href="projects/aircraft-wing.html"><span class="nav-dropdown-num">02</span> Aircraft Wing Structural Analysis</a>
+          <a href="projects/heat-sink.html"><span class="nav-dropdown-num">03</span> Binder-Jet Heat Sink Design</a>
+          <a href="projects/nustars-airframe.html"><span class="nav-dropdown-num">04</span> Fiberglass Composite Airframe</a>
+          <a href="projects/onboard-camera.html"><span class="nav-dropdown-num">05</span> Onboard Video System</a>
+          <a href="projects/brake-caliper.html"><span class="nav-dropdown-num">06</span> Bicycle Brake Caliper</a>
+          <a href="projects/marley-roller.html"><span class="nav-dropdown-num">07</span> Marley Floor Roller</a>
+          <a href="projects/jack-in-a-box.html"><span class="nav-dropdown-num">08</span> Jack-in-a-Box Simulation</a>
+        </div>
+      </li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="Rodrigo_Diaz_Resume.pdf" target="_blank" class="nav-resume">Résumé ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner" style="grid-template-columns: 1fr;">
+      <div class="hero-content" style="max-width: 780px;">
+        <p class="hero-eyebrow reveal">Northwestern University · Mechanical Engineering BS/MS · Aerospace Concentration</p>
+        <h1 class="hero-name reveal reveal-delay-1">Rodrigo<br><em>Diaz</em></h1>
+        <p class="hero-desc reveal reveal-delay-2">
+          Pursuing a combined bachelor's and master's in Mechanical Engineering at Northwestern 
+          with an Aerospace Concentration. My work spans computational optimization, structural FEA, 
+          composite manufacturing, and additive manufacturing research — from Mars rover descent 
+          trajectory optimization to in-house fiberglass rocket airframes.
+        </p>
+        <div class="hero-cta reveal reveal-delay-3">
+          <a href="projects/index.html" class="btn-primary">View Projects</a>
+          <a href="Rodrigo_Diaz_Resume.pdf" target="_blank" class="btn-secondary">Download Résumé</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL 8 PROJECTS -->
+  <section style="background: var(--warm-white); border-top: 1px solid var(--border); padding: 6rem 2.5rem;" id="projects">
+    <div style="max-width: var(--max-w); margin: 0 auto;">
+      <div class="featured-header reveal">
+        <div>
+          <p class="label">Engineering Work</p>
+          <h2 style="margin-top: 0.5rem;">Projects</h2>
+        </div>
+      </div>
+      <div class="projects-grid">
+
+        <a href="projects/mars-rover.html" class="project-card reveal">
+          <div class="card-img"><img src="images/thumb_mars.png" alt="Mars Rover EDL Optimization" loading="lazy" /></div>
+          <div class="card-body">
+            <p class="card-number">01 — ME 441 · Computational Dynamics</p>
+            <h3 class="card-title">Mars Rover EDL Optimization</h3>
+            <p class="card-desc">Constrained nonlinear optimization of entry, descent, and landing fuel consumption across three atmospheric scenarios using COBYLA and SLSQP in Python.</p>
+            <div class="card-tags"><span class="tag">Python</span><span class="tag">SciPy</span><span class="tag">Optimization</span><span class="tag">Aerospace</span></div>
+          </div>
+          <span class="card-arrow">↗</span>
+        </a>
+
+        <a href="projects/aircraft-wing.html" class="project-card reveal reveal-delay-1">
+          <div class="card-img"><img src="images/thumb_wing.png" alt="Aircraft Wing Structural Analysis" loading="lazy" /></div>
+          <div class="card-body">
+            <p class="card-number">02 — ME 362 · Mechanics of Materials</p>
+            <h3 class="card-title">Aircraft Wing Structural Analysis</h3>
+            <p class="card-desc">FEA and analytical validation of a Cessna 172 wing under aerodynamic loading — combining ANSYS with Euler-Bernoulli beam theory and the Rayleigh-Ritz method.</p>
+            <div class="card-tags"><span class="tag">ANSYS</span><span class="tag">FEA</span><span class="tag">Structural</span></div>
+          </div>
+          <span class="card-arrow">↗</span>
+        </a>
+
+        <a href="projects/heat-sink.html" class="project-card reveal">
+          <div class="card-img"><img src="images/thumb_heatsink.png" alt="Modular Heat Sink" loading="lazy" /></div>
+          <div class="card-body">
+            <p class="card-number">03 — ME 495 · Additive Manufacturing</p>
+            <h3 class="card-title">Binder-Jet Heat Sink Design</h3>
+            <p class="card-desc">Wavy-fin modular heat sink in 316L stainless steel, achieving a 7°C average temperature reduction over a conventional straight-fin baseline in ANSYS thermal and Fluent CFD.</p>
+            <div class="card-tags"><span class="tag">316L Steel</span><span class="tag">Binder Jetting</span><span class="tag">CFD</span></div>
+          </div>
+          <span class="card-arrow">↗</span>
+        </a>
+
+        <a href="projects/nustars-airframe.html" class="project-card reveal reveal-delay-1">
+          <div class="card-img"><img src="images/thumb_airframe.png" alt="NUStars Fiberglass Airframe" loading="lazy" /></div>
+          <div class="card-body">
+            <p class="card-number">04 — NUStars · NASA Student Launch</p>
+            <h3 class="card-title">Fiberglass Composite Airframe</h3>
+            <p class="card-desc">In-house manufactured fiberglass airframe and Von Karman nose cone through six vacuum-bagged layup iterations with ANSYS FEA and CFD validation.</p>
+            <div class="card-tags"><span class="tag">Composites</span><span class="tag">Vacuum Bagging</span><span class="tag">ANSYS</span></div>
+          </div>
+          <span class="card-arrow">↗</span>
+        </a>
+
+        <a href="projects/onboard-camera.html" class="project-card reveal">
+          <div class="card-img"><img src="images/thumb_camera.png" alt="NUStars Onboard Camera" loading="lazy" /></div>
+          <div class="card-body">
+            <p class="card-number">05 — NUStars · NASA Student Launch</p>
+            <h3 class="card-title">Onboard Video System</h3>
+            <p class="card-desc">Aerodynamic camera housing from PDR through a competition flight in Huntsville — capturing the first visual confirmation of active drag system actuation in flight.</p>
+            <div class="card-tags"><span class="tag">Systems Design</span><span class="tag">3D Printing ABS</span><span class="tag">ANSYS</span></div>
+          </div>
+          <span class="card-arrow">↗</span>
+        </a>
+
+        <a href="projects/brake-caliper.html" class="project-card reveal reveal-delay-1">
+          <div class="card-img"><img src="images/thumb_caliper.png" alt="Bicycle Brake Caliper" loading="lazy" /></div>
+          <div class="card-body">
+            <p class="card-number">06 — ME 240 · Mechanical Design</p>
+            <h3 class="card-title">Bicycle Brake Caliper</h3>
+            <p class="card-desc">Full product development cycle from needs analysis through topology-optimized FEA, Nylon 12 printing, and ISO 4210 compliance testing across two design iterations.</p>
+            <div class="card-tags"><span class="tag">Siemens NX</span><span class="tag">Topology Opt.</span><span class="tag">Nylon 12</span></div>
+          </div>
+          <span class="card-arrow">↗</span>
+        </a>
+
+        <a href="projects/marley-roller.html" class="project-card reveal">
+          <div class="card-img"><img src="images/thumb_roller.png" alt="Marley Roller" loading="lazy" /></div>
+          <div class="card-body">
+            <p class="card-number">07 — Independent Design</p>
+            <h3 class="card-title">Marley Floor Roller</h3>
+            <p class="card-desc">Purpose-built mechanical device for rolling and storing Marley dance floor — plywood frame, PVC roller, crank mechanism, and locking caster wheel system.</p>
+            <div class="card-tags"><span class="tag">SolidWorks</span><span class="tag">Mechanical Design</span><span class="tag">Fabrication</span></div>
+          </div>
+          <span class="card-arrow">↗</span>
+        </a>
+
+        <a href="projects/jack-in-a-box.html" class="project-card reveal reveal-delay-1">
+          <div class="card-img"><img src="images/thumb_jib.png" alt="Jack-in-a-Box Simulation" loading="lazy" /></div>
+          <div class="card-body">
+            <p class="card-number">08 — ME 314 · Rigid Body Dynamics</p>
+            <h3 class="card-title">Jack-in-a-Box Simulation</h3>
+            <p class="card-desc">Multi-body rigid body dynamics simulation with Euler-Lagrange formulation, impact constraints via Lagrange multipliers, and Hamiltonian energy conservation in Python.</p>
+            <div class="card-tags"><span class="tag">Python</span><span class="tag">SymPy</span><span class="tag">Lagrangian Mechanics</span></div>
+          </div>
+          <span class="card-arrow">↗</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section style="background: var(--cream); border-top: 1px solid var(--border); padding: 6rem 2.5rem;" id="experience">
+    <div style="max-width: var(--max-w); margin: 0 auto;">
+      <p class="label reveal">Professional Experience</p>
+      <h2 class="reveal reveal-delay-1" style="margin-top: 0.5rem; margin-bottom: 3rem;">Work &amp; Research</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border);">
+
+        <div class="reveal" style="background: var(--warm-white); padding: 2rem;">
+          <p class="label" style="color: var(--terracotta); margin-bottom: 0.5rem;">2025 — Present</p>
+          <h3 style="font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.3rem;">Undergraduate Researcher</h3>
+          <p style="font-size: 0.875rem; color: var(--stone); font-family: var(--font-mono); margin-bottom: 0.7rem;">FAST Additive Manufacturing Lab · Northwestern</p>
+          <p style="font-size: 0.875rem; color: var(--charcoal-mid);">Investigating vibration-assisted wire-laser directed energy deposition of Inconel 718 to drive a columnar-to-equiaxed grain transition and reduce Laves phase formation for aerospace applications.</p>
+        </div>
+
+        <div class="reveal reveal-delay-1" style="background: var(--warm-white); padding: 2rem;">
+          <p class="label" style="color: var(--terracotta); margin-bottom: 0.5rem;">Summer 2024</p>
+          <h3 style="font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.3rem;">Engineering Intern</h3>
+          <p style="font-size: 0.875rem; color: var(--stone); font-family: var(--font-mono); margin-bottom: 0.7rem;">CertainTeed Saint-Gobain</p>
+          <p style="font-size: 0.875rem; color: var(--charcoal-mid);">Supported manufacturing engineering projects in building materials production — process analysis, quality validation, and data-driven reporting across fabrication lines.</p>
+        </div>
+
+        <div class="reveal" style="background: var(--warm-white); padding: 2rem;">
+          <p class="label" style="color: var(--terracotta); margin-bottom: 0.5rem;">Jan 2026 – Present</p>
+          <h3 style="font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.3rem;">Engineering Intern</h3>
+          <p style="font-size: 0.875rem; color: var(--stone); font-family: var(--font-mono); margin-bottom: 0.7rem;">Tackform</p>
+          <p style="font-size: 0.875rem; color: var(--charcoal-mid);">Contributed to product development and mechanical design for mounting hardware systems — CAD modeling, design validation, and support for manufacturing workflows.</p>
+        </div>
+
+        <div class="reveal reveal-delay-1" style="background: var(--warm-white); padding: 2rem;">
+          <p class="label" style="color: var(--terracotta); margin-bottom: 0.5rem;">Summer 2023 &amp; Summer 2024</p>
+          <h3 style="font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.3rem;">Analyst</h3>
+          <p style="font-size: 0.875rem; color: var(--stone); font-family: var(--font-mono); margin-bottom: 0.7rem;">City National Bank of Florida</p>
+          <p style="font-size: 0.875rem; color: var(--charcoal-mid);">Performed financial analysis and client portfolio reporting; built data pipelines and dashboards using SQL and Excel to support institutional banking operations.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div>
+        <p class="about-label">About</p>
+        <h2 class="about-title reveal">Engineering from first principles to physical artifact.</h2>
+      </div>
+      <div class="about-content reveal reveal-delay-1">
+        <p>
+          I'm pursuing a combined BS/MS in Mechanical Engineering at Northwestern University 
+          with an Aerospace Concentration. My work spans the full engineering arc — from 
+          constrained optimization in Python to composite layup in a lab, from FEA validation 
+          in ANSYS to physical testing under realistic loading conditions.
+        </p>
+        <p>
+          I conduct undergraduate research in Professor Tao Sun's FAST Additive Manufacturing Lab, 
+          investigating vibration-assisted wire-laser directed energy deposition of Inconel 718. 
+          Outside of research, I build rockets with NUStars and serve as Academic Affairs 
+          Coordinator for Delta Tau Delta.
+        </p>
+        <div class="skills-grid reveal reveal-delay-2">
+          <div class="skill-group">
+            <p class="skill-group-title">CAD &amp; Simulation</p>
+            <ul class="skill-list">
+              <li>SolidWorks</li>
+              <li>ANSYS Mechanical + Fluent</li>
+              <li>Siemens NX · NX FEA + Topology Opt.</li>
+              <li>OnShape · SpaceClaim</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-title">Programming</p>
+            <ul class="skill-list">
+              <li>Python · SciPy · NumPy · SymPy</li>
+              <li>MATLAB</li>
+              <li>SQL</li>
+              <li>Plotly · Matplotlib</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-title">Manufacturing</p>
+            <ul class="skill-list">
+              <li>Composite Layup &amp; Vacuum Bagging</li>
+              <li>Binder Jet Printing · 316L Steel</li>
+              <li>FDM — Nylon 12, ABS, PLA</li>
+              <li>Wire-Laser DED · Inconel 718</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-title">Analysis Methods</p>
+            <ul class="skill-list">
+              <li>FEA · CFD</li>
+              <li>Topology Optimization</li>
+              <li>Lagrangian Mechanics · Euler-Bernoulli</li>
+              <li>DFMA · ISO Standards · FMEA</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Rodrigo Diaz</span>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/in/rodrigo-diaz-salazar/" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="mailto:rdiazsalazar01@gmail.com">Email ↗</a></li>
+        <li><a href="Rodrigo_Diaz_Resume.pdf" target="_blank">Résumé ↗</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Rodrigo Diaz</span>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
+</body>
+</html>
