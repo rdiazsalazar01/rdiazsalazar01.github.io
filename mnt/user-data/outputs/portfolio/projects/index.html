@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Rodrigo Diaz</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Rodrigo <span>Diaz</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html">Projects <span class="nav-dropdown-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="index.html"><span class="nav-dropdown-num">All</span> All Projects</a>
+          <a href="mars-rover.html"><span class="nav-dropdown-num">01</span> Mars Rover EDL Optimization</a>
+          <a href="aircraft-wing.html"><span class="nav-dropdown-num">02</span> Aircraft Wing Structural Analysis</a>
+          <a href="heat-sink.html"><span class="nav-dropdown-num">03</span> Binder-Jet Heat Sink Design</a>
+          <a href="nustars-airframe.html"><span class="nav-dropdown-num">04</span> Fiberglass Composite Airframe</a>
+          <a href="onboard-camera.html"><span class="nav-dropdown-num">05</span> Onboard Video System</a>
+          <a href="brake-caliper.html"><span class="nav-dropdown-num">06</span> Bicycle Brake Caliper</a>
+          <a href="marley-roller.html"><span class="nav-dropdown-num">07</span> Marley Floor Roller</a>
+          <a href="jack-in-a-box.html"><span class="nav-dropdown-num">08</span> Jack-in-a-Box Simulation</a>
+        </div>
+      </li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank" class="nav-resume">Résumé ↗</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <p class="page-hero-label reveal">Engineering Portfolio</p>
+    <h1 class="page-hero-title reveal reveal-delay-1">Eight Projects.<br><em style="font-style:italic; color:var(--terracotta);">One Engineer.</em></h1>
+    <p class="page-hero-desc reveal reveal-delay-2">
+      A record of structural analysis, aerospace systems, computational optimization, 
+      and hands-on manufacturing — from software simulation to physical artifact.
+    </p>
+  </div>
+
+  <div class="projects-grid" style="border-top: 1px solid var(--border);">
+
+    <a href="mars-rover.html" class="project-card reveal">
+      <div class="card-img"><img src="../images/thumb_mars.png" alt="Mars Rover EDL Optimization" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">01 — ME 441 · Computational Dynamics</p>
+        <h3 class="card-title">Mars Rover EDL Optimization</h3>
+        <p class="card-desc">Constrained nonlinear optimization of entry, descent, and landing fuel consumption across normal and modified atmospheric conditions using COBYLA and SLSQP in Python.</p>
+        <div class="card-tags"><span class="tag">Python</span><span class="tag">SciPy</span><span class="tag">Optimization</span><span class="tag">Aerospace</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="aircraft-wing.html" class="project-card reveal reveal-delay-1">
+      <div class="card-img"><img src="../images/thumb_wing.png" alt="Aircraft Wing Structural Analysis" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">02 — ME 362 · Mechanics of Materials</p>
+        <h3 class="card-title">Aircraft Wing Structural Analysis</h3>
+        <p class="card-desc">FEA and analytical validation of a Cessna 172 wing — combining ANSYS simulation with Euler-Bernoulli beam theory and the Rayleigh-Ritz method to validate tip deflection and stress.</p>
+        <div class="card-tags"><span class="tag">ANSYS</span><span class="tag">FEA</span><span class="tag">Structural</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="heat-sink.html" class="project-card reveal">
+      <div class="card-img"><img src="../images/thumb_heatsink.png" alt="Modular Heat Sink" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">03 — ME 495 · Additive Manufacturing</p>
+        <h3 class="card-title">Binder-Jet Heat Sink Design</h3>
+        <p class="card-desc">Wavy-fin modular heat sink in 316L stainless steel designed for binder-jet printing, achieving a 7°C average temperature reduction over a conventional straight-fin baseline.</p>
+        <div class="card-tags"><span class="tag">316L Steel</span><span class="tag">Binder Jetting</span><span class="tag">ANSYS Fluent</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="nustars-airframe.html" class="project-card reveal reveal-delay-1">
+      <div class="card-img"><img src="../images/thumb_airframe.png" alt="NUStars Fiberglass Airframe" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">04 — NUStars · NASA Student Launch</p>
+        <h3 class="card-title">Fiberglass Composite Airframe</h3>
+        <p class="card-desc">In-house manufactured fiberglass airframe and Von Karman nose cone through six vacuum-bagged layup iterations, validated with ANSYS FEA and CFD aerodynamic analysis.</p>
+        <div class="card-tags"><span class="tag">Composites</span><span class="tag">Vacuum Bagging</span><span class="tag">ANSYS</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="onboard-camera.html" class="project-card reveal">
+      <div class="card-img"><img src="../images/thumb_camera.png" alt="NUStars Onboard Camera" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">05 — NUStars · NASA Student Launch</p>
+        <h3 class="card-title">Onboard Video System</h3>
+        <p class="card-desc">Aerodynamic camera housing developed from PDR through a competition flight at Huntsville, AL — capturing in-flight footage that confirmed active drag system actuation for the first time.</p>
+        <div class="card-tags"><span class="tag">Systems Design</span><span class="tag">3D Printing ABS</span><span class="tag">ANSYS</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="brake-caliper.html" class="project-card reveal reveal-delay-1">
+      <div class="card-img"><img src="../images/thumb_caliper.png" alt="Bicycle Brake Caliper" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">06 — ME 240 · Mechanical Design</p>
+        <h3 class="card-title">Bicycle Brake Caliper</h3>
+        <p class="card-desc">Full product development cycle from needs analysis through topology-optimized FEA, 3D printing in Nylon 12, and ISO 4210 compliance testing across two design iterations.</p>
+        <div class="card-tags"><span class="tag">Siemens NX</span><span class="tag">Topology Opt.</span><span class="tag">Nylon 12</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="marley-roller.html" class="project-card reveal">
+      <div class="card-img"><img src="../images/thumb_roller.png" alt="Marley Roller" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">07 — Independent Design</p>
+        <h3 class="card-title">Marley Floor Roller</h3>
+        <p class="card-desc">Purpose-built mechanical device for rolling and storing Marley dance floor — plywood frame, PVC roller, crank mechanism, and locking caster wheel system.</p>
+        <div class="card-tags"><span class="tag">SolidWorks</span><span class="tag">Mechanical Design</span><span class="tag">Fabrication</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="jack-in-a-box.html" class="project-card reveal reveal-delay-1">
+      <div class="card-img"><img src="../images/thumb_jib.png" alt="Jack-in-a-Box Simulation" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">08 — ME 314 · Rigid Body Dynamics</p>
+        <h3 class="card-title">Jack-in-a-Box Simulation</h3>
+        <p class="card-desc">Multi-body rigid body dynamics simulation with Euler-Lagrange formulation, impact constraints via Lagrange multipliers, and Hamiltonian energy conservation in Python/Plotly.</p>
+        <div class="card-tags"><span class="tag">Python</span><span class="tag">SymPy</span><span class="tag">Lagrangian Mechanics</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Rodrigo Diaz</span>
+      <ul class="footer-links">
+        <li><a href="https://linkedin.com" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="mailto:rodrigo@u.northwestern.edu">Email ↗</a></li>
+        <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank">Résumé ↗</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Rodrigo Diaz</span>
+    </div>
+  </footer>
+
+  <script src="../shared.js"></script>
+</body>
+</html>
