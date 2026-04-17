@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jack-in-a-Box Simulation — Rodrigo Diaz</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body class="project-page">
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Rodrigo <span>Diaz</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html">Projects <span class="nav-dropdown-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="index.html"><span class="nav-dropdown-num">All</span> All Projects</a>
+          <a href="mars-rover.html"><span class="nav-dropdown-num">01</span> Mars Rover EDL Optimization</a>
+          <a href="aircraft-wing.html"><span class="nav-dropdown-num">02</span> Aircraft Wing Structural Analysis</a>
+          <a href="heat-sink.html"><span class="nav-dropdown-num">03</span> Binder-Jet Heat Sink Design</a>
+          <a href="nustars-airframe.html"><span class="nav-dropdown-num">04</span> Fiberglass Composite Airframe</a>
+          <a href="onboard-camera.html"><span class="nav-dropdown-num">05</span> Onboard Video System</a>
+          <a href="brake-caliper.html"><span class="nav-dropdown-num">06</span> Bicycle Brake Caliper</a>
+          <a href="marley-roller.html"><span class="nav-dropdown-num">07</span> Marley Floor Roller</a>
+          <a href="jack-in-a-box.html"><span class="nav-dropdown-num">08</span> Jack-in-a-Box Simulation</a>
+        </div>
+      </li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank" class="nav-resume">Résumé ↗</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="../index.html">Portfolio</a><span>→</span>
+    <a href="index.html">Projects</a><span>→</span>
+    <span>Jack-in-a-Box Simulation</span>
+  </div>
+
+  <div class="project-hero">
+    <div class="project-hero-inner">
+      <div>
+        <p class="project-eyebrow reveal">08 · ME 314</p>
+        <h1 class="project-title reveal reveal-delay-1">Jack-in-a-Box<br>Simulation</h1>
+        <p class="project-description reveal reveal-delay-2">
+          A multi-body rigid body dynamics simulation of a jack bouncing inside a box — 
+          Euler-Lagrange formulation with six degrees of freedom, impact constraints via 
+          Lagrange multipliers, Hamiltonian energy conservation, and external forcing, 
+          animated in real time with Plotly.
+        </p>
+        <div class="project-tags reveal reveal-delay-3">
+          <span class="tag tag-accent">Python</span>
+          <span class="tag">SymPy</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Plotly</span>
+          <span class="tag">Lagrangian Mechanics</span>
+          <span class="tag">Impact Dynamics</span>
+        </div>
+      </div>
+      <div class="project-meta reveal reveal-delay-2">
+        <div class="meta-item">
+          <p class="meta-label">Tools</p>
+          <p class="meta-value">Python · SymPy · NumPy · SciPy · Plotly</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Bodies</p>
+          <p class="meta-value">2 Rigid Bodies (Box + Jack)</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">DOF</p>
+          <p class="meta-value">6 (x<sub>b</sub>, y<sub>b</sub>, θ<sub>b</sub>, x<sub>j</sub>, y<sub>j</sub>, θ<sub>j</sub>)</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Frames</p>
+          <p class="meta-value">World (w), Box (b1–b4), Jack (j1–j4)</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Code</p>
+          <p class="meta-value"><a href="https://colab.research.google.com/drive/1S1j-KYdgD8N8ROm0zPgURJM2O9_hOqu2?usp=sharing" target="_blank" style="color: var(--terracotta);">View on Google Colab ↗</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-body">
+
+    <div class="project-section reveal">
+      <p class="section-label">Objective</p>
+      <h2 class="section-title">Simulate a jack bouncing inside a box using constrained Euler-Lagrange dynamics and Hamiltonian impact conservation.</h2>
+      <div class="section-body">
+        <p>
+          The jack-in-a-box system involves two rigid bodies, multiple simultaneous 
+          contact constraints, impacts with velocity jumps, external forcing, and 
+          orientation tracking across several reference frames. The goal was to formulate 
+          the equations of motion correctly using Lagrangian mechanics, implement a 
+          numerically stable integration scheme that handles impacts as discrete events, 
+          and animate the result in real time.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">System Setup</p>
+      <h2 class="section-title">Six generalized coordinates, five reference frames, four wall contacts.</h2>
+      <div class="section-body">
+        <p>
+          The system has six generalized coordinates: x<sub>b</sub>(t), y<sub>b</sub>(t), 
+          θ<sub>b</sub>(t) for the box, and x<sub>j</sub>(t), y<sub>j</sub>(t), 
+          θ<sub>j</sub>(t) for the jack, where each θ is a rotation about the world-frame 
+          z-axis. World-to-box (g<sub>wb</sub>) and world-to-jack (g<sub>wj</sub>) 
+          homogeneous transforms were defined. Local offsets b<sub>i</sub> define the 
+          four box walls; j<sub>i</sub> define the four jack corner points. The signed 
+          distance between each jack corner and each box wall defines the contact 
+          condition φ — contact occurs when φ crosses zero.
+        </p>
+        <p>
+          External forcing drives the simulation: horizontal force F<sub>x</sub> = 300·sin(2πt/3), 
+          torque τ = 45000·sin(2πt/3), and a constant lift force counteracting gravity. 
+          This creates the "shaking" motion of the box while the jack bounces inside under gravity.
+        </p>
+      </div>
+
+      <div class="img-full reveal img-centered" style="margin-top: 1.5rem; max-width: 520px;">
+        <img src="../images/jib_diagram.png" alt="Hand-drawn coordinate frame diagram" style="display:block; margin:0 auto;" />
+        <p class="img-caption" style="text-align:center;">Reference frame diagram — world frame (w), box wall frames (b1–b4), jack corner points (j1–j4)</p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Formulation</p>
+      <h2 class="section-title">Euler-Lagrange equations with Hamiltonian-based impact update.</h2>
+      <div class="section-body">
+        <p>
+          Velocity vectors V<sub>b</sub> and V<sub>j</sub> were extracted from the 
+          time derivatives of the transforms using an unhat function. Inertia matrices 
+          I<sub>b</sub> = diag(m<sub>b</sub>, m<sub>b</sub>, m<sub>b</sub>, 0, 0, J<sub>b</sub>) 
+          and I<sub>j</sub> = diag(m<sub>j</sub>, m<sub>j</sub>, m<sub>j</sub>, 0, 0, J<sub>j</sub>) 
+          gave the kinetic energy T = ½V<sub>b</sub>ᵀI<sub>b</sub>V<sub>b</sub> + ½V<sub>j</sub>ᵀI<sub>j</sub>V<sub>j</sub>. 
+          Potential energy V = g(m<sub>b</sub>y<sub>b</sub> + m<sub>j</sub>y<sub>j</sub>). 
+          The Euler-Lagrange equations d/dt(∂L/∂q̇) − ∂L/∂q = F were solved symbolically 
+          in SymPy for the six accelerations, then lambdified for numerical integration.
+        </p>
+        <p>
+          For impact handling, the constraint Jacobian ∂φ/∂q̇ was computed symbolically. 
+          The Hamiltonian H was evaluated before and after impact. Post-impact velocities 
+          were found by solving the impact equations — the system of equations formed by 
+          the difference in pre- and post-impact Hamiltonian values and Lagrange multiplier 
+          λ — choosing the solution where λ is nonzero. This ensures energy conservation 
+          is enforced correctly at each collision event.
+        </p>
+        <p>
+          The simulate_impact function runs a RK4 integration loop, checking φ at every 
+          step. When any entry crosses zero, the velocity is reset via impact_update 
+          before integration continues — capturing both continuous motion and discrete 
+          collision events.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Simulation Results</p>
+      <h2 class="section-title">Box shakes, jack drops, bounces, and gains angular acceleration on impact.</h2>
+      <div class="section-body">
+        <p>
+          The animation correctly shows the box rotating clockwise in response to the 
+          applied torque — simulating a person shaking the box. The jack initially drops 
+          under gravity. When it contacts the bottom wall, the impact equations correctly 
+          produce a velocity reversal with angular acceleration — the jack begins to tumble. 
+          The box slowly translates downward as the constant lift force representing a 
+          person holding it gradually becomes insufficient against gravity over time.
+        </p>
+      </div>
+
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/jib_simulation.png" alt="Plotly animation screenshot" />
+        <p class="img-caption">Plotly animation frame — blue box outline, green jack cross, mid-bounce. Play/Pause control allows stepping through the trajectory.</p>
+      </div>
+
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+        <a href="https://drive.google.com/file/d/1oWaje9fvYH2njaK81f5Un4CTiKI2jnDf/view" target="_blank" class="video-btn reveal">
+          <span class="video-btn-icon">▶</span> Watch Simulation
+        </a>
+        <a href="https://colab.research.google.com/drive/1S1j-KYdgD8N8ROm0zPgURJM2O9_hOqu2?usp=sharing" target="_blank" class="video-btn reveal" style="background: var(--charcoal-mid);">
+          <span class="video-btn-icon">{ }</span> View Code on Colab
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="takeaways-section">
+    <div class="takeaways-inner">
+      <p class="takeaways-label">Reflection</p>
+      <h2 class="takeaways-title">Key Takeaways</h2>
+      <ul class="takeaway-list">
+        <li class="takeaway-item reveal">
+          <span class="takeaway-num">01</span>
+          <p class="takeaway-text">Consistent reference frame bookkeeping is foundational. A single coordinate transformation error compounds through every subsequent calculation. Getting the frame definitions right before writing a single line of integration code — and verifying them against hand calculations — saves enormous time.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-1">
+          <span class="takeaway-num">02</span>
+          <p class="takeaway-text">Impact events must be handled as discrete resets rather than continuous forces. Splitting the integration at each collision and restarting with post-impact initial conditions — computed from the Hamiltonian impact equations — is the physically correct approach. Treating impacts as continuous forces produces numerically unstable solutions.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-2">
+          <span class="takeaway-num">03</span>
+          <p class="takeaway-text">Visualization revealed a subtlety the equations alone did not: at certain initial conditions, the jack simultaneously contacts two box walls. This required a more complex impact resolution than single-wall contact. Seeing the failure mode in the animation led directly to the fix — a reminder that simulation is a debugging tool, not just a presentation tool.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-nav">
+    <a href="marley-roller.html" class="project-nav-item">
+      <span class="nav-dir">← Previous</span>
+      <span class="nav-proj-title">Marley Floor Roller</span>
+    </a>
+    <a href="mars-rover.html" class="project-nav-item next">
+      <span class="nav-dir">Next →</span>
+      <span class="nav-proj-title">Mars Rover EDL Optimization</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Rodrigo Diaz</span>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/in/rodrigo-diaz-salazar/" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="mailto:rdiazsalazar01@gmail.com">Email ↗</a></li>
+        <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank">Résumé ↗</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Rodrigo Diaz</span>
+    </div>
+  </footer>
+  <script src="../shared.js"></script>
+</body>
+</html>
