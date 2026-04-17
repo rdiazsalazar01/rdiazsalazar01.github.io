@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mars Rover EDL Optimization — Rodrigo Diaz</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body class="project-page">
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Rodrigo <span>Diaz</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html">Projects <span class="nav-dropdown-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="index.html"><span class="nav-dropdown-num">All</span> All Projects</a>
+          <a href="mars-rover.html"><span class="nav-dropdown-num">01</span> Mars Rover EDL Optimization</a>
+          <a href="aircraft-wing.html"><span class="nav-dropdown-num">02</span> Aircraft Wing Structural Analysis</a>
+          <a href="heat-sink.html"><span class="nav-dropdown-num">03</span> Binder-Jet Heat Sink Design</a>
+          <a href="nustars-airframe.html"><span class="nav-dropdown-num">04</span> Fiberglass Composite Airframe</a>
+          <a href="onboard-camera.html"><span class="nav-dropdown-num">05</span> Onboard Video System</a>
+          <a href="brake-caliper.html"><span class="nav-dropdown-num">06</span> Bicycle Brake Caliper</a>
+          <a href="marley-roller.html"><span class="nav-dropdown-num">07</span> Marley Floor Roller</a>
+          <a href="jack-in-a-box.html"><span class="nav-dropdown-num">08</span> Jack-in-a-Box Simulation</a>
+        </div>
+      </li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank" class="nav-resume">Résumé ↗</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="../index.html">Portfolio</a><span>→</span>
+    <a href="index.html">Projects</a><span>→</span>
+    <span>Mars Rover EDL Optimization</span>
+  </div>
+
+  <div class="project-hero">
+    <div class="project-hero-inner">
+      <div>
+        <p class="project-eyebrow reveal">01 — Computational Dynamics · Aerospace</p>
+        <h1 class="project-title reveal reveal-delay-1">Mars Rover<br>EDL Optimization</h1>
+        <p class="project-description reveal reveal-delay-2">
+          Minimizing propellant consumption during the Entry, Descent, and Landing sequence 
+          of a Mars rover mission across normal and modified atmospheric conditions — 
+          using constrained nonlinear optimization with COBYLA and SLSQP in Python.
+        </p>
+        <div class="project-tags reveal reveal-delay-3">
+          <span class="tag tag-accent">Python</span>
+          <span class="tag">SciPy</span>
+          <span class="tag">COBYLA</span>
+          <span class="tag">SLSQP</span>
+          <span class="tag">Optimization</span>
+          <span class="tag">Aerospace</span>
+          <span class="tag">Matplotlib</span>
+        </div>
+      </div>
+      <div class="project-meta reveal reveal-delay-2">
+        <div class="meta-item">
+          <p class="meta-label">Course</p>
+          <p class="meta-value">ME 441 — Computational Dynamics</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Collaborator</p>
+          <p class="meta-value">Tanay Acharya</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Tools</p>
+          <p class="meta-value">Python · SciPy · Matplotlib</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Solvers</p>
+          <p class="meta-value">COBYLA · SLSQP</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Design Variables</p>
+          <p class="meta-value">5 (h<sub>pe</sub>, h<sub>ro</sub>, V<sub>t</sub>, K<sub>p</sub>, K<sub>d</sub>)</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Optimization Runs</p>
+          <p class="meta-value">6 (3 COBYLA · 3 SLSQP)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-body">
+
+    <!-- OBJECTIVE -->
+    <div class="project-section reveal">
+      <p class="section-label">Objective</p>
+      <h2 class="section-title">Minimize propellant mass during planetary entry, descent, and landing.</h2>
+      <div class="section-body">
+        <p>
+          The EDL phase of a Mars rover mission begins after atmospheric entry and ends at 
+          rover touchdown. The rover must transition from hypersonic entry through parachute 
+          deceleration and into rocket-powered descent — all while Mars's thin atmosphere, 
+          reduced gravity, and variable wind conditions constrain the available options. 
+          Fuel is finite and irreplaceable; any excess consumed during descent is weight 
+          that could have served the mission.
+        </p>
+        <p>
+          This project formulated a constrained nonlinear optimization problem to determine 
+          the set of descent control parameters that minimizes total propellant consumption 
+          while guaranteeing a structurally survivable touchdown. The simulation framework 
+          modeled daily-variable atmospheric conditions, enabling the optimizer to be run on 
+          any specific landing day with real atmospheric inputs.
+        </p>
+      </div>
+    </div>
+
+    <!-- DESIGN VARIABLES -->
+    <div class="project-section reveal">
+      <p class="section-label">Formulation</p>
+      <h2 class="section-title">Five design variables govern the full descent sequence.</h2>
+      <div class="section-body">
+        <p>
+          The optimization vector consists of five parameters that control how and when the 
+          descent system transitions between phases and how the controller responds during 
+          the final powered descent:
+        </p>
+        <p>
+          <strong>h<sub>pe</sub></strong> — parachute ejection altitude (300–1500 m). 
+          Controls when the rover transitions from aerodynamic to rocket deceleration. 
+          Too low and there is insufficient altitude for the rockets to stabilize the descent; 
+          too high and the rocket must burn longer.
+        </p>
+        <p>
+          <strong>h<sub>ro</sub></strong> — rocket ignition altitude (800–2000 m). 
+          Must occur above h<sub>pe</sub> by constraint. Higher ignition altitudes 
+          mean longer burn times and greater fuel consumption; the optimizer consistently 
+          found that igniting close to the parachute ejection altitude minimized fuel use 
+          while maintaining stability.
+        </p>
+        <p>
+          <strong>V<sub>t</sub></strong> — target vertical descent velocity (−8 to −4 m/s). 
+          The setpoint for the speed controller during rocket descent. This proved to be 
+          the most sensitive design variable — small deviations near −4 m/s 
+          determine whether a landing is classified as safe or unsafe.
+        </p>
+        <p>
+          <strong>K<sub>p</sub></strong> — proportional gain (300–5000). Controls the 
+          aggressiveness of velocity corrections during powered descent. Larger values 
+          provide faster response but can cause oscillation.
+        </p>
+        <p>
+          <strong>K<sub>d</sub></strong> — derivative gain (1–100). Safe optimized solutions 
+          consistently moved K<sub>d</sub> toward lower values, suggesting that lower 
+          derivative gains produce smoother control responses and reduce aggressive 
+          corrective maneuvers near touchdown.
+        </p>
+      </div>
+
+      <div class="img-full reveal" style="margin-top: 2rem;">
+        <img src="../images/mars_edl.png" alt="Mars EDL sequence showing design variables h_pe, h_ro, and V_t" />
+        <p class="img-caption">NASA EDL sequence — design variables h<sub>pe</sub>, h<sub>ro</sub>, and V<sub>t</sub> act during the parachute ejection through rocket-powered descent phases</p>
+      </div>
+    </div>
+
+    <!-- FREE BODY DIAGRAMS -->
+    <div class="project-section reveal">
+      <p class="section-label">Dynamics</p>
+      <h2 class="section-title">Three aerodynamically distinct descent phases with separate governing equations.</h2>
+      <div class="section-body">
+        <p>
+          The simulation models each phase of the descent with its own equations of motion. 
+          During parachute-only descent, drag and buoyancy decelerate the vehicle. 
+          Once rockets ignite alongside the parachute, thrust is added. 
+          After parachute ejection, the rocket system alone — governed by the PID speed 
+          controller with gains K<sub>p</sub> and K<sub>d</sub> — carries the rover to 
+          sky-crane deployment altitude. Wind speed and atmospheric density scaling 
+          (ρ<sub>scale</sub>) are incorporated as daily-variable inputs.
+        </p>
+      </div>
+      <div class="img-full reveal">
+        <img src="../images/mars_fbd.png" alt="Free body diagrams for the three EDL descent phases" />
+        <p class="img-caption">Free body diagrams — parachute-only descent (left), rocket-assisted parachute descent (center), rocket-powered descent (right)</p>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="project-section reveal">
+      <p class="section-label">Results</p>
+      <h2 class="section-title">SLSQP reached 280.48 kg. Modified atmosphere added 15–20 kg across all runs.</h2>
+      <div class="section-body">
+        <p>
+          Six optimization runs were conducted — three with COBYLA and three with SLSQP — 
+          each starting from a different initial design vector. Under normal atmospheric 
+          conditions (ρ<sub>scale</sub> = 1, wind = 0 m/s), fuel consumption ranged from 
+          <strong>280.48 to 296.83 kg</strong>, with SLSQP's best run (Run 6) achieving 
+          the lowest value. When modified conditions were introduced 
+          (ρ<sub>scale</sub> = 0.9, wind = −5 m/s), all runs consumed more fuel — 
+          ranging from <strong>298.59 to 307.64 kg</strong>.
+        </p>
+        <p>
+          The increased fuel cost under modified conditions has two causes. A 10% reduction 
+          in atmospheric density reduces aerodynamic drag, so the propulsion system must 
+          perform more active braking. The non-zero wind speed introduces an external 
+          disturbance the controller must continuously correct for. Together these effects 
+          add approximately 15–20 kg of fuel across every run — a direct illustration of 
+          why atmospheric uncertainty matters in mission design.
+        </p>
+        <p>
+          Both solvers converged to feasible solutions that satisfied all five constraints. 
+          SLSQP enforced constraints more tightly, while COBYLA explored the design space 
+          more broadly. The convergence plots show both solvers finding comparable solutions 
+          from very different starting points, which builds confidence that the results 
+          reflect genuine optima rather than numerical artifacts.
+        </p>
+      </div>
+
+      <div class="img-grid-2 reveal" style="margin-top: 2rem;">
+        <div class="img-item landscape">
+          <img src="../images/mars_conv_normal.png" alt="Fuel convergence under normal atmospheric conditions" />
+        </div>
+        <div class="img-item landscape">
+          <img src="../images/mars_conv_modified.png" alt="Fuel convergence under modified atmospheric conditions" />
+        </div>
+      </div>
+      <p class="img-caption">Fuel consumption convergence — normal conditions (left, best: 280.48 kg) · modified conditions with ρ<sub>scale</sub>=0.9 and wind=−5 m/s (right, best: 298.59 kg)</p>
+
+      <div class="img-grid-2 reveal" style="margin-top: 2.5rem;">
+        <div class="img-item landscape">
+          <img src="../images/mars_fuel_scatter.png" alt="Fuel used vs rocket ignition altitude across all 6 runs" />
+        </div>
+        <div class="img-item landscape">
+          <img src="../images/mars_safe_unsafe.png" alt="Safe vs unsafe landing classification vs target velocity" />
+        </div>
+      </div>
+      <p class="img-caption">Fuel used vs. rocket ignition altitude — higher ignition altitudes consistently increase fuel consumption (left) · Safe/unsafe landing classification vs. target velocity V<sub>t</sub> — the −4 m/s boundary is the critical threshold (right)</p>
+    </div>
+
+  </div>
+
+  <!-- KEY TAKEAWAYS -->
+  <div class="takeaways-section">
+    <div class="takeaways-inner">
+      <p class="takeaways-label">Reflection</p>
+      <h2 class="takeaways-title">Key Takeaways</h2>
+      <ul class="takeaway-list">
+        <li class="takeaway-item reveal">
+          <span class="takeaway-num">01</span>
+          <p class="takeaway-text">The target velocity V<sub>t</sub> was the most sensitive design variable — small deviations near −4 m/s determined whether a landing was classified as safe or unsafe across the entire design space. Getting this parameter right matters far more than optimizing altitude setpoints.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-1">
+          <span class="takeaway-num">02</span>
+          <p class="takeaway-text">SLSQP produced tighter constraint enforcement and lower objective values, while COBYLA explored the space more broadly. Both reached comparable feasible solutions from diverse starting points — confirming that the results reflect real optima rather than solver artifacts.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-2">
+          <span class="takeaway-num">03</span>
+          <p class="takeaway-text">Modified atmospheric conditions added 15–20 kg of fuel across every run, directly illustrating why Mars mission designers must account for atmospheric variability. An optimizer tuned for nominal conditions will be suboptimal on most actual landing days.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-nav">
+    <a href="jack-in-a-box.html" class="project-nav-item">
+      <span class="nav-dir">← Previous</span>
+      <span class="nav-proj-title">Jack-in-a-Box Simulation</span>
+    </a>
+    <a href="aircraft-wing.html" class="project-nav-item next">
+      <span class="nav-dir">Next →</span>
+      <span class="nav-proj-title">Aircraft Wing Structural Analysis</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Rodrigo Diaz</span>
+      <ul class="footer-links">
+        <li><a href="https://linkedin.com" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="mailto:rodrigo@u.northwestern.edu">Email ↗</a></li>
+        <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank">Résumé ↗</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Rodrigo Diaz</span>
+    </div>
+  </footer>
+  <script src="../shared.js"></script>
+</body>
+</html>
