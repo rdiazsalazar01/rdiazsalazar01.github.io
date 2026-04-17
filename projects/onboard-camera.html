@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onboard Video System — Rodrigo Diaz</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body class="project-page">
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Rodrigo <span>Diaz</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html">Projects <span class="nav-dropdown-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="index.html"><span class="nav-dropdown-num">All</span> All Projects</a>
+          <a href="mars-rover.html"><span class="nav-dropdown-num">01</span> Mars Rover EDL Optimization</a>
+          <a href="aircraft-wing.html"><span class="nav-dropdown-num">02</span> Aircraft Wing Structural Analysis</a>
+          <a href="heat-sink.html"><span class="nav-dropdown-num">03</span> Binder-Jet Heat Sink Design</a>
+          <a href="nustars-airframe.html"><span class="nav-dropdown-num">04</span> Fiberglass Composite Airframe</a>
+          <a href="onboard-camera.html"><span class="nav-dropdown-num">05</span> Onboard Video System</a>
+          <a href="brake-caliper.html"><span class="nav-dropdown-num">06</span> Bicycle Brake Caliper</a>
+          <a href="marley-roller.html"><span class="nav-dropdown-num">07</span> Marley Floor Roller</a>
+          <a href="jack-in-a-box.html"><span class="nav-dropdown-num">08</span> Jack-in-a-Box Simulation</a>
+        </div>
+      </li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank" class="nav-resume">Résumé ↗</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="../index.html">Portfolio</a><span>→</span>
+    <a href="index.html">Projects</a><span>→</span>
+    <span>Onboard Video System</span>
+  </div>
+
+  <div class="project-hero">
+    <div class="project-hero-inner">
+      <div>
+        <p class="project-eyebrow reveal">05 — Rocketry · Systems Integration · NUStars</p>
+        <h1 class="project-title reveal reveal-delay-1">Onboard<br>Video System</h1>
+        <p class="project-description reveal reveal-delay-2">
+          An aerodynamic camera housing developed from Preliminary Design Review through 
+          a competition flight in Huntsville, AL — capturing continuous in-flight footage 
+          that provided the first visual confirmation of active drag system actuation.
+        </p>
+        <div class="project-tags reveal reveal-delay-3">
+          <span class="tag tag-accent">Systems Design</span>
+          <span class="tag">3D Printing ABS</span>
+          <span class="tag">OnShape</span>
+          <span class="tag">ANSYS</span>
+          <span class="tag">OpenRocket</span>
+          <span class="tag">RunCam Split 4 V2</span>
+          <span class="tag">FMEA</span>
+        </div>
+      </div>
+      <div class="project-meta reveal reveal-delay-2">
+        <div class="meta-item">
+          <p class="meta-label">Organization</p>
+          <p class="meta-value">NUStars — Northwestern University Rocketry</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Competition</p>
+          <p class="meta-value">NASA Student Launch Initiative 2024–2025</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Role</p>
+          <p class="meta-value">Avionics Subteam Member</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Camera</p>
+          <p class="meta-value">RunCam Split 4 V2</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Material</p>
+          <p class="meta-value">ABS — Bambu X1 Carbon</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Fasteners</p>
+          <p class="meta-value">4-40 Brass Heat-Set Inserts</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-body">
+
+    <div class="project-section reveal">
+      <p class="section-label">Objective</p>
+      <h2 class="section-title">Capture stable in-flight video without compromising aerodynamics or internal layout.</h2>
+      <div class="section-body">
+        <p>
+          The NUStars NASA Student Launch vehicle carries an active drag control system 
+          whose actuation had never been visually confirmed in flight. An onboard camera 
+          would provide this verification — but mounting a camera externally at transonic 
+          speeds introduces drag, potential stability reduction, and structural risk. 
+          The design had to solve all three problems simultaneously.
+        </p>
+        <p>
+          The RunCam Split 4 V2 was selected because it physically separates the lens module 
+          from the recording PCB — only the small lens protrudes through the airframe surface, 
+          while the electronics stay inside. Recording was deliberately decoupled from the 
+          vehicle's telemetry system, making the camera operate independently on a timer 
+          regardless of avionics state.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">PDR — Sep–Oct 2024</p>
+      <h2 class="section-title">Reverse-airfoil housing profile to minimize drag around the lens protrusion.</h2>
+      <div class="section-body">
+        <p>
+          The housing was shaped as a reverse-airfoil to smoothly redirect airflow around 
+          the lens rather than creating a blunt obstruction. Heat-set inserts and M2 screws 
+          provide secure PCB attachment without separate hardware. The PDR also explored 
+          multiple housing iteration geometries to find the profile with the lowest 
+          aerodynamic penalty while providing sufficient structural support for the lens module.
+        </p>
+      </div>
+      <div class="img-grid-2 reveal" style="margin-top: 1.5rem;">
+        <div class="img-item wide">
+          <img src="../images/camera_pdr_interior.png" alt="PDR CAD showing camera positioning inside the nose cone coupler" />
+        </div>
+        <div class="img-item wide">
+          <img src="../images/camera_pdr_housing.png" alt="PDR housing iterations" />
+        </div>
+      </div>
+      <p class="img-caption">PDR interior layout — camera and PCB positioning inside nose cone coupler (left) · early housing iterations exploring reverse-airfoil profiles (right)</p>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">CDR — Oct 2024 – Jan 2025</p>
+      <h2 class="section-title">Stability verified. Material selected. Recording made independent from telemetry.</h2>
+      <div class="section-body">
+        <p>
+          Material testing evaluated Nylon 12, ABS, and PLA across multiple infill densities 
+          and print orientations. ABS on the Bambu X1 Carbon was selected for dimensional 
+          stability and impact resistance. An FMEA was developed to incorporate redundancies 
+          into the electrical and mechanical integration.
+        </p>
+        <p>
+          OpenRocket stability analysis with and without the camera housing confirmed a 
+          reduction of less than 1.5 calibers in stability margin — within acceptable limits 
+          for competition flight.
+        </p>
+      </div>
+
+      <!-- STACKED: switchband drawing and OpenRocket analysis -->
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/camera_switchband.png" alt="Switchband engineering drawing with camera interface dimensions" />
+        <p class="img-caption">Switchband engineering drawing — camera housing interface dimensions and hole location</p>
+      </div>
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/camera_openrocket.png" alt="OpenRocket stability analysis" />
+        <p class="img-caption">OpenRocket Stability — baseline vs. camera installed. Stability reduction: less than 1.5 calibers.</p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Manufacturing — Jan–Apr 2025</p>
+      <h2 class="section-title">Two housings for aerodynamic symmetry. One 3D-printed jig for precise hole location.</h2>
+      <div class="section-body">
+        <p>
+          To maintain aerodynamic balance, two housings were installed on opposite sides 
+          of the switchband — only one contains an active camera. The lens passthrough 
+          required a precise 0.55 × 0.55 inch square hole through the fiberglass switchband. 
+          A 3D-printed drilling jig constrained the Dremel to the correct location and 
+          orientation, preventing fiber delamination from free-hand cutting.
+        </p>
+      </div>
+      <div class="img-grid-3 reveal" style="margin-top: 1.5rem;">
+        <div class="img-item square"><img src="../images/camera_prototypes.png" alt="ABS prototype housings" /></div>
+        <div class="img-item square"><img src="../images/camera_pcb.png" alt="PCB on ABS mount" /></div>
+        <div class="img-item square"><img src="../images/camera_mounted.png" alt="Housing mounted on switchband" /></div>
+      </div>
+      <p class="img-caption">Early ABS prototype housings (left) · PCB affixed to mount with heat-set inserts (center) · final housing mounted on switchband with lens seated (right)</p>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Flight Testing &amp; Competition</p>
+      <h2 class="section-title">First confirmed visual of active drag actuation. Successful competition flight.</h2>
+      <div class="section-body">
+        <p>
+          Flight Test #1 produced the result the team had been working toward: review of 
+          the footage confirmed that the active drag control system was actuating during 
+          flight — the first visual verification the team had achieved. The same footage 
+          revealed a parachute charge sizing discrepancy that was corrected before competition. 
+          A subsequent power surge issue was diagnosed and mitigated for the competition flight.
+        </p>
+        <p>
+          At the NASA Student Launch competition in Huntsville, AL, the camera recorded 
+          a complete, uninterrupted flight from launch through recovery.
+        </p>
+      </div>
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/camera_footage.png" alt="In-flight aerial footage frame" />
+        <p class="img-caption">Frame from in-flight footage — captured during Flight Test #1 at altitude</p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Final Design Documentation</p>
+      <h2 class="section-title">Engineering drawings and full subassembly.</h2>
+      <div class="img-grid-3 reveal" style="margin-top: 1.5rem;">
+        <div class="img-item auto"><img src="../images/camera_shroud_cad.png" alt="Camera shroud drawing" /></div>
+        <div class="img-item auto"><img src="../images/camera_pcb_assembly.png" alt="PCB subassembly drawing" /></div>
+        <div class="img-item auto"><img src="../images/camera_full_assembly.png" alt="Full onboard video subassembly" /></div>
+      </div>
+      <p class="img-caption">Camera shroud drawing (left) · PCB subassembly drawing (center) · full onboard video subassembly: switchband, shroud, and PCB integration (right)</p>
+    </div>
+
+  </div>
+
+  <div class="takeaways-section">
+    <div class="takeaways-inner">
+      <p class="takeaways-label">Reflection</p>
+      <h2 class="takeaways-title">Key Takeaways</h2>
+      <ul class="takeaway-list">
+        <li class="takeaway-item reveal">
+          <span class="takeaway-num">01</span>
+          <p class="takeaway-text">The system successfully captured in-flight footage throughout the entire NASA Student Launch season — and the footage immediately proved useful for diagnosing behavior that telemetry alone could not confirm. Building diagnostic capability into a rocket is worth the weight penalty.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-1">
+          <span class="takeaway-num">02</span>
+          <p class="takeaway-text">Decoupling camera recording from vehicle telemetry was the right call. It removed a single point of failure and simplified pre-flight setup — the camera was just always on, always recording, regardless of what the flight computer was doing.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-2">
+          <span class="takeaway-num">03</span>
+          <p class="takeaway-text">Roll-induced motion produced disorienting footage — pointing to the need for either improved roll damping in the vehicle design or post-processing stabilization. As a next step, a second outward-facing camera could provide broader visual context for analyzing flight dynamics and control system performance.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-nav">
+    <a href="nustars-airframe.html" class="project-nav-item">
+      <span class="nav-dir">← Previous</span>
+      <span class="nav-proj-title">Fiberglass Composite Airframe</span>
+    </a>
+    <a href="brake-caliper.html" class="project-nav-item next">
+      <span class="nav-dir">Next →</span>
+      <span class="nav-proj-title">Bicycle Brake Caliper</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Rodrigo Diaz</span>
+      <ul class="footer-links">
+        <li><a href="https://linkedin.com" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="mailto:rodrigo@u.northwestern.edu">Email ↗</a></li>
+        <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank">Résumé ↗</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Rodrigo Diaz</span>
+    </div>
+  </footer>
+  <script src="../shared.js"></script>
+</body>
+</html>
