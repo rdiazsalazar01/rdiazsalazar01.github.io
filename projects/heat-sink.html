@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Binder-Jet Heat Sink Design — Rodrigo Diaz</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body class="project-page">
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Rodrigo <span>Diaz</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html">Projects <span class="nav-dropdown-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="index.html"><span class="nav-dropdown-num">All</span> All Projects</a>
+          <a href="mars-rover.html"><span class="nav-dropdown-num">01</span> Mars Rover EDL Optimization</a>
+          <a href="aircraft-wing.html"><span class="nav-dropdown-num">02</span> Aircraft Wing Structural Analysis</a>
+          <a href="heat-sink.html"><span class="nav-dropdown-num">03</span> Binder-Jet Heat Sink Design</a>
+          <a href="nustars-airframe.html"><span class="nav-dropdown-num">04</span> Fiberglass Composite Airframe</a>
+          <a href="onboard-camera.html"><span class="nav-dropdown-num">05</span> Onboard Video System</a>
+          <a href="brake-caliper.html"><span class="nav-dropdown-num">06</span> Bicycle Brake Caliper</a>
+          <a href="marley-roller.html"><span class="nav-dropdown-num">07</span> Marley Floor Roller</a>
+          <a href="jack-in-a-box.html"><span class="nav-dropdown-num">08</span> Jack-in-a-Box Simulation</a>
+        </div>
+      </li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank" class="nav-resume">Résumé ↗</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="../index.html">Portfolio</a><span>→</span>
+    <a href="index.html">Projects</a><span>→</span>
+    <span>Binder-Jet Heat Sink Design</span>
+  </div>
+
+  <div class="project-hero">
+    <div class="project-hero-inner">
+      <div>
+        <p class="project-eyebrow reveal">03 · Thermal Systems</p>
+        <h1 class="project-title reveal reveal-delay-1">Binder-Jet<br>Heat Sink Design</h1>
+        <p class="project-description reveal reveal-delay-2">
+          A modular wavy-fin heat sink designed specifically for binder-jet printing in 316L
+          stainless steel — validated with ANSYS steady-state thermal and Fluent CFD against
+          a straight-fin baseline, achieving a 7°C average temperature reduction in a more
+          compact geometry.
+        </p>
+        <div class="project-tags reveal reveal-delay-3">
+          <span class="tag tag-accent">316L Stainless Steel</span>
+          <span class="tag">Binder Jetting</span>
+          <span class="tag">ANSYS Thermal</span>
+          <span class="tag">ANSYS Fluent</span>
+          <span class="tag">SolidWorks</span>
+          <span class="tag">CFD</span>
+        </div>
+      </div>
+      <div class="project-meta reveal reveal-delay-2">
+        <div class="meta-item">
+          <p class="meta-label">Material</p>
+          <p class="meta-value">316L Stainless Steel</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Process</p>
+          <p class="meta-value">Binder Jet Printing</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Heat Flux</p>
+          <p class="meta-value">22,222 W/m² (20 W avionics chip)</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Temp. Reduction</p>
+          <p class="meta-value">~7°C average vs. straight-fin baseline</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-body">
+
+    <div class="project-section reveal">
+      <p class="section-label">Objective</p>
+      <h2 class="section-title">Design a heat sink that exploits what binder jetting makes possible — then prove it works.</h2>
+      <div class="section-body">
+        <p>
+          Traditional heat sinks are limited by extrusion, casting, and machining — all of
+          which restrict geometry to simple straight fins. These fins develop a thermal boundary
+          layer along their length that progressively reduces heat transfer downstream.
+          Binder jetting removes this manufacturing constraint, enabling complex, flow-disrupting
+          geometries that are otherwise impossible to produce.
+        </p>
+        <p>
+          The project asked a direct question: can a wavy-fin design — one that only exists
+          because of additive manufacturing — outperform a taller conventional straight-fin
+          baseline on thermal performance while occupying less space? The answer was validated
+          through physical printing in 316L stainless steel, ANSYS steady-state thermal analysis,
+          and ANSYS Fluent CFD under representative avionics chip loading conditions.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Design Development</p>
+      <h2 class="section-title">Two iterations, three specimens each — driven by print failures and simulation results.</h2>
+      <div class="section-body">
+        <p>
+          The conceptual design introduced wavy fins with circular and hexagonal perforations
+          to increase surface area and promote cross-channel airflow. The first print revealed
+          two failure modes: warping along the front and side planes caused by uneven shrinkage
+          during sintering, and fin fanning caused by the base plate consolidating more than
+          the individual fins. Both were directly attributable to the small-scale binder jetting
+          setup available — the parts had to be printed sideways due to height constraints,
+          introducing anisotropic shrinkage.
+        </p>
+        <p>
+          The final design addressed these issues systematically: the fins were shortened
+          (simulation showed diminishing heat transfer returns at greater height), the base
+          plate chamfer was removed to improve print bed contact, hexagonal perforations
+          were selected for their higher perimeter-to-area ratio and uniform ligament width,
+          and three aerodynamic support beams were added across the top surface to prevent
+          fin fanning during sintering. The support beams have a teardrop profile to minimize
+          airflow resistance during active cooling.
+        </p>
+      </div>
+      <div class="img-grid-2 reveal" style="margin-top: 2rem;">
+        <div class="img-item auto">
+          <img src="../images/heatsink_cad_concept.png" alt="Conceptual design SolidWorks drawing" />
+        </div>
+        <div class="img-item auto">
+          <img src="../images/heatsink_cad_final.png" alt="Final design SolidWorks drawing" />
+        </div>
+      </div>
+      <p class="img-caption">Conceptual design with perforations and chamfered base (left) — final design with support beams, shortened fins, and hexagonal perforations (right)</p>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Manufacturing Results</p>
+      <h2 class="section-title">Six parts across two iterations — each failure isolated one variable.</h2>
+      <div class="section-body">
+        <p>
+          The conceptual prints revealed warping and fanning. The final design prints resolved
+          the primary design-related defects. Remaining issues — feature collapse and minor
+          delamination — were traced to the available depowdering environment and manual
+          part handling, not the design. An industrial binder jetting setup with controlled
+          depowdering and bottom-up build orientation would resolve both.
+        </p>
+      </div>
+
+      <div style="margin-top: 1.5rem;">
+        <p class="label" style="margin-bottom: 1rem;">Conceptual Design Prints</p>
+        <div class="img-grid-3 reveal">
+          <div class="img-item square"><img src="../images/heatsink_print_c1.png" alt="Conceptual print 1" /></div>
+          <div class="img-item square"><img src="../images/heatsink_print_c2.png" alt="Conceptual print 2 — warping" /></div>
+          <div class="img-item square"><img src="../images/heatsink_print_c3.png" alt="Conceptual print 3 — fanning" /></div>
+        </div>
+        <p class="img-caption">Conceptual design prints — warping along the front plane and fin fanning visible across specimens</p>
+      </div>
+
+      <div style="margin-top: 2.5rem;">
+        <p class="label" style="margin-bottom: 1rem;">Final Design Prints</p>
+        <div class="img-grid-3 reveal">
+          <div class="img-item square"><img src="../images/heatsink_print_f1.png" alt="Final design print 1" /></div>
+          <div class="img-item square"><img src="../images/heatsink_print_f2.png" alt="Final design print 2" /></div>
+          <div class="img-item square"><img src="../images/heatsink_print_f3.png" alt="Final design print 3" /></div>
+        </div>
+        <p class="img-caption">Final design prints — support beams eliminated fanning; fin geometry holds form consistently across all three specimens</p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Thermal Analysis</p>
+      <h2 class="section-title">7°C average reduction. Compact geometry outperforms a taller baseline.</h2>
+      <div class="section-body">
+        <p>
+          ANSYS steady-state thermal simulations applied a heat flux of 22,222 W/m² 
+          (representing a 20 W avionics chip) to the base of both heat sinks, with a 
+          convection coefficient of 40 W/m²·°C and ambient temperature of 30°C representing
+          a forced-air cooled aircraft electronics bay. The final design maintained lower
+          temperatures throughout — approximately <strong>7°C cooler on average</strong>
+          than the straight-fin baseline, which was 7 mm taller.
+        </p>
+        <p>
+          The temperature reduction results from two mechanisms: increased effective surface
+          area from the wavy geometry and perforations, and boundary layer disruption. Straight
+          fins allow the thermal boundary layer to grow continuously along the fin surface,
+          reducing the local heat transfer coefficient downstream. Wavy fins continuously
+          redirect the airflow, preventing the boundary layer from establishing and maintaining
+          a higher convective coefficient along the full fin length.
+        </p>
+      </div>
+      <div class="img-full reveal">
+        <img src="../images/heatsink_thermal.png" alt="Thermal contour comparison" />
+        <p class="img-caption">Steady-state thermal contours — straight-fin baseline (left) vs. final wavy-fin design (right). Average temperature reduction: ~7°C.</p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Fluid Simulation</p>
+      <h2 class="section-title">Wavy channels drive turbulent mixing and higher internal velocities.</h2>
+      <div class="section-body">
+        <p>
+          Fluent CFD analysis with a fan-driven inlet perpendicular to the fin channels
+          revealed fundamentally different airflow behavior between the two designs.
+          The straight-fin baseline creates stagnant low-velocity regions between fins
+          where air bypasses rather than penetrating the fin channels. The wavy-fin design
+          forces airflow to repeatedly change direction, promoting turbulent mixing and
+          increasing local velocity within the channels — directly increasing convective
+          heat transfer and explaining the thermal simulation results.
+        </p>
+      </div>
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/heatsink_velocity.png" alt="Velocity contour comparison" />
+        <p class="img-caption">Velocity magnitude (m/s) — straight-fin baseline shows flow bypass (left); wavy-fin design channels flow through the fins at higher velocity (right)</p>
+      </div>
+      <div class="img-full reveal" style="margin-top: 2rem;">
+        <img src="../images/heatsink_pathlines.png" alt="Pathline comparison" />
+        <p class="img-caption">Fluid pathlines — baseline shows laminar bypass (left); wavy-fin design produces turbulent mixing through the fin channels (right)</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="takeaways-section">
+    <div class="takeaways-inner">
+      <p class="takeaways-label">Reflection</p>
+      <h2 class="takeaways-title">Key Takeaways</h2>
+      <ul class="takeaway-list">
+        <li class="takeaway-item reveal">
+          <span class="takeaway-num">01</span>
+          <p class="takeaway-text">Binder jetting enables thermal geometries that are not achievable conventionally — the wavy-fin performance advantage exists specifically because additive manufacturing made the geometry producible. The technology's value is not just in the printing but in unlocking designs that could not be considered before.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-1">
+          <span class="takeaway-num">02</span>
+          <p class="takeaway-text">Physical print failures from the conceptual iteration were more informative than simulation alone. Sintering-induced warping and fin fanning were not predicted by the thermal analysis — they were discovered through manufacturing, which then directly drove the design changes in the final iteration.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-2">
+          <span class="takeaway-num">03</span>
+          <p class="takeaway-text">The support beams that solved the fanning problem introduce a trade-off: they improve manufacturability but reduce the fin-to-air surface exposure and restrict the conduction path. In a production setting, the beams would be machined off after sintering — a workflow that should be planned into the design from the start.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-nav">
+    <a href="aircraft-wing.html" class="project-nav-item">
+      <span class="nav-dir">← Previous</span>
+      <span class="nav-proj-title">Aircraft Wing Structural Analysis</span>
+    </a>
+    <a href="nustars-airframe.html" class="project-nav-item next">
+      <span class="nav-dir">Next →</span>
+      <span class="nav-proj-title">NUStars Fiberglass Airframe</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Rodrigo Diaz</span>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/in/rodrigo-diaz-salazar/" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="mailto:rdiazsalazar01@gmail.com">Email ↗</a></li>
+        <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank">Résumé ↗</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Rodrigo Diaz</span>
+    </div>
+  </footer>
+  <script src="../shared.js"></script>
+</body>
+</html>
