@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fiberglass Composite Airframe — Rodrigo Diaz</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body class="project-page">
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Rodrigo <span>Diaz</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html">Projects <span class="nav-dropdown-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="index.html"><span class="nav-dropdown-num">All</span> All Projects</a>
+          <a href="mars-rover.html"><span class="nav-dropdown-num">01</span> Mars Rover EDL Optimization</a>
+          <a href="aircraft-wing.html"><span class="nav-dropdown-num">02</span> Aircraft Wing Structural Analysis</a>
+          <a href="heat-sink.html"><span class="nav-dropdown-num">03</span> Binder-Jet Heat Sink Design</a>
+          <a href="nustars-airframe.html"><span class="nav-dropdown-num">04</span> Fiberglass Composite Airframe</a>
+          <a href="onboard-camera.html"><span class="nav-dropdown-num">05</span> Onboard Video System</a>
+          <a href="brake-caliper.html"><span class="nav-dropdown-num">06</span> Bicycle Brake Caliper</a>
+          <a href="marley-roller.html"><span class="nav-dropdown-num">07</span> Marley Floor Roller</a>
+          <a href="jack-in-a-box.html"><span class="nav-dropdown-num">08</span> Jack-in-a-Box Simulation</a>
+        </div>
+      </li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank" class="nav-resume">Résumé ↗</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="../index.html">Portfolio</a><span>→</span>
+    <a href="index.html">Projects</a><span>→</span>
+    <span>Fiberglass Composite Airframe</span>
+  </div>
+
+  <div class="project-hero">
+    <div class="project-hero-inner">
+      <div>
+        <p class="project-eyebrow reveal">04 — Rocketry · Composites · NUStars</p>
+        <h1 class="project-title reveal reveal-delay-1">Fiberglass<br>Composite Airframe</h1>
+        <p class="project-description reveal reveal-delay-2">
+          Design and in-house manufacture of a fiberglass composite airframe and Von Karman 
+          nose cone for a transonic NASA Student Launch rocket — developed through six 
+          vacuum-bagged layup iterations and validated with ANSYS FEA and Fluent CFD.
+        </p>
+        <div class="project-tags reveal reveal-delay-3">
+          <span class="tag tag-accent">Fiberglass Composites</span>
+          <span class="tag">Vacuum Bagging</span>
+          <span class="tag">ANSYS FEA</span>
+          <span class="tag">ANSYS Fluent</span>
+          <span class="tag">Von Karman Geometry</span>
+          <span class="tag">Aeropoxy</span>
+        </div>
+      </div>
+      <div class="project-meta reveal reveal-delay-2">
+        <div class="meta-item">
+          <p class="meta-label">Organization</p>
+          <p class="meta-value">NUStars — Northwestern University Rocketry</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Competition</p>
+          <p class="meta-value">Intercollegiate Rocket Engineering Competition (IREC) 2025–2026</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Role</p>
+          <p class="meta-value">Airframe Subteam Member</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Material</p>
+          <p class="meta-value">Biaxial E-glass · Aeropoxy Resin</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Mandrel</p>
+          <p class="meta-value">PLA core + PVA outer shell</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">FEA Max Stress</p>
+          <p class="meta-value">7.23 × 10⁵ Pa at nose cone base</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-body">
+
+    <div class="project-section reveal">
+      <p class="section-label">Objective</p>
+      <h2 class="section-title">Manufacture a structural, radio-transparent airframe entirely in-house.</h2>
+      <div class="section-body">
+        <p>
+          The NUStars rocket carries onboard electronics that depend on continuous radio 
+          communication with ground stations. Carbon fiber — the structurally obvious choice — 
+          was eliminated early because it blocks RF signals. Fiberglass provides adequate 
+          structural performance while remaining fully radio-transparent, making it the 
+          correct material for this application despite being mechanically inferior to CFRP.
+        </p>
+        <p>
+          The Von Karman nose cone geometry was selected for its favorable transonic drag 
+          characteristics. The project focused on developing a reliable, repeatable 
+          vacuum-bagged layup process for both the cylindrical airframe tube and the 
+          Von Karman cone — achieving that repeatability required six build iterations.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Manufacturing Process</p>
+      <h2 class="section-title">Six layup iterations to establish a reliable vacuum-bagged composite process.</h2>
+      <div class="section-body">
+        <p>
+          <strong>Material:</strong> Biaxial woven E-glass sleeves provide balanced in-plane 
+          stiffness. Aeropoxy was selected as the matrix for its aerospace-grade mechanical 
+          properties and extended working time — critical for quality layup at this scale.
+        </p>
+        <p>
+          <strong>Mandrel:</strong> A hybrid PLA structural core with a PVA sacrificial outer 
+          shell allowed the nose cone geometry to be 3D-printed, used as a layup mandrel, 
+          then dissolved in water — eliminating the demolding failures of earlier iterations. 
+          Each test changed exactly one variable, making failure analysis tractable.
+        </p>
+      </div>
+
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/airframe_layup.png" alt="Fiberglass sleeves being applied over mandrel with Aeropoxy" />
+        <p class="img-caption">Biaxial fiberglass sleeves being wetted with Aeropoxy over the PLA/PVA mandrel</p>
+      </div>
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/airframe_vacuum.png" alt="Nose cone in vacuum bag during curing" />
+        <p class="img-caption">Final vacuum bag setup — layup → peel ply → perforated film → breather → sealed bag</p>
+      </div>
+
+      <div class="table-wrap reveal" style="margin-top: 2rem;">
+        <table class="metrics-table">
+          <thead><tr><th>Test</th><th>Setup</th><th>Outcome</th><th>Key Lesson</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>No vacuum, packing tape release</td><td>Collapsed tube</td><td>Vacuum and rigid mandrel are both essential</td></tr>
+            <tr><td>2</td><td>Vacuum bagging, food wrap release</td><td>Successful tube, surface artifacts</td><td>Food wrap works but leaves texture</td></tr>
+            <tr><td>3</td><td>Subscale nose cone, no vacuum</td><td>Mandrel removal failure</td><td>Mold release on mandrel surface required</td></tr>
+            <tr><td>4</td><td>Peel ply + breather, spray release</td><td>Failed removal, distorted shape</td><td>Perforated film needed between peel ply and breather</td></tr>
+            <tr><td>5</td><td>Improved vacuum, bag sheet release</td><td>Leathery cure</td><td>Without perforated film, breather absorbs too much resin</td></tr>
+            <tr><td>6 (Final)</td><td>Perforated film added, PLA/PVA mandrel</td><td><strong>Validated process</strong></td><td>Correct stack: layup → peel ply → perforated film → breather → bag</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Structural Analysis</p>
+      <h2 class="section-title">FEA confirmed high safety factor with stress well within material limits.</h2>
+      <div class="section-body">
+        <p>
+          ANSYS Static Structural applied aerodynamic pressure loading to the nose cone 
+          geometry. Von Mises stress peaks near the base of the cone — where aerodynamic 
+          moment arm and wall curvature both contribute — reaching a maximum of 
+          <strong>7.23 × 10⁵ Pa</strong>. Total deformation is minimal: 
+          <strong>1.16 × 10⁻⁵ m</strong> maximum at the tip. Both values confirm 
+          structural adequacy with significant margin.
+        </p>
+      </div>
+
+      <div class="img-grid-2 reveal" style="margin-top: 1.5rem;">
+        <div class="img-item wide">
+          <img src="../images/airframe_fea_stress.png" alt="ANSYS Von Mises stress" />
+        </div>
+        <div class="img-item wide">
+          <img src="../images/airframe_fea_deform.png" alt="ANSYS total deformation" />
+        </div>
+      </div>
+      <p class="img-caption">Von Mises stress — max 7.23 × 10⁵ Pa at nose cone base (left) · Total deformation — max 1.16 × 10⁻⁵ m at tip (right)</p>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Aerodynamic Analysis</p>
+      <h2 class="section-title">CFD validated the Von Karman profile and confirmed acceptable stagnation heating at the aluminum tip.</h2>
+      <div class="section-body">
+        <p>
+          ANSYS Fluent CFD at transonic conditions confirmed smooth flow attachment along 
+          the Von Karman body — minimizing wave drag through the critical Mach regime. 
+          The temperature contour identifies aerodynamic heating concentrated at the 
+          stagnation point, confirming that the aluminum nose tip handles the highest 
+          thermal load while the fiberglass body remains within acceptable temperature bounds.
+        </p>
+      </div>
+
+      <div class="img-grid-2 reveal" style="margin-top: 1.5rem;">
+        <div class="img-item wide">
+          <img src="../images/airframe_cfd_velocity.png" alt="CFD velocity contour" />
+        </div>
+        <div class="img-item wide">
+          <img src="../images/airframe_cfd_temp.png" alt="CFD temperature contour" />
+        </div>
+      </div>
+      <p class="img-caption">Velocity magnitude (m/s) — smooth flow attachment along nose body (left) · Temperature contour (K) — stagnation heating concentrated at aluminum tip (right)</p>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Final Result</p>
+      <h2 class="section-title">Flight-ready airframe with aluminum tip — ready for competition.</h2>
+      <div class="section-body">
+        <p>
+          The validated manufacturing process produced a flight-ready fiberglass nose cone 
+          with aluminum tip, integrated with the cylindrical airframe tube and coupler 
+          assembly. The final article flew at the NASA Student Launch competition in 
+          Huntsville, AL.
+        </p>
+      </div>
+      <!-- Vertical photo — using a tall aspect ratio container -->
+      <div class="img-full reveal" style="max-width: 360px; margin: 2rem auto;">
+        <img src="../images/airframe_final.png" alt="Final fiberglass nose cone with aluminum tip — vertical photo" style="width:100%; height:auto;" />
+        <p class="img-caption">Final fiberglass composite nose cone with machined aluminum tip — flight configuration</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="takeaways-section">
+    <div class="takeaways-inner">
+      <p class="takeaways-label">Reflection</p>
+      <h2 class="takeaways-title">Key Takeaways</h2>
+      <ul class="takeaway-list">
+        <li class="takeaway-item reveal">
+          <span class="takeaway-num">01</span>
+          <p class="takeaway-text">Six iterations to land on a reliable process: layup → peel ply → perforated film → breather → bag. Each failure was informative — but only because each test changed exactly one variable. Systematic isolation is what made the failures useful rather than just frustrating.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-1">
+          <span class="takeaway-num">02</span>
+          <p class="takeaway-text">The decision to use fiberglass over carbon fiber, while initially a constraint, was the right call — preserving radio transparency for avionics while reducing cost and enabling in-house manufacturing. Material selection that optimizes for all system requirements, not just structural performance, is a design skill in itself.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-2">
+          <span class="takeaway-num">03</span>
+          <p class="takeaway-text">Manufacturing constraints drove design decisions more than structural requirements did. The mandrel design, vacuum stack configuration, and epoxy working time shaped every aspect of the final process — which is how it works in practice, and why manufacturing knowledge matters as much as structural analysis knowledge.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-nav">
+    <a href="heat-sink.html" class="project-nav-item">
+      <span class="nav-dir">← Previous</span>
+      <span class="nav-proj-title">Binder-Jet Heat Sink Design</span>
+    </a>
+    <a href="onboard-camera.html" class="project-nav-item next">
+      <span class="nav-dir">Next →</span>
+      <span class="nav-proj-title">NUStars Onboard Video System</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Rodrigo Diaz</span>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/in/rodrigo-diaz-salazar/" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="mailto:rdiazsalazar01@gmail.com">Email ↗</a></li>
+        <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank">Résumé ↗</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Rodrigo Diaz</span>
+    </div>
+  </footer>
+  <script src="../shared.js"></script>
+</body>
+</html>
