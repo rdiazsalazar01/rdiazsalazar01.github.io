@@ -565,3 +565,65 @@ body::after {
   overflow: hidden;
   display: block;
 }
+
+/* ════════════════════════════════════════════════
+   DARK SPACE HERO  (home page only — .hero class
+   only exists on index.html)
+   ════════════════════════════════════════════════ */
+.hero {
+  background: #0c0b09; /* near-black with warm undertone */
+}
+
+/* Nebula-style warm glow over the dark bg */
+.hero .hero-bg {
+  background:
+    radial-gradient(ellipse at 78% 16%, rgba(196,98,45,0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 82%, rgba(26,58,107,0.13) 0%, transparent 52%),
+    radial-gradient(ellipse at 50% 50%, rgba(140,80,30,0.05) 0%, transparent 70%);
+}
+
+/* Text adapts to dark background */
+.hero .hero-name       { color: var(--warm-white); }
+.hero .hero-name em    { color: var(--terracotta); }
+.hero .hero-desc       { color: rgba(253,250,246,0.62); }
+
+/* CTA buttons on dark bg */
+.hero .btn-primary {
+  background: var(--terracotta);
+  color: var(--warm-white);
+  border: 1px solid var(--terracotta);
+}
+.hero .btn-primary:hover {
+  background: var(--terracotta-lt);
+  border-color: var(--terracotta-lt);
+  transform: translateY(-2px);
+}
+.hero .btn-secondary {
+  border-color: rgba(253,250,246,0.22);
+  color: rgba(253,250,246,0.72);
+  background: transparent;
+}
+.hero .btn-secondary:hover {
+  border-color: rgba(253,250,246,0.58);
+  color: var(--warm-white);
+  background: rgba(253,250,246,0.05);
+}
+
+/* Stats column on dark bg (if visible) */
+.hero .stat-num        { color: var(--warm-white); }
+.hero .stat-lbl        { color: rgba(253,250,246,0.40); }
+.hero .hero-stats      { border-left-color: rgba(253,250,246,0.12); }
+
+/* Canvas sits below text; hero-inner floats above it */
+.hero-inner { position: relative; z-index: 2; }
+
+/* Gradient curtain at the hero's bottom edge:
+   dark → cream, so it melts into the next section */
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, rgba(12,11,9,0), var(--cream));
+  pointer-events: none;
+  z-index: 3;
+}
