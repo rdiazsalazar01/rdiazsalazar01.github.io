@@ -1,7 +1,7 @@
 /* ================================================
    shared.js — Portfolio of Rodrigo Diaz
    GSAP · ScrollTrigger · Lenis · VanillaTilt
-   Custom Cursor · Page Transitions · Starfield
+   Spaceship Cursor · Aerospace Hero Background
    ================================================ */
 
 // ── CDN URLS ────────────────────────────────────
@@ -12,14 +12,19 @@ const _CDN = {
   tilt:  'https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js',
 };
 
+const _REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const _IS_HOME = !!document.querySelector('.hero');
+
+// Mark home page for nav color switching
+if (_IS_HOME) document.body.classList.add('home-page');
+
 // ════════════════════════════════════════════════
 //  RUNS IMMEDIATELY (no CDN needed)
 // ════════════════════════════════════════════════
 
 // ── 1. Claim hero elements so CSS observer skips them ──
-// Sets opacity:0 via inline style before IntersectionObserver fires
 ;(function claimHero() {
-  ['.hero-eyebrow', '.hero-name', '.hero-desc', '.hero-cta'].forEach(sel => {
+  ['.hero-eyebrow', '.hero-name', '.hero-desc', '.hero-cta', '.hero-status', '.hero-telemetry'].forEach(sel => {
     const el = document.querySelector(sel);
     if (!el) return;
     el.classList.remove('reveal','reveal-delay-1','reveal-delay-2','reveal-delay-3','reveal-delay-4');
@@ -28,9 +33,7 @@ const _CDN = {
   });
 })();
 
-// ── 2. Immediately reveal anything .reveal that's already on screen ──
-// Runs synchronously so content is never hidden for > 1 frame on page load.
-// Hero elements are skipped (data-hero). Out-of-viewport elements are ignored.
+// ── 2. Immediately reveal anything .reveal already on screen ──
 ;(function immediateReveal() {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -56,8 +59,8 @@ const _fallback = setTimeout(() => {
   });
 }, 2500);
 
-// ── 4. Start starfield canvas immediately (no GSAP needed) ──
-_initStarfield();
+// ── 4. Start aerospace hero background immediately ──
+if (!_REDUCED_MOTION) _initAerospaceBackground();
 
 // ════════════════════════════════════════════════
 //  CDN LOADER
@@ -76,7 +79,7 @@ _load(_CDN.gsap)
   .then(boot);
 
 // ════════════════════════════════════════════════
-//  BOOT  (after all CDNs loaded)
+//  BOOT
 // ════════════════════════════════════════════════
 function boot() {
   _gsapReady = true;
@@ -86,21 +89,23 @@ function boot() {
 
   _initPageTransition();
   _initLenis();
-  _initCustomCursor();
+  _initSpaceshipCursor();
   _initHero();
   _initScrollAnims();
   _initScrollProgress();
   _initVanillaTilt();
   _initNav();
+  _initTelemetryTicker();
 }
 
 // ════════════════════════════════════════════════
-//  STARFIELD CANVAS  (home page hero only)
-//  Runs immediately — no GSAP dependency
+//  AEROSPACE HERO BACKGROUND CANVAS
+//  Blueprint grid · Orbital arcs · Drifting particles
+//  · Soft glow · Mouse parallax
 // ════════════════════════════════════════════════
-function _initStarfield() {
+function _initAerospaceBackground() {
   const hero = document.querySelector('.hero');
-  if (!hero) return; // only on home page
+  if (!hero) return;
 
   const canvas = document.createElement('canvas');
   canvas.setAttribute('aria-hidden', 'true');
@@ -109,119 +114,180 @@ function _initStarfield() {
   hero.prepend(canvas);
 
   const ctx = canvas.getContext('2d');
-  let W, H, stars, raf;
-  let shoot = null;
-  let lastShootTime = 0;
-  let t = 0;
+  let W, H, DPR;
+  let particles = [];
+  let arcs = [];
+  let raf, t = 0;
+  let mouseX = 0, mouseY = 0;        // parallax target (-1..1)
+  let pX = 0, pY = 0;                // smoothed
 
   function resize() {
-    W = canvas.width  = hero.offsetWidth;
-    H = canvas.height = hero.offsetHeight;
-    mkStars();
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    const w = hero.offsetWidth;
+    const h = hero.offsetHeight;
+    canvas.width = w * DPR;
+    canvas.height = h * DPR;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    W = w; H = h;
+    makeParticles();
+    makeArcs();
   }
 
-  function mkStars() {
-    const density = Math.floor((W * H) / 7500);
-    const count   = Math.min(Math.max(density, 80), 220);
-    stars = Array.from({ length: count }, () => {
-      // Warm-white, blue-white, or terracotta-tinted stars
+  function makeParticles() {
+    const density = Math.floor((W * H) / 11000);
+    const count = Math.min(Math.max(density, 55), 150);
+    particles = Array.from({ length: count }, () => {
       const roll = Math.random();
       const [r, g, b] =
-        roll < 0.12 ? [255, 200, 160] : // warm / terracotta tint
-        roll < 0.22 ? [180, 210, 255] : // cold blue-white
-                      [255, 252, 245];   // neutral white
-
+        roll < 0.15 ? [255, 195, 150] :  // warm tint
+        roll < 0.40 ? [155, 200, 240] :  // steel blue
+                      [235, 240, 250];   // white-blue
       return {
-        x:      Math.random() * W,
-        y:      Math.random() * H,
-        radius: Math.random() * 1.45 + 0.2,
-        baseOp: Math.random() * 0.55 + 0.25,
-        twFreq: Math.random() * 0.55 + 0.18,  // twinkle freq
-        twPhs:  Math.random() * Math.PI * 2,   // twinkle phase
-        vx:     (Math.random() - 0.5) * 0.038,
-        vy:     (Math.random() - 0.5) * 0.022,
-        glow:   Math.random() < 0.11,
+        x:  Math.random() * W,
+        y:  Math.random() * H,
+        z:  Math.random() * 0.9 + 0.1,    // depth (for parallax)
+        radius: Math.random() * 1.3 + 0.25,
+        baseOp: Math.random() * 0.45 + 0.2,
+        twFreq: Math.random() * 0.55 + 0.15,
+        twPhs:  Math.random() * Math.PI * 2,
+        vx:     (Math.random() - 0.5) * 0.03,
+        vy:     (Math.random() - 0.5) * 0.018,
+        glow:   Math.random() < 0.10,
         r, g, b,
       };
     });
   }
 
-  // Occasionally fire a shooting star
-  function maybeShoot(now) {
-    const gap = 8000 + Math.random() * 9000; // 8–17 s
-    if (now - lastShootTime < gap) return;
-    lastShootTime = now;
-    const ang = (Math.PI / 5) + (Math.random() - 0.5) * 0.5; // ~36° ± wobble
-    shoot = {
-      x:       W * (0.1 + Math.random() * 0.6),
-      y:       H * (0.05 + Math.random() * 0.3),
-      angle:   ang,
-      trailLen: W * (0.10 + Math.random() * 0.10),
-      speed:   14 + Math.random() * 9,
-      prog:    0,
-    };
+  function makeArcs() {
+    // 3 concentric orbital arcs centered off-screen for subtle trajectory feel
+    const cx = W * 0.78;
+    const cy = H * 0.28;
+    arcs = [
+      { cx, cy, radius: Math.max(W, H) * 0.55, start: -0.35, sweep: 1.1, speed: 0.04, width: 1,   op: 0.18 },
+      { cx, cy, radius: Math.max(W, H) * 0.72, start:  0.20, sweep: 0.9, speed: 0.028, width: 0.8, op: 0.12 },
+      { cx: W * 0.15, cy: H * 0.85, radius: Math.max(W, H) * 0.45, start: -1.6, sweep: 0.9, speed: -0.035, width: 1, op: 0.15 },
+    ];
   }
 
-  function drawShoot() {
-    if (!shoot) return;
-    shoot.prog += shoot.speed / (shoot.trailLen * 2.8);
-    if (shoot.prog > 1.5) { shoot = null; return; }
+  function drawGrid() {
+    // Faint blueprint grid with radial mask towards the hero text
+    const gridSize = 64;
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(123, 176, 214, 0.045)';
 
-    const op = shoot.prog < 0.18 ? shoot.prog / 0.18
-             : shoot.prog > 0.72 ? Math.max(0, 1 - (shoot.prog - 0.72) / 0.65)
-             : 1;
-
-    const hx = shoot.x + Math.cos(shoot.angle) * shoot.prog * shoot.trailLen * 2.8;
-    const hy = shoot.y + Math.sin(shoot.angle) * shoot.prog * shoot.trailLen * 2.8;
-    const tx = hx - Math.cos(shoot.angle) * shoot.trailLen;
-    const ty = hy - Math.sin(shoot.angle) * shoot.trailLen;
-
-    const grad = ctx.createLinearGradient(tx, ty, hx, hy);
-    grad.addColorStop(0, 'rgba(255,255,255,0)');
-    grad.addColorStop(1, `rgba(255,252,245,${(op * 0.82).toFixed(3)})`);
+    // Parallax offset
+    const ox = pX * 18;
+    const oy = pY * 18;
 
     ctx.beginPath();
-    ctx.moveTo(tx, ty);
-    ctx.lineTo(hx, hy);
-    ctx.strokeStyle = grad;
-    ctx.lineWidth = 1.1;
+    for (let x = ((-ox) % gridSize); x < W; x += gridSize) {
+      ctx.moveTo(x + 0.5, 0);
+      ctx.lineTo(x + 0.5, H);
+    }
+    for (let y = ((-oy) % gridSize); y < H; y += gridSize) {
+      ctx.moveTo(0, y + 0.5);
+      ctx.lineTo(W, y + 0.5);
+    }
     ctx.stroke();
+
+    // Stronger minor cross marks every 4 cells
+    ctx.strokeStyle = 'rgba(123, 176, 214, 0.12)';
+    const major = gridSize * 4;
+    ctx.beginPath();
+    for (let x = ((-ox) % major); x < W; x += major) {
+      for (let y = ((-oy) % major); y < H; y += major) {
+        ctx.moveTo(x - 3, y); ctx.lineTo(x + 3, y);
+        ctx.moveTo(x, y - 3); ctx.lineTo(x, y + 3);
+      }
+    }
+    ctx.stroke();
+  }
+
+  function drawArcs() {
+    arcs.forEach(a => {
+      const phase = t * a.speed;
+      const start = a.start + phase;
+      const end   = start + a.sweep;
+
+      // Soft glow stroke
+      ctx.beginPath();
+      ctx.arc(a.cx + pX * 12, a.cy + pY * 12, a.radius, start, end);
+      ctx.strokeStyle = `rgba(123, 176, 214, ${a.op})`;
+      ctx.lineWidth = a.width;
+      ctx.stroke();
+
+      // Traveling dot along the arc (leading edge)
+      const dotX = a.cx + pX * 12 + Math.cos(end) * a.radius;
+      const dotY = a.cy + pY * 12 + Math.sin(end) * a.radius;
+      const gr = ctx.createRadialGradient(dotX, dotY, 0, dotX, dotY, 7);
+      gr.addColorStop(0, 'rgba(158, 211, 232, 0.9)');
+      gr.addColorStop(0.5, 'rgba(158, 211, 232, 0.25)');
+      gr.addColorStop(1, 'rgba(158, 211, 232, 0)');
+      ctx.fillStyle = gr;
+      ctx.beginPath();
+      ctx.arc(dotX, dotY, 7, 0, Math.PI * 2);
+      ctx.fill();
+    });
+  }
+
+  function drawParticles() {
+    particles.forEach(s => {
+      // Drift — wrap at edges
+      s.x = ((s.x + s.vx) + W) % W;
+      s.y = ((s.y + s.vy) + H) % H;
+
+      // Parallax (deep stars move less)
+      const px = s.x + pX * 22 * s.z;
+      const py = s.y + pY * 22 * s.z;
+
+      // Twinkle
+      const tw = 0.5 + 0.5 * Math.sin(t * s.twFreq * Math.PI * 2 + s.twPhs);
+      const op = s.baseOp * (0.55 + 0.45 * tw) * s.z;
+
+      if (s.glow) {
+        const gr = ctx.createRadialGradient(px, py, 0, px, py, s.radius * 5);
+        gr.addColorStop(0,   `rgba(${s.r},${s.g},${s.b},${op})`);
+        gr.addColorStop(0.35,`rgba(${s.r},${s.g},${s.b},${op * 0.22})`);
+        gr.addColorStop(1,   'rgba(0,0,0,0)');
+        ctx.beginPath();
+        ctx.arc(px, py, s.radius * 5, 0, Math.PI * 2);
+        ctx.fillStyle = gr;
+        ctx.fill();
+      }
+
+      ctx.beginPath();
+      ctx.arc(px, py, s.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${s.r},${s.g},${s.b},${op})`;
+      ctx.fill();
+    });
+  }
+
+  function drawGlow() {
+    // Soft glow behind hero text area
+    const cx = W * 0.28;
+    const cy = H * 0.55;
+    const gr = ctx.createRadialGradient(cx + pX * 8, cy + pY * 8, 0, cx, cy, Math.max(W, H) * 0.35);
+    gr.addColorStop(0, 'rgba(196, 98, 45, 0.08)');
+    gr.addColorStop(0.5, 'rgba(50, 80, 140, 0.04)');
+    gr.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = gr;
+    ctx.fillRect(0, 0, W, H);
   }
 
   function frame(now) {
     ctx.clearRect(0, 0, W, H);
     t = now * 0.001;
 
-    stars.forEach(s => {
-      // Drift — wrap at edges
-      s.x = ((s.x + s.vx) + W) % W;
-      s.y = ((s.y + s.vy) + H) % H;
+    // Ease toward target for smooth parallax
+    pX += (mouseX - pX) * 0.04;
+    pY += (mouseY - pY) * 0.04;
 
-      // Twinkle
-      const tw = 0.5 + 0.5 * Math.sin(t * s.twFreq * Math.PI * 2 + s.twPhs);
-      const op = s.baseOp * (0.52 + 0.48 * tw);
-
-      // Glow halo (only ~11% of stars)
-      if (s.glow) {
-        const gr = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.radius * 5.5);
-        gr.addColorStop(0,   `rgba(${s.r},${s.g},${s.b},${(op).toFixed(3)})`);
-        gr.addColorStop(0.35,`rgba(${s.r},${s.g},${s.b},${(op * 0.22).toFixed(3)})`);
-        gr.addColorStop(1,   'rgba(0,0,0,0)');
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.radius * 5.5, 0, Math.PI * 2);
-        ctx.fillStyle = gr;
-        ctx.fill();
-      }
-
-      // Star dot
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${s.r},${s.g},${s.b},${(op).toFixed(3)})`;
-      ctx.fill();
-    });
-
-    maybeShoot(now);
-    drawShoot();
+    drawGlow();
+    drawGrid();
+    drawArcs();
+    drawParticles();
 
     raf = requestAnimationFrame(frame);
   }
@@ -231,7 +297,12 @@ function _initStarfield() {
 
   window.addEventListener('resize', () => { resize(); }, { passive: true });
 
-  // Pause when tab hidden (battery/performance)
+  // Mouse parallax (subtle)
+  window.addEventListener('mousemove', e => {
+    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+  }, { passive: true });
+
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) cancelAnimationFrame(raf);
     else raf = requestAnimationFrame(frame);
@@ -242,7 +313,7 @@ function _initStarfield() {
 //  LENIS SMOOTH SCROLL
 // ════════════════════════════════════════════════
 function _initLenis() {
-  if (typeof Lenis === 'undefined') return;
+  if (typeof Lenis === 'undefined' || _REDUCED_MOTION) return;
 
   const lenis = new Lenis({
     duration:      1.15,
@@ -265,13 +336,11 @@ function _initPageTransition() {
   overlay.className = 'page-transition-overlay';
   document.body.appendChild(overlay);
 
-  // Fade in on page load
   gsap.to(overlay, {
-    opacity: 0, duration: 0.35, ease: 'power2.out',
+    opacity: 0, duration: 0.4, ease: 'power2.out',
     onComplete: () => { overlay.style.pointerEvents = 'none'; },
   });
 
-  // Intercept internal link clicks
   document.addEventListener('click', e => {
     const link = e.target.closest('a[href]');
     if (!link) return;
@@ -291,47 +360,116 @@ function _initPageTransition() {
     const dest = link.href;
     overlay.style.pointerEvents = 'all';
     gsap.to(overlay, {
-      opacity: 1, duration: 0.22, ease: 'power2.in',
+      opacity: 1, duration: 0.26, ease: 'power2.in',
       onComplete: () => window.location.assign(dest),
     });
   });
 }
 
 // ════════════════════════════════════════════════
-//  CUSTOM CURSOR
+//  SPACESHIP CURSOR
+//  SVG spaceship follows cursor smoothly and rotates
+//  based on movement direction. Small terracotta
+//  trail dot adds polish. Desktop only.
 // ════════════════════════════════════════════════
-function _initCustomCursor() {
+function _initSpaceshipCursor() {
   if (window.matchMedia('(pointer: coarse)').matches) return;
+  if (_REDUCED_MOTION) return;
 
-  const dot  = document.createElement('div');
-  const ring = document.createElement('div');
-  dot.className  = 'cursor-dot';
-  ring.className = 'cursor-ring';
-  document.body.append(dot, ring);
+  // Clean minimalist spaceship SVG — tip points up (-Y by default)
+  const SHIP_SVG = `
+    <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <defs>
+        <linearGradient id="shipBody" x1="14" y1="2" x2="14" y2="26" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#FDFAF6"/>
+          <stop offset="1" stop-color="#D4D1CB"/>
+        </linearGradient>
+      </defs>
+      <!-- thruster glow -->
+      <path d="M10 22 L14 26 L18 22 Z" fill="#C4622D" opacity="0.85"/>
+      <path d="M11.5 22 L14 24.5 L16.5 22 Z" fill="#FFD7A8" opacity="0.9"/>
+      <!-- body -->
+      <path d="M14 2 L20 18 L14 15.5 L8 18 Z" fill="url(#shipBody)" stroke="#1C1A17" stroke-width="1.1" stroke-linejoin="round"/>
+      <!-- cockpit -->
+      <circle cx="14" cy="10" r="1.6" fill="#7BB0D6" stroke="#1C1A17" stroke-width="0.7"/>
+    </svg>`;
+
+  const ship = document.createElement('div');
+  ship.className = 'cursor-ship';
+  ship.innerHTML = SHIP_SVG;
+
+  const trail = document.createElement('div');
+  trail.className = 'cursor-trail';
+
+  document.body.append(trail, ship);
 
   let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-  let rx = mx, ry = my;
+  let sx = mx, sy = my;            // smoothed ship position
+  let tx = mx, ty = my;            // smoothed trail
+  let targetAngle = 0;             // in radians (0 = pointing up)
+  let currentAngle = 0;
+  let lastX = mx, lastY = my;
 
   document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    gsap.to(dot, { x: mx, y: my, duration: 0.07, ease: 'none' });
+    mx = e.clientX;
+    my = e.clientY;
+  }, { passive: true });
+
+  // Hide when leaving window, show when entering
+  document.addEventListener('mouseleave', () => {
+    gsap.to(ship,  { opacity: 0, duration: 0.2 });
+    gsap.to(trail, { opacity: 0, duration: 0.2 });
+  });
+  document.addEventListener('mouseenter', () => {
+    gsap.to(ship,  { opacity: 1, duration: 0.25 });
+    gsap.to(trail, { opacity: 1, duration: 0.25 });
   });
 
   gsap.ticker.add(() => {
-    rx += (mx - rx) * 0.14;
-    ry += (my - ry) * 0.14;
-    gsap.set(ring, { x: rx, y: ry });
+    // Smooth ship movement
+    sx += (mx - sx) * 0.18;
+    sy += (my - sy) * 0.18;
+    // Trail lags a bit more
+    tx += (mx - tx) * 0.09;
+    ty += (my - ty) * 0.09;
+
+    // Compute angle from velocity (only rotate when actually moving)
+    const dx = sx - lastX;
+    const dy = sy - lastY;
+    const speed = Math.hypot(dx, dy);
+
+    if (speed > 0.6) {
+      // atan2 returns angle from +X axis. Ship SVG points -Y (up) by default,
+      // so we add PI/2 to align.
+      targetAngle = Math.atan2(dy, dx) + Math.PI / 2;
+    }
+    // Angle interpolation (shortest path)
+    let diff = targetAngle - currentAngle;
+    while (diff > Math.PI) diff -= Math.PI * 2;
+    while (diff < -Math.PI) diff += Math.PI * 2;
+    currentAngle += diff * 0.18;
+
+    lastX = sx; lastY = sy;
+
+    gsap.set(ship,  { x: sx, y: sy, rotation: currentAngle * 180 / Math.PI });
+    gsap.set(trail, { x: tx, y: ty });
   });
 
-  document.querySelectorAll('a, button, .project-card, [role="button"]').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      gsap.to(dot,  { scale: 1.7, duration: 0.2 });
-      gsap.to(ring, { scale: 1.55, borderColor: 'rgba(196,98,45,0.42)', duration: 0.25 });
-    });
-    el.addEventListener('mouseleave', () => {
-      gsap.to(dot,  { scale: 1, duration: 0.2 });
-      gsap.to(ring, { scale: 1, borderColor: 'rgba(196,98,45,0.8)', duration: 0.25 });
-    });
+  // Hover states
+  const hoverTargets = 'a, button, .project-card, [role="button"], input, textarea, select, .video-btn';
+  document.addEventListener('mouseover', e => {
+    if (e.target.closest(hoverTargets)) {
+      ship.classList.add('cursor-hover');
+      gsap.to(ship, { scale: 1.25, duration: 0.22, ease: 'power2.out' });
+      gsap.to(trail, { scale: 2, duration: 0.22 });
+    }
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest(hoverTargets) && !e.relatedTarget?.closest(hoverTargets)) {
+      ship.classList.remove('cursor-hover');
+      gsap.to(ship, { scale: 1, duration: 0.22, ease: 'power2.out' });
+      gsap.to(trail, { scale: 1, duration: 0.22 });
+    }
   });
 }
 
@@ -340,29 +478,35 @@ function _initCustomCursor() {
 // ════════════════════════════════════════════════
 function _initHero() {
   const name    = document.querySelector('.hero-name');
+  const status  = document.querySelector('.hero-status');
   const eyebrow = document.querySelector('.hero-eyebrow');
   const desc    = document.querySelector('.hero-desc');
   const cta     = document.querySelector('.hero-cta');
+  const telem   = document.querySelector('.hero-telemetry');
 
   if (!name) return;
 
-  // Split hero name by <br> into masked line spans for the slide-up effect
   _splitLines(name);
-  gsap.set(name, { opacity: 1 }); // show parent; lines animate
+  gsap.set(name, { opacity: 1 });
 
   const tl = gsap.timeline({ delay: 0.1 });
 
+  if (status) {
+    tl.fromTo(status,
+      { opacity: 0, y: 14 },
+      { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 0);
+  }
   if (eyebrow) {
     tl.fromTo(eyebrow,
-      { opacity: 0, y: 16 },
-      { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out' }, 0);
+      { opacity: 0, y: 14 },
+      { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 0.1);
   }
 
   const lines = name.querySelectorAll('.line-inner');
   tl.fromTo(lines,
     { y: '108%' },
-    { y: '0%', duration: 0.95, stagger: 0.14, ease: 'power4.out' },
-    eyebrow ? 0.22 : 0
+    { y: '0%', duration: 1.0, stagger: 0.14, ease: 'power4.out' },
+    0.25
   );
 
   if (desc) {
@@ -373,14 +517,19 @@ function _initHero() {
   if (cta) {
     tl.fromTo(cta,
       { opacity: 0, y: 14 },
-      { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, '-=0.42');
+      { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out' }, '-=0.42');
+  }
+  if (telem) {
+    tl.fromTo(telem,
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.38');
   }
 
   // Hero background parallax on scroll
   const heroBg = document.querySelector('.hero-bg');
-  if (heroBg) {
+  if (heroBg && !_REDUCED_MOTION) {
     gsap.to(heroBg, {
-      yPercent: 28, ease: 'none',
+      yPercent: 22, ease: 'none',
       scrollTrigger: {
         trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true,
       },
@@ -396,6 +545,23 @@ function _splitLines(el) {
 }
 
 // ════════════════════════════════════════════════
+//  TELEMETRY TICKER (home hero status + values)
+// ════════════════════════════════════════════════
+function _initTelemetryTicker() {
+  const values = document.querySelectorAll('.telemetry-value[data-animate]');
+  values.forEach(el => {
+    const target = parseFloat(el.getAttribute('data-animate'));
+    const suffix = el.getAttribute('data-suffix') || '';
+    const dec = parseInt(el.getAttribute('data-dec') || '0', 10);
+    const obj = { v: 0 };
+    gsap.to(obj, {
+      v: target, duration: 1.6, delay: 1.0, ease: 'power2.out',
+      onUpdate: () => { el.firstChild.textContent = obj.v.toFixed(dec) + suffix; },
+    });
+  });
+}
+
+// ════════════════════════════════════════════════
 //  SCROLL ANIMATIONS
 // ════════════════════════════════════════════════
 function _initScrollAnims() {
@@ -405,7 +571,6 @@ function _initScrollAnims() {
     return r.top < window.innerHeight * 0.92 && r.bottom > 0;
   }
 
-  // ── Section titles ────────────────────────────
   gsap.utils.toArray('.section-title').forEach(el => {
     if (_inView(el) || el.classList.contains('visible')) return;
     gsap.set(el, { opacity: 0, y: 34 });
@@ -416,7 +581,6 @@ function _initScrollAnims() {
     });
   });
 
-  // ── About title ───────────────────────────────
   gsap.utils.toArray('.about-title').forEach(el => {
     if (_inView(el) || el.classList.contains('visible')) return;
     gsap.set(el, { opacity: 0, y: 28 });
@@ -427,9 +591,8 @@ function _initScrollAnims() {
     });
   });
 
-  // ── About section — subtle parallax depth ─────
   const aboutSection = document.querySelector('.about-section');
-  if (aboutSection) {
+  if (aboutSection && !_REDUCED_MOTION) {
     const inner = aboutSection.querySelector('.about-inner');
     if (inner) {
       gsap.fromTo(inner, { y: -18 }, {
@@ -441,7 +604,6 @@ function _initScrollAnims() {
     }
   }
 
-  // ── Project cards — stagger in rows of 2 ──────
   const allCards = gsap.utils.toArray('.project-card');
   for (let i = 0; i < allCards.length; i += 2) {
     const row = allCards.slice(i, i + 2)
@@ -459,7 +621,6 @@ function _initScrollAnims() {
     });
   }
 
-  // ── Takeaway items — stagger from left ────────
   const takeaways = gsap.utils.toArray('.takeaway-item')
     .filter(t => !_inView(t) && !t.classList.contains('visible'));
   if (takeaways.length) {
@@ -475,13 +636,12 @@ function _initScrollAnims() {
     });
   }
 
-  // ── Stat counters ─────────────────────────────
-  gsap.utils.toArray('.stat-num').forEach(el => {
-    const raw = el.textContent.trim();
-    const num = parseFloat(raw.replace(/[^0-9.]/g, ''));
+  gsap.utils.toArray('.stat-num, .metric-callout-value[data-animate]').forEach(el => {
+    const raw = el.getAttribute('data-animate') || el.textContent.trim();
+    const num = parseFloat(raw.replace(/[^0-9.\-]/g, ''));
     if (isNaN(num) || num === 0) return;
-    const suffix  = raw.replace(/[\d.]/g, '').trim();
-    const dec     = (num % 1 !== 0) ? (raw.split('.')[1]?.length ?? 1) : 0;
+    const suffix = raw.replace(/[\d.\-]/g, '').trim();
+    const dec = (num % 1 !== 0) ? (raw.split('.')[1]?.length ?? 1) : 0;
     const counter = { val: 0 };
     el.textContent = '0' + suffix;
     ScrollTrigger.create({
@@ -493,9 +653,6 @@ function _initScrollAnims() {
     });
   });
 
-  // ── All remaining .reveal elements ────────────
-  // Skip: already in viewport, already made visible by immediateReveal observer,
-  // or already claimed by one of the specific handlers above.
   gsap.utils.toArray('.reveal').forEach(el => {
     if (_inView(el) || el.classList.contains('visible')) return;
     const delay =
@@ -514,7 +671,7 @@ function _initScrollAnims() {
 }
 
 // ════════════════════════════════════════════════
-//  SCROLL PROGRESS BAR  (individual project pages)
+//  SCROLL PROGRESS BAR
 // ════════════════════════════════════════════════
 function _initScrollProgress() {
   if (!document.querySelector('.project-body')) return;
@@ -533,34 +690,33 @@ function _initScrollProgress() {
 }
 
 // ════════════════════════════════════════════════
-//  VANILLA TILT  (desktop cards only)
+//  VANILLA TILT
 // ════════════════════════════════════════════════
 function _initVanillaTilt() {
-  if (typeof VanillaTilt === 'undefined') return;
+  if (typeof VanillaTilt === 'undefined' || _REDUCED_MOTION) return;
   if (window.matchMedia('(pointer: coarse)').matches) return;
   VanillaTilt.init(document.querySelectorAll('.project-card'), {
-    max: 4.5, speed: 500, perspective: 1300,
-    glare: true, 'max-glare': 0.06, scale: 1.008,
+    max: 3.5, speed: 500, perspective: 1400,
+    glare: true, 'max-glare': 0.05, scale: 1.005,
   });
 }
 
 // ════════════════════════════════════════════════
-//  NAV  (shadow + dropdown)
+//  NAV
 // ════════════════════════════════════════════════
 function _initNav() {
-  // Shadow on scroll
   const nav = document.querySelector('nav');
   if (nav) {
-    window.addEventListener('scroll', () => {
-      nav.style.boxShadow = window.scrollY > 60
+    const onScroll = () => {
+      const scrolled = window.scrollY > 60;
+      nav.style.boxShadow = scrolled
         ? '0 1px 24px rgba(28,26,23,0.09)' : 'none';
-    }, { passive: true });
+      document.body.classList.toggle('nav-scrolled', scrolled);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 
-  // ── Dropdown ──────────────────────────────────
-  // Click opens/closes. Mouse movement never closes it.
-  // stopPropagation prevents the page-transition handler
-  // from treating the trigger link as a navigation event.
   const dropdowns = document.querySelectorAll('.nav-dropdown');
 
   dropdowns.forEach(dd => {
@@ -569,20 +725,18 @@ function _initNav() {
 
     trigger.addEventListener('click', e => {
       e.preventDefault();
-      e.stopPropagation(); // ← keeps page-transition from firing
+      e.stopPropagation();
       const wasOpen = dd.classList.contains('open');
       dropdowns.forEach(d => d.classList.remove('open'));
       if (!wasOpen) dd.classList.add('open');
     });
   });
 
-  // Click anywhere outside → close
   document.addEventListener('click', e => {
     if (!e.target.closest('.nav-dropdown'))
       dropdowns.forEach(d => d.classList.remove('open'));
   });
 
-  // Escape → close
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape')
       dropdowns.forEach(d => d.classList.remove('open'));

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rodrigo Diaz — Mechanical Engineering Portfolio</title>
+  <title>Rodrigo Diaz — Mechanical &amp; Aerospace Engineering Portfolio</title>
+  <meta name="description" content="Portfolio of Rodrigo Diaz — Mechanical Engineering BS/MS at Northwestern with Aerospace Concentration. Structural FEA, computational optimization, composite manufacturing, additive manufacturing research." />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,22 +38,43 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
-    <div class="hero-inner" style="grid-template-columns: 1fr;">
-      <div class="hero-content" style="max-width: 780px;">
-        <p class="hero-eyebrow reveal">Northwestern University · Mechanical Engineering BS/MS · Aerospace Concentration</p>
-        <h1 class="hero-name reveal reveal-delay-1">Rodrigo<br><em>Diaz</em></h1>
-        <p class="hero-desc reveal reveal-delay-2">
-          Pursuing a combined bachelor's and master's in Mechanical Engineering at Northwestern 
-          with an Aerospace Concentration. My work spans computational optimization, structural FEA, 
-          composite manufacturing, and additive manufacturing research — from Mars rover descent 
-          trajectory optimization to in-house fiberglass rocket airframes.
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-status">Systems Nominal · Portfolio v2026.1</div>
+        <p class="hero-eyebrow">Northwestern University · Mechanical Engineering BS/MS · Aerospace Concentration</p>
+        <h1 class="hero-name">Rodrigo<br><em>Diaz</em></h1>
+        <p class="hero-desc">
+          Mechanical engineer working across the full aerospace arc — from
+          constrained trajectory optimization and structural FEA to
+          composite layup and additive manufacturing research on Inconel 718.
+          Every project ships from first principles to physical artifact.
         </p>
-        <div class="hero-cta reveal reveal-delay-3">
-          <a href="projects/index.html" class="btn-primary">View Projects</a>
-          <a href="Rodrigo_Diaz_Resume.pdf" target="_blank" class="btn-secondary">Download Résumé</a>
+        <div class="hero-cta">
+          <a href="projects/index.html" class="btn-primary">View Projects →</a>
+          <a href="Rodrigo_Diaz_Resume.pdf" target="_blank" class="btn-secondary">Download Résumé ↗</a>
+        </div>
+
+        <div class="hero-telemetry">
+          <div class="hero-telemetry-item">
+            <p class="telemetry-label">Projects</p>
+            <p class="telemetry-value">08</p>
+          </div>
+          <div class="hero-telemetry-item">
+            <p class="telemetry-label">Research Lab</p>
+            <p class="telemetry-value" style="font-size:0.95rem; line-height:1.3;">FAST AM · Inconel 718</p>
+          </div>
+          <div class="hero-telemetry-item">
+            <p class="telemetry-label">Flight Validated</p>
+            <p class="telemetry-value">NASA SL</p>
+          </div>
+          <div class="hero-telemetry-item">
+            <p class="telemetry-label">Focus</p>
+            <p class="telemetry-value" style="font-size:0.95rem; line-height:1.3;">FEA · CFD · AM</p>
+          </div>
         </div>
       </div>
     </div>
+    <div class="hero-scroll-indicator">Scroll</div>
   </section>
 
   <!-- ALL 8 PROJECTS -->
@@ -60,10 +82,11 @@
     <div style="max-width: var(--max-w); margin: 0 auto;">
       <div class="featured-header reveal">
         <div>
-          <p class="label">Engineering Work</p>
-          <h2 style="margin-top: 0.5rem;">Projects</h2>
-          <p style="margin-top: 0.6rem; font-size: 0.875rem; color: var(--stone);">Click any project for full details, images, and analysis.</p>
+          <p class="label">Engineering Work · 2022 — 2026</p>
+          <h2 style="margin-top: 0.5rem;">Selected Projects</h2>
+          <p style="margin-top: 0.7rem; font-size: 0.9rem; color: var(--stone); max-width: 52ch;">Eight case studies spanning aerospace structures, computational optimization, additive manufacturing, and mechanical product development.</p>
         </div>
+        <a href="projects/index.html" class="view-all">Browse All ↗</a>
       </div>
       <div class="projects-grid">
 
@@ -72,6 +95,7 @@
           <div class="card-body">
             <p class="card-number">01 — ME 441 · Computational Dynamics</p>
             <h3 class="card-title">Mars Rover EDL Optimization</h3>
+            <p class="card-metric">COBYLA · SLSQP · 3 atmospheric scenarios</p>
             <p class="card-desc">Constrained nonlinear optimization of entry, descent, and landing fuel consumption across three atmospheric scenarios using COBYLA and SLSQP in Python.</p>
             <div class="card-tags"><span class="tag">Python</span><span class="tag">SciPy</span><span class="tag">Optimization</span><span class="tag">Aerospace</span></div>
           </div>
@@ -83,6 +107,7 @@
           <div class="card-body">
             <p class="card-number">02 — ME 362 · Mechanics of Materials</p>
             <h3 class="card-title">Aircraft Wing Structural Analysis</h3>
+            <p class="card-metric">ANSYS + Euler-Bernoulli + Rayleigh-Ritz</p>
             <p class="card-desc">FEA and analytical validation of a Cessna 172 wing under aerodynamic loading — combining ANSYS with Euler-Bernoulli beam theory and the Rayleigh-Ritz method.</p>
             <div class="card-tags"><span class="tag">ANSYS</span><span class="tag">FEA</span><span class="tag">Structural</span></div>
           </div>
@@ -94,7 +119,8 @@
           <div class="card-body">
             <p class="card-number">03 — ME 495 · Additive Manufacturing</p>
             <h3 class="card-title">Binder-Jet Heat Sink Design</h3>
-            <p class="card-desc">Wavy-fin modular heat sink in 316L stainless steel, achieving a 7°C average temperature reduction over a conventional straight-fin baseline in ANSYS thermal and Fluent CFD.</p>
+            <p class="card-metric">−7 °C vs. straight-fin baseline</p>
+            <p class="card-desc">Wavy-fin modular heat sink in 316L stainless steel, achieving a 7 °C average temperature reduction over a conventional straight-fin baseline in ANSYS thermal and Fluent CFD.</p>
             <div class="card-tags"><span class="tag">316L Steel</span><span class="tag">Binder Jetting</span><span class="tag">CFD</span></div>
           </div>
           <span class="card-arrow">↗</span>
@@ -105,6 +131,7 @@
           <div class="card-body">
             <p class="card-number">04 — NUStars · NASA Student Launch</p>
             <h3 class="card-title">Fiberglass Composite Airframe</h3>
+            <p class="card-metric">6 layup iterations · in-house manufacture</p>
             <p class="card-desc">In-house manufactured fiberglass airframe and Von Karman nose cone through six vacuum-bagged layup iterations with ANSYS FEA and CFD validation.</p>
             <div class="card-tags"><span class="tag">Composites</span><span class="tag">Vacuum Bagging</span><span class="tag">ANSYS</span></div>
           </div>
@@ -116,6 +143,7 @@
           <div class="card-body">
             <p class="card-number">05 — NUStars · NASA Student Launch</p>
             <h3 class="card-title">Onboard Video System</h3>
+            <p class="card-metric">First visual proof of ADS actuation in flight</p>
             <p class="card-desc">Aerodynamic camera housing from PDR through a competition flight in Huntsville — capturing the first visual confirmation of active drag system actuation in flight.</p>
             <div class="card-tags"><span class="tag">Systems Design</span><span class="tag">3D Printing ABS</span><span class="tag">ANSYS</span></div>
           </div>
@@ -127,6 +155,7 @@
           <div class="card-body">
             <p class="card-number">06 — ME 240 · Mechanical Design</p>
             <h3 class="card-title">Bicycle Brake Caliper</h3>
+            <p class="card-metric">2 iterations · ISO 4210 compliant</p>
             <p class="card-desc">Full product development cycle from needs analysis through topology-optimized FEA, Nylon 12 printing, and ISO 4210 compliance testing across two design iterations.</p>
             <div class="card-tags"><span class="tag">Siemens NX</span><span class="tag">Topology Opt.</span><span class="tag">Nylon 12</span></div>
           </div>
@@ -138,6 +167,7 @@
           <div class="card-body">
             <p class="card-number">07 — Independent Design</p>
             <h3 class="card-title">Marley Floor Roller</h3>
+            <p class="card-metric">Fabricated · in service</p>
             <p class="card-desc">Purpose-built mechanical device for rolling and storing Marley dance floor — plywood frame, PVC roller, crank mechanism, and locking caster wheel system.</p>
             <div class="card-tags"><span class="tag">SolidWorks</span><span class="tag">Mechanical Design</span><span class="tag">Fabrication</span></div>
           </div>
@@ -149,12 +179,61 @@
           <div class="card-body">
             <p class="card-number">08 — ME 314 · Rigid Body Dynamics</p>
             <h3 class="card-title">Jack-in-a-Box Simulation</h3>
+            <p class="card-metric">Euler-Lagrange · impact constraints</p>
             <p class="card-desc">Multi-body rigid body dynamics simulation with Euler-Lagrange formulation, impact constraints via Lagrange multipliers, and Hamiltonian energy conservation in Python.</p>
             <div class="card-tags"><span class="tag">Python</span><span class="tag">SymPy</span><span class="tag">Lagrangian Mechanics</span></div>
           </div>
           <span class="card-arrow">↗</span>
         </a>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLSET -->
+  <section class="toolset" id="toolset">
+    <div class="toolset-inner">
+      <p class="label reveal">Systems &amp; Toolset</p>
+      <h2 class="reveal reveal-delay-1" style="margin-top: 0.5rem;">Instrumentation</h2>
+      <p class="reveal reveal-delay-2" style="margin-top: 0.7rem; font-size: 0.9rem; color: var(--stone); max-width: 56ch;">A condensed view of the software, materials, and analytical methods used across the projects above.</p>
+
+      <div class="toolset-grid">
+        <div class="toolset-cell reveal">
+          <p class="toolset-title">CAD &amp; Simulation</p>
+          <ul class="toolset-list">
+            <li>SolidWorks</li>
+            <li>ANSYS Mechanical · Fluent</li>
+            <li>Siemens NX · NX FEA</li>
+            <li>OnShape · SpaceClaim</li>
+          </ul>
+        </div>
+        <div class="toolset-cell reveal reveal-delay-1">
+          <p class="toolset-title">Programming</p>
+          <ul class="toolset-list">
+            <li>Python · SciPy · NumPy · SymPy</li>
+            <li>MATLAB</li>
+            <li>SQL</li>
+            <li>Plotly · Matplotlib</li>
+          </ul>
+        </div>
+        <div class="toolset-cell reveal reveal-delay-2">
+          <p class="toolset-title">Manufacturing</p>
+          <ul class="toolset-list">
+            <li>Composite Layup · Vacuum Bagging</li>
+            <li>Binder Jet · 316L Stainless</li>
+            <li>FDM · Nylon 12 · ABS · PLA</li>
+            <li>Wire-Laser DED · Inconel 718</li>
+          </ul>
+        </div>
+        <div class="toolset-cell reveal reveal-delay-3">
+          <p class="toolset-title">Analysis Methods</p>
+          <ul class="toolset-list">
+            <li>FEA · CFD · Topology Opt.</li>
+            <li>Lagrangian Mechanics</li>
+            <li>Euler-Bernoulli · Rayleigh-Ritz</li>
+            <li>DFMA · ISO Standards · FMEA</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -168,30 +247,30 @@
 
         <div class="reveal" style="background: var(--warm-white); padding: 2rem;">
           <p class="label" style="color: var(--terracotta); margin-bottom: 0.5rem;">Mar 2026 — Present</p>
-          <h3 style="font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.3rem;">Undergraduate Researcher</h3>
-          <p style="font-size: 0.875rem; color: var(--stone); font-family: var(--font-mono); margin-bottom: 0.7rem;">FAST Additive Manufacturing Lab · Northwestern</p>
-          <p style="font-size: 0.875rem; color: var(--charcoal-mid);">Investigating vibration-assisted wire-laser directed energy deposition of Inconel 718 to drive a columnar-to-equiaxed grain transition and reduce Laves phase formation for aerospace applications.</p>
+          <h3 style="font-family: var(--font-display); font-size: 1.08rem; margin-bottom: 0.3rem;">Undergraduate Researcher</h3>
+          <p style="font-size: 0.875rem; color: var(--stone); font-family: var(--font-mono); margin-bottom: 0.75rem;">FAST Additive Manufacturing Lab · Northwestern</p>
+          <p style="font-size: 0.89rem; color: var(--charcoal-mid);">Investigating vibration-assisted wire-laser directed energy deposition of Inconel 718 to drive a columnar-to-equiaxed grain transition and reduce Laves phase formation for aerospace applications.</p>
         </div>
 
         <div class="reveal reveal-delay-1" style="background: var(--warm-white); padding: 2rem;">
           <p class="label" style="color: var(--terracotta); margin-bottom: 0.5rem;">Summer 2024</p>
-          <h3 style="font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.3rem;">Engineering Intern</h3>
-          <p style="font-size: 0.875rem; color: var(--stone); font-family: var(--font-mono); margin-bottom: 0.7rem;">CertainTeed Saint-Gobain</p>
-          <p style="font-size: 0.875rem; color: var(--charcoal-mid);">Supported manufacturing engineering projects in building materials production — process analysis, quality validation, and data-driven reporting across fabrication lines.</p>
+          <h3 style="font-family: var(--font-display); font-size: 1.08rem; margin-bottom: 0.3rem;">Engineering Intern</h3>
+          <p style="font-size: 0.875rem; color: var(--stone); font-family: var(--font-mono); margin-bottom: 0.75rem;">CertainTeed Saint-Gobain</p>
+          <p style="font-size: 0.89rem; color: var(--charcoal-mid);">Supported manufacturing engineering projects in building materials production — process analysis, quality validation, and data-driven reporting across fabrication lines.</p>
         </div>
 
         <div class="reveal" style="background: var(--warm-white); padding: 2rem;">
           <p class="label" style="color: var(--terracotta); margin-bottom: 0.5rem;">Jan 2026 – Present</p>
-          <h3 style="font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.3rem;">Engineering Intern</h3>
-          <p style="font-size: 0.875rem; color: var(--stone); font-family: var(--font-mono); margin-bottom: 0.7rem;">Tackform</p>
-          <p style="font-size: 0.875rem; color: var(--charcoal-mid);">Contributed to product development and mechanical design for mounting hardware systems — CAD modeling, design validation, and support for manufacturing workflows.</p>
+          <h3 style="font-family: var(--font-display); font-size: 1.08rem; margin-bottom: 0.3rem;">Engineering Intern</h3>
+          <p style="font-size: 0.875rem; color: var(--stone); font-family: var(--font-mono); margin-bottom: 0.75rem;">Tackform</p>
+          <p style="font-size: 0.89rem; color: var(--charcoal-mid);">Contributed to product development and mechanical design for mounting hardware systems — CAD modeling, design validation, and support for manufacturing workflows.</p>
         </div>
 
         <div class="reveal reveal-delay-1" style="background: var(--warm-white); padding: 2rem;">
           <p class="label" style="color: var(--terracotta); margin-bottom: 0.5rem;">Summer 2023 &amp; Summer 2024</p>
-          <h3 style="font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.3rem;">Analyst</h3>
-          <p style="font-size: 0.875rem; color: var(--stone); font-family: var(--font-mono); margin-bottom: 0.7rem;">City National Bank of Florida</p>
-          <p style="font-size: 0.875rem; color: var(--charcoal-mid);">Performed financial analysis and client portfolio reporting; built data pipelines and dashboards using SQL and Excel to support institutional banking operations.</p>
+          <h3 style="font-family: var(--font-display); font-size: 1.08rem; margin-bottom: 0.3rem;">Analyst</h3>
+          <p style="font-size: 0.875rem; color: var(--stone); font-family: var(--font-mono); margin-bottom: 0.75rem;">City National Bank of Florida</p>
+          <p style="font-size: 0.89rem; color: var(--charcoal-mid);">Performed financial analysis and client portfolio reporting; built data pipelines and dashboards using SQL and Excel to support institutional banking operations.</p>
         </div>
 
       </div>
@@ -207,52 +286,34 @@
       </div>
       <div class="about-content reveal reveal-delay-1">
         <p>
-          I'm pursuing a combined BS/MS in Mechanical Engineering at Northwestern University 
-          with an Aerospace Concentration. My work spans the full engineering arc — from 
-          constrained optimization in Python to composite layup in a lab, from FEA validation 
+          I'm pursuing a combined BS/MS in Mechanical Engineering at Northwestern University
+          with an Aerospace Concentration. My work spans the full engineering arc — from
+          constrained optimization in Python to composite layup in a lab, from FEA validation
           in ANSYS to physical testing under realistic loading conditions.
         </p>
         <p>
-          I conduct undergraduate research in Professor Tao Sun's FAST Additive Manufacturing Lab, 
-          investigating vibration-assisted wire-laser directed energy deposition of Inconel 718. 
-          Outside of research, I build rockets with NUStars and serve as Academic Affairs 
+          I conduct undergraduate research in Professor Tao Sun's FAST Additive Manufacturing Lab,
+          investigating vibration-assisted wire-laser directed energy deposition of Inconel 718.
+          Outside of research, I build rockets with NUStars and serve as Academic Affairs
           Coordinator for Delta Tau Delta.
         </p>
         <div class="skills-grid reveal reveal-delay-2">
           <div class="skill-group">
-            <p class="skill-group-title">CAD &amp; Simulation</p>
+            <p class="skill-group-title">Currently</p>
             <ul class="skill-list">
-              <li>SolidWorks</li>
-              <li>ANSYS Mechanical + Fluent</li>
-              <li>Siemens NX · NX FEA + Topology Opt.</li>
-              <li>OnShape · SpaceClaim</li>
+              <li>Research · FAST AM Lab</li>
+              <li>Mechanical Design · Tackform</li>
+              <li>NUStars · NASA Student Launch</li>
+              <li>BS/MS Candidate · Northwestern</li>
             </ul>
           </div>
           <div class="skill-group">
-            <p class="skill-group-title">Programming</p>
+            <p class="skill-group-title">Interests</p>
             <ul class="skill-list">
-              <li>Python · SciPy · NumPy · SymPy</li>
-              <li>MATLAB</li>
-              <li>SQL</li>
-              <li>Plotly · Matplotlib</li>
-            </ul>
-          </div>
-          <div class="skill-group">
-            <p class="skill-group-title">Manufacturing</p>
-            <ul class="skill-list">
-              <li>Composite Layup &amp; Vacuum Bagging</li>
-              <li>Binder Jet Printing · 316L Steel</li>
-              <li>FDM — Nylon 12, ABS, PLA</li>
-              <li>Wire-Laser DED · Inconel 718</li>
-            </ul>
-          </div>
-          <div class="skill-group">
-            <p class="skill-group-title">Analysis Methods</p>
-            <ul class="skill-list">
-              <li>FEA · CFD</li>
-              <li>Topology Optimization</li>
-              <li>Lagrangian Mechanics · Euler-Bernoulli</li>
-              <li>DFMA · ISO Standards · FMEA</li>
+              <li>Launch Vehicle Structures</li>
+              <li>Additive Manufacturing for Aerospace</li>
+              <li>Trajectory &amp; Vehicle Optimization</li>
+              <li>Composite Material Design</li>
             </ul>
           </div>
         </div>
