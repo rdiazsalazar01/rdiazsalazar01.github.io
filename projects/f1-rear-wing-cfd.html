@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F1 Active Rear Wing CFD Analysis - Rodrigo Diaz</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body class="project-page">
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Rodrigo <span>Diaz</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="../projects.html">Projects <span class="nav-dropdown-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="../projects.html"><span class="nav-dropdown-num">All</span> All Projects</a>
+          <a href="f1-rear-wing-cfd.html"><span class="nav-dropdown-num">01</span> F1 Rear Wing CFD Analysis</a>
+          <a href="mars-rover.html"><span class="nav-dropdown-num">02</span> Mars Rover EDL Optimization</a>
+          <a href="dragonfly-rotorcraft.html"><span class="nav-dropdown-num">03</span> Dragonfly Rotorcraft Power Analysis</a>
+          <a href="nustars-airframe.html"><span class="nav-dropdown-num">04</span> Fiberglass Composite Airframe</a>
+          <a href="onboard-camera.html"><span class="nav-dropdown-num">05</span> Onboard Video System</a>
+          <a href="high-power-rocket.html"><span class="nav-dropdown-num">06</span> High-Power Rocket Build</a>
+          <a href="aircraft-wing.html"><span class="nav-dropdown-num">07</span> Aircraft Wing Structural Analysis</a>
+          <a href="gearbox-design.html"><span class="nav-dropdown-num">08</span> Two-Stage Gearbox Design</a>
+          <a href="bicycle-rim-vibration.html"><span class="nav-dropdown-num">09</span> Bicycle Rim Radial Vibration</a>
+          <a href="jack-in-a-box.html"><span class="nav-dropdown-num">10</span> Jack-in-a-Box Simulation</a>
+          <a href="heat-sink.html"><span class="nav-dropdown-num">11</span> Binder-Jet Heat Sink Design</a>
+          <a href="brake-caliper.html"><span class="nav-dropdown-num">12</span> Bicycle Brake Caliper</a>
+          <a href="marley-roller.html"><span class="nav-dropdown-num">13</span> Marley Floor Roller</a>
+        </div>
+      </li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank" class="nav-resume">Résumé ↗</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="../index.html">Portfolio</a><span>→</span>
+    <a href="../projects.html">Projects</a><span>→</span>
+    <span>F1 Rear Wing CFD Analysis</span>
+  </div>
+
+  <div class="project-hero">
+    <div class="project-hero-inner">
+      <div>
+        <p class="project-eyebrow reveal">01 · ME 495 Aerodynamics</p>
+        <h1 class="project-title reveal reveal-delay-1">F1 Active Rear Wing<br>CFD Analysis</h1>
+        <p class="project-description reveal reveal-delay-2">
+          A 2D transient CFD study comparing a conventional Drag Reduction System (DRS) rear wing 
+          against the 2026 Ferrari "Macarena" mechanism - a 230° rotating flap concept - using 
+          ANSYS Fluent sliding-mesh simulation to characterize the aerodynamic loads generated 
+          during actuation, not just at the two static endpoints.
+        </p>
+        <div class="project-tags reveal reveal-delay-3">
+          <span class="tag tag-accent">ANSYS Fluent</span>
+          <span class="tag">Transient CFD</span>
+          <span class="tag">Sliding Mesh</span>
+          <span class="tag">k-ω SST</span>
+          <span class="tag">Onshape</span>
+          <span class="tag">SpaceClaim</span>
+          <span class="tag">Mesh Independence</span>
+        </div>
+      </div>
+      <div class="project-meta reveal reveal-delay-2">
+        <div class="meta-item">
+          <p class="meta-label">Team</p>
+          <p class="meta-value">Rodrigo Diaz Salazar · Shelton Shieh · Joshua Ting</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Tools</p>
+          <p class="meta-value">Onshape · ANSYS SpaceClaim · ANSYS Fluent</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Turbulence Model</p>
+          <p class="meta-value">k-ω SST, Pressure-Based Transient</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Inlet Velocity</p>
+          <p class="meta-value">65 m/s</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-body">
+
+    <!-- BACKGROUND -->
+    <div class="project-section reveal">
+      <p class="section-label">Background</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">A wing that flips upside down mid-straight - and the loads that come with it</h2>
+      <div class="section-body">
+        <p>
+          An F1 rear wing is a set of inverted airfoil elements that generate downforce for grip 
+          through high-speed corners, at the cost of drag that slows straight-line speed 
+          (F<sub>D</sub> = ½ρ<sub>∞</sub>V<sub>∞</sub>²C<sub>l</sub>(c·b), the same Kutta-Joukowski 
+          relationship governing any lifting surface). The standard Drag Reduction System (DRS) 
+          addresses this trade-off by rotating the top flap 40-50° open on straights, cutting drag 
+          20-25% and gaining roughly 10-12 kph - then closing again before the next corner.
+        </p>
+        <p>
+          For the 2026 season, Ferrari introduced a fundamentally different mechanism - nicknamed 
+          the "Macarena" wing - that rotates the flap up to <strong>230°</strong>, fully flipping it 
+          upside down on straights rather than just cracking it open. That's a dramatically larger 
+          and more aggressive actuation than conventional DRS, and it raises an obvious engineering 
+          question: what does the flap - and its hinge - actually experience while it's mid-rotation, 
+          not just at the two endpoint states? This project modeled and simulated that actuation 
+          sequence in ANSYS Fluent to characterize the transient aerodynamic loading Ferrari's 
+          mechanism has to survive that a conventional DRS flap does not.
+        </p>
+      </div>
+    </div>
+
+    <!-- CAD MODELING -->
+    <div class="project-section reveal">
+      <p class="section-label">CAD Modeling</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">Built from NACA airfoils, extracted to 2D profiles for CFD</h2>
+      <div class="section-body">
+        <p>
+          The rear wing assembly - mainplane, middle flap, and top (rotating) flap - was modeled 
+          in Onshape using inverted NACA airfoil sections: <strong>NACA 7412</strong> for the 
+          mainplane, <strong>NACA 4412</strong> for the middle flap, and <strong>NACA 6409</strong> 
+          for the top flap, matching the multi-element geometry visible on the real car. The 3D 
+          assembly was used to establish realistic chord lengths, stagger, and gap/overlap between 
+          elements, then the airfoil profiles were extracted into DWG format for use as 2D CFD geometry 
+          in SpaceClaim and Fluent - since a full 3D transient rotating-mesh simulation was outside 
+          the scope of a single-quarter course project (see Limitations).
+        </p>
+      </div>
+      <!-- IMAGE: f1wing_cad_assembly.png - full 3D Onshape assembly of the rear wing -->
+      <!-- IMAGE: f1wing_cad_elements.png - labeled mainplane / middle flap / top flap -->
+      <!-- IMAGE: f1wing_airfoil_profiles.png - 2D DWG airfoil profiles labeled NACA 7412 / 4412 / 6409 -->
+      <div class="img-grid-3 reveal" style="margin-top: 2rem;">
+        <div class="img-item contain" style="aspect-ratio:1;">
+          <img src="../images/f1wing_cad_assembly.png" alt="Rear wing full 3D assembly in Onshape" />
+        </div>
+        <div class="img-item contain" style="aspect-ratio:1;">
+          <img src="../images/f1wing_cad_elements.png" alt="Rear wing airfoil elements - mainplane, middle flap, top flap labeled" />
+        </div>
+        <div class="img-item contain" style="aspect-ratio:1;">
+          <img src="../images/f1wing_airfoil_profiles.png" alt="2D airfoil profiles for CFD - NACA 7412, 4412, 6409" />
+        </div>
+      </div>
+      <p class="img-caption">Full 3D assembly (left) - labeled elements: mainplane, middle flap, top flap (center) - extracted 2D profiles used for CFD: NACA 7412, 4412, 6409 (right)</p>
+    </div>
+
+    <!-- STEADY STATE -->
+    <div class="project-section reveal">
+      <p class="section-label">Steady-State Setup &amp; Results</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">Three fixed positions bound the aerodynamic envelope</h2>
+      <div class="section-body">
+        <p>
+          Before simulating the actuation itself, three fixed-position steady-state cases were run 
+          to bound the problem: the wing fully closed (unopened), rotated 130° (a mid-rotation 
+          snapshot), and rotated the full 230° (final DRS-open position). Each used a triangular mesh 
+          across the fluid domain, refined to <strong>1×10⁻⁴ m</strong> element size near the airfoil 
+          walls with boundary-layer inflation, and <strong>5×10⁻⁴ m</strong> along the outer domain 
+          edges. The domain itself was built as a rectangular enclosure rather than a C-mesh, 
+          specifically to better replicate wind tunnel boundary conditions and reduce artificial 
+          boundary effects on the solution.
+        </p>
+        <p>
+          A mesh sensitivity check was run between the initial mesh and this refined version: the 
+          flow topology - separation location, wake shape, contour patterns - held consistent between 
+          the two, confirming the flow field itself is effectively mesh-independent at this level of 
+          refinement. Force magnitudes, however, showed measurably more sensitivity to rotation angle 
+          under the refined mesh, since improved near-wall resolution more accurately captures how the 
+          boundary layer and pressure distribution shift with rotation - a useful, honest distinction 
+          between qualitative and quantitative mesh convergence.
+        </p>
+      </div>
+
+      <!-- IMAGE: f1wing_mesh_2d.png - 2D mesh close-up around the wing sections -->
+      <div class="img-full reveal img-centered" style="margin-top: 1.5rem; max-width: 600px;">
+        <img src="../images/f1wing_mesh_2d.png" alt="2D triangular mesh around the wing sections" style="display:block; margin:0 auto;" />
+        <p class="img-caption" style="text-align:center;">Refined triangular mesh with boundary-layer inflation at the airfoil walls</p>
+      </div>
+
+      <div class="img-full reveal" style="margin-top: 2rem;">
+        <img src="../images/f1wing_steady_velocity.png" alt="Steady-state velocity magnitude comparison across unopened, 130 degree, and 230 degree wing positions" />
+        <p class="img-caption">Velocity magnitude - unopened, rotated 130°, rotated 230°. The wake narrows and speeds up dramatically as the flap opens, consistent with reduced blockage.</p>
+      </div>
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/f1wing_steady_pressure.png" alt="Steady-state static pressure comparison across unopened, 130 degree, and 230 degree wing positions" />
+        <p class="img-caption">Static pressure - the strong low-pressure region under the mainplane (generating downforce) shrinks as the flap opens and the wing sheds its lifting-surface behavior.</p>
+      </div>
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/f1wing_steady_turbulence.png" alt="Steady-state turbulent kinetic energy comparison across unopened, 130 degree, and 230 degree wing positions" />
+        <p class="img-caption">Turbulent kinetic energy - a large, energetic wake behind the closed wing collapses into a small, localized region once the flap is fully open at 230°.</p>
+      </div>
+
+      <div class="table-wrap reveal" style="margin-top: 2rem;">
+        <table class="metrics-table">
+          <thead><tr><th>Configuration</th><th>Drag Force (N)</th><th>Downward Force (N)</th></tr></thead>
+          <tbody>
+            <tr><td>Unopened wing</td><td>427</td><td>2105</td></tr>
+            <tr><td>Rotated 130°</td><td>740</td><td>1176</td></tr>
+            <tr><td>Rotated 230° (fully open)</td><td>65</td><td>612</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top: 0.8rem;">
+        Fully opening the flap to 230° cuts drag by roughly 85% relative to closed (427 N → 65 N), 
+        at the cost of about 71% of the downforce (2105 N → 612 N) - the expected trade-off, and 
+        directly consistent with the ~20-25% drag reduction and 10-12 kph speed gain figures reported 
+        for conventional DRS. Notably, the intermediate 130° position produces the <em>highest</em> 
+        drag of the three states (740 N) - worse than either endpoint - a strong early signal that 
+        the mid-rotation transient, not the open or closed states, is where the real aerodynamic risk lives.
+      </p>
+
+      <div class="img-full reveal" style="margin-top: 2rem;">
+        <img src="../images/f1wing_force_convergence.png" alt="Force convergence plots for drag and downward force across all three steady-state cases" />
+        <p class="img-caption">Force convergence - drag and downward force settle to stable values within roughly 40-80 iterations for each configuration, confirming steady-state convergence before results were extracted.</p>
+      </div>
+    </div>
+
+    <!-- TRANSIENT ANALYSIS - MAIN FOCUS -->
+    <div class="project-section reveal">
+      <p class="section-label">Transient Analysis - DRS vs. Macarena</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">Steady-state shows the endpoints. Transient shows what the hinge survives to get there.</h2>
+      <div class="section-body">
+        <p>
+          The core of this project was a <strong>transient, sliding-mesh CFD simulation</strong> 
+          directly comparing the actuation sequence of a conventional 40-50° DRS flap against 
+          Ferrari's 230° Macarena rotation - modeling the full motion, not just the before/after states.
+        </p>
+        <p>
+          <strong>Domain setup:</strong> two separate fluid domains were built in SpaceClaim - a static 
+          global domain and a smaller rotating domain enclosing just the top flap - each meshed 
+          independently and coupled through a defined mesh interface. The rotating domain used a 
+          noticeably finer mesh than the global domain specifically to resolve the more chaotic, 
+          separated flow generated during rotation.
+        </p>
+        <p>
+          <strong>Solver setup:</strong> pressure-based transient solver with the <strong>k-ω SST</strong> 
+          turbulence model, 65 m/s inlet velocity (representative of typical car speed when DRS/Macarena 
+          is actuated), and a time-and-angular-velocity profile imported directly into Fluent to drive 
+          the rotating domain's motion. The 3-second simulated sequence stepped through: 0.5 s stationary 
+          → 0.5 s opening → 1 s stationary (fully open) → 0.5 s closing → 0.5 s stationary - mirroring 
+          a real on-track DRS activation and deactivation cycle.
+        </p>
+      </div>
+
+      <!-- IMAGE: f1wing_transient_domains.png - rotating domain + global domain diagram with inlet/outlet arrows -->
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/f1wing_transient_domains.png" alt="Transient CFD setup showing rotating domain nested inside global fluid domain with inlet and outlet boundary conditions" />
+        <p class="img-caption">Transient domain setup - a finer-meshed rotating domain (top flap) nested inside the static global fluid domain, coupled through a sliding mesh interface</p>
+      </div>
+
+      <div class="section-body" style="margin-top: 2rem;">
+        <p>
+          <strong>Velocity &amp; pressure behavior:</strong> both mechanisms produce a low-velocity wake 
+          when closed, but the Macarena's much larger rotation opens a substantially wider low-velocity 
+          region as the flap sweeps through its upright position - consistent with a flap that briefly 
+          presents far more frontal area to the flow than a conventional DRS flap ever does. Pressure 
+          contours confirm this: a strong pressure differential builds across the flap during rotation, 
+          with the rotating flap generating meaningful lift of its own when momentarily fully open, on 
+          top of the wing's baseline downforce role.
+        </p>
+      </div>
+
+      <!-- GIF: f1wing_drs_velocity.gif and f1wing_macarena_velocity.gif - animated velocity contour, full rotation cycle, one per mechanism -->
+      <div class="img-grid-2 reveal" style="margin-top: 1.5rem;">
+        <div class="img-item wide">
+          <img src="../images/f1wing_drs_velocity.gif" alt="Animated velocity contour of the DRS mechanism through its full rotation cycle" />
+        </div>
+        <div class="img-item wide">
+          <img src="../images/f1wing_macarena_velocity.gif" alt="Animated velocity contour of the Macarena mechanism through its full rotation cycle" />
+        </div>
+      </div>
+      <p class="img-caption">Velocity contour animation across the full open/close cycle - DRS (left) vs. Macarena (right). The Macarena's wake visibly widens and slows far more as the flap sweeps through its upright position.</p>
+      <!-- GIF: f1wing_drs_pressure.gif and f1wing_macarena_pressure.gif - animated static pressure contour, full rotation cycle, one per mechanism -->
+      <div class="img-grid-2 reveal" style="margin-top: 1.5rem;">
+        <div class="img-item wide">
+          <img src="../images/f1wing_drs_pressure.gif" alt="Animated static pressure contour of the DRS mechanism through its full rotation cycle" />
+        </div>
+        <div class="img-item wide">
+          <img src="../images/f1wing_macarena_pressure.gif" alt="Animated static pressure contour of the Macarena mechanism through its full rotation cycle" />
+        </div>
+      </div>
+      <p class="img-caption">Static pressure animation, DRS (left) vs. Macarena (right) - the pressure differential across the flap builds sharply as it approaches vertical, then collapses once it clears into its final position</p>
+
+      <div class="section-body" style="margin-top: 2rem;">
+        <p>
+          <strong>The core finding - the "airbrake spike":</strong> tracking downforce and drag 
+          coefficient (C<sub>d</sub>) over the full 3-second sequence reveals the real story. Both 
+          mechanisms reach the expected low-drag state once fully open, and both show smooth, 
+          predictable transitions overall - but the Macarena's C<sub>d</sub> plot shows sharp, 
+          pronounced spikes during actuation that the conventional DRS plot does not. These spikes 
+          correspond exactly to the moment the rotating flap passes through <strong>perpendicular to 
+          the flow</strong>: for that instant, the flap stops behaving like an airfoil and behaves 
+          like a flat plate - an airbrake - creating a transient drag spike before the flap clears 
+          the vertical and drag collapses back down as the flow reattaches around the flipped, 
+          low-drag final geometry.
+        </p>
+        <p>
+          This matters for an actual mechanism, not just the CFD: a conventional 40-50° DRS flap 
+          never approaches this perpendicular orientation, so it never generates this airbrake loading. 
+          A 230°-rotation mechanism unavoidably sweeps through it twice per activation cycle (once 
+          opening, once closing) - meaning the hinge, actuator, and mounting structure have to be 
+          designed against a transient structural load case that a conventional DRS system simply 
+          does not experience.
+        </p>
+      </div>
+
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/f1wing_force_time_history.png" alt="Downforce and coefficient of drag time history plots for DRS versus Macarena over the 3 second actuation sequence" />
+        <p class="img-caption">Downforce and C<sub>d</sub> vs. flow-time, DRS (left) vs. Macarena (right) - the Macarena's sharp C<sub>d</sub> spikes during actuation correspond to the flap's momentary perpendicular "airbrake" orientation; both mechanisms converge to a stable low-drag state once fully open</p>
+      </div>
+
+      <div class="section-body" style="margin-top: 2rem;">
+        <p>
+          <strong>Vortex shedding:</strong> a refined transient run (0.003 s timestep, 3,000 timesteps, 
+          frames saved every 2 steps) was used specifically to resolve the wake structure with higher 
+          temporal fidelity, and clearly captures a <strong>Von Kármán vortex street</strong> forming 
+          in the wing's wake throughout the sequence. Vortex shedding is mild and localized with the 
+          flap closed - the flow stays airfoil-like, guided mostly by the wing shape. It becomes 
+          dramatically more violent exactly when the flap is perpendicular to the flow: at that instant 
+          the flap acts as a bluff body, forcing violent flow separation from both sides and alternating 
+          shedding of strong periodic vortices, widening the wake and driving the largest unsteady 
+          loads and pressure fluctuations - and very likely the largest hinge moment - of the entire 
+          rotation. Once the flap clears the vertical and settles into its final inverted position, 
+          shedding calms again and the wing returns to stable, airfoil-like behavior.
+        </p>
+        <p>
+          Turbulent kinetic energy and pressure contours at these same three moments tell a consistent 
+          story: TKE is low and localized near the trailing edge/wake when closed, spikes sharply and 
+          spreads through the wake when the flap is upright, and the pressure field shows a clear 
+          high-pressure stagnation zone on the windward face of the upright flap with an oscillating, 
+          alternating low-pressure pattern behind it - the pressure-domain signature of the same vortex 
+          shedding visible in the velocity field.
+        </p>
+      </div>
+
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/f1wing_vortex_shedding.png" alt="Velocity contour sequence showing Von Karman vortex shedding at unopened, upright, and fully opened flap positions" />
+        <p class="img-caption">Von Kármán vortex shedding across the rotation - unopened (mild, localized), upright (violent, bluff-body-like separation), fully opened (calm, reattached flow)</p>
+      </div>
+
+      <!-- GIF: f1wing_drs_turbulence.gif and f1wing_macarena_turbulence.gif - animated turbulent kinetic energy contour, full rotation cycle, one per mechanism -->
+      <div class="img-grid-2 reveal" style="margin-top: 1.5rem;">
+        <div class="img-item wide">
+          <img src="../images/f1wing_drs_turbulence.gif" alt="Animated turbulent kinetic energy contour of the DRS mechanism through its full rotation cycle" />
+        </div>
+        <div class="img-item wide">
+          <img src="../images/f1wing_macarena_turbulence.gif" alt="Animated turbulent kinetic energy contour of the Macarena mechanism through its full rotation cycle" />
+        </div>
+      </div>
+      <p class="img-caption">Turbulent kinetic energy animation, DRS (left) vs. Macarena (right) - the Macarena's wake shows a far more energetic, violent shedding event as the flap sweeps through its perpendicular orientation</p>
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/f1wing_tke_pressure_detail.png" alt="Turbulent kinetic energy and static pressure detail contours at the upright flap position" />
+        <p class="img-caption">Turbulent kinetic energy at unopened vs. near-upright flap position, and static pressure at the upright position - high TKE and a clear stagnation/wake pressure differential mark the moment of peak unsteady loading</p>
+      </div>
+    </div>
+
+    <!-- LIMITATIONS -->
+    <div class="project-section reveal">
+      <p class="section-label">Limitations</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">2D, simplified geometry, and a modest turbulence model</h2>
+      <div class="section-body">
+        <p>
+          This is a 2D idealization of a fully 3D device, so endplate effects, wing-tip vortices, 
+          spanwise flow, and interaction with the car body are not captured, and forces are likely 
+          overstated relative to the real 3D wing. Slot gaps and endplates were also omitted from 
+          the geometry itself. On the solver side, k-ω SST does not fully resolve individual 
+          turbulent eddies, and the transient run's Courant number of <strong>32.5</strong> is high 
+          enough that exact shedding frequency and peak load magnitude should be read as approximate 
+          rather than precise. Taken together, these results are trustworthy for flow <em>trend</em> 
+          and relative comparison between the two mechanisms, not as an exact load prediction for 
+          the real car.
+        </p>
+      </div>
+    </div>
+
+    <!-- WHY MACARENA WINS -->
+    <div class="project-section reveal">
+      <p class="section-label">Why Macarena Wins</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">A deeper drag reduction than DRS, at the cost of a load event a conventional flap never sees</h2>
+      <div class="section-body">
+        <p>
+          The C<sub>d</sub> time histories give a direct answer to why a team would take on the 
+          extra mechanical complexity of a 230° rotation instead of a standard 40-50° DRS flap: the 
+          Macarena mechanism settles into a <strong>lower minimum C<sub>d</sub></strong> once fully 
+          open than the conventional DRS flap does, and holds that low-drag state over a wider, 
+          flatter plateau. Fully inverting the flap removes almost all of its frontal projected area 
+          and the pressure drag that comes with it, where a flap that only opens 40-50° still 
+          presents meaningful area to the flow even in its "open" state. A deeper, more sustained 
+          drag reduction translates directly into more top speed gained per activation - which is 
+          exactly the currency that matters for overtaking on an F1 straight.
+        </p>
+        <p>
+          That advantage isn't free. The same simulation that shows the lower drag plateau also 
+          shows the airbrake spike the flap has to pass through twice per cycle to get there - a 
+          transient structural load a conventional DRS flap never generates. Read together, the 
+          results make the underlying design trade legible: Ferrari is trading a well-defined, 
+          short-duration, engineerable load event (reinforce the hinge and actuator for two brief 
+          spikes per lap) for a straight-line speed advantage that pays off continuously for the 
+          full length of every DRS zone. For a sport where straight-line speed differences of a 
+          few kph decide overtakes, that trade is a reasonable one - provided the hinge and actuation 
+          system are designed against the actual transient load, not just the two static endpoints.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- KEY TAKEAWAYS -->
+  <div class="takeaways-section">
+    <div class="takeaways-inner">
+      <p class="takeaways-label">Reflection</p>
+      <h2 class="takeaways-title">Key Takeaways</h2>
+      <ul class="takeaway-list">
+        <li class="takeaway-item reveal">
+          <span class="takeaway-num">01</span>
+          <p class="takeaway-text">The steady-state endpoints alone would have missed the actual engineering risk. Closed and fully-open C<sub>d</sub> values look unremarkable for both mechanisms - the real finding only appears in the transient sequence, where the Macarena's flap passes through a momentary "airbrake" orientation that a conventional DRS flap never experiences. This is a direct argument for transient analysis whenever a system's motion - not just its start and end states - is part of the design space.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-1">
+          <span class="takeaway-num">02</span>
+          <p class="takeaway-text">Setting up a coupled sliding-mesh simulation - two independently meshed domains, a defined interface, and an imported angular velocity profile driving the rotating domain - is a materially different skill from single-domain steady-state CFD, and directly transferable to any rotating-machinery or moving-boundary aerodynamics problem: control surfaces, morphing wings, rotors, and valve/actuator flows all share this same setup pattern.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-2">
+          <span class="takeaway-num">03</span>
+          <p class="takeaway-text">A Courant number of 32.5 and an unresolved mesh-independence study are real limitations, not just disclaimers - they mean the exact vortex shedding frequency and peak load magnitude carry genuine uncertainty. Flagging that explicitly, rather than presenting the numbers as more precise than the setup supports, is what separates a defensible CFD result from an overconfident one.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-nav">
+    <a href="marley-roller.html" class="project-nav-item">
+      <span class="nav-dir">← Previous</span>
+      <span class="nav-proj-title">Marley Floor Roller</span>
+    </a>
+    <a href="mars-rover.html" class="project-nav-item next">
+      <span class="nav-dir">Next →</span>
+      <span class="nav-proj-title">Mars Rover EDL Optimization</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Rodrigo Diaz</span>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/in/rodrigo-diaz-salazar/" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="mailto:rdiazsalazar01@gmail.com">Email ↗</a></li>
+        <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank">Résumé ↗</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Rodrigo Diaz</span>
+    </div>
+  </footer>
+  <script src="../shared.js"></script>
+</body>
+</html>

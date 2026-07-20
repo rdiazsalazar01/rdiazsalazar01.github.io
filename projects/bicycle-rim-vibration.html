@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bicycle Rim Radial Vibration Analysis - Rodrigo Diaz</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body class="project-page">
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Rodrigo <span>Diaz</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="../projects.html">Projects <span class="nav-dropdown-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="../projects.html"><span class="nav-dropdown-num">All</span> All Projects</a>
+          <a href="f1-rear-wing-cfd.html"><span class="nav-dropdown-num">01</span> F1 Rear Wing CFD Analysis</a>
+          <a href="mars-rover.html"><span class="nav-dropdown-num">02</span> Mars Rover EDL Optimization</a>
+          <a href="dragonfly-rotorcraft.html"><span class="nav-dropdown-num">03</span> Dragonfly Rotorcraft Power Analysis</a>
+          <a href="nustars-airframe.html"><span class="nav-dropdown-num">04</span> Fiberglass Composite Airframe</a>
+          <a href="onboard-camera.html"><span class="nav-dropdown-num">05</span> Onboard Video System</a>
+          <a href="high-power-rocket.html"><span class="nav-dropdown-num">06</span> High-Power Rocket Build</a>
+          <a href="aircraft-wing.html"><span class="nav-dropdown-num">07</span> Aircraft Wing Structural Analysis</a>
+          <a href="gearbox-design.html"><span class="nav-dropdown-num">08</span> Two-Stage Gearbox Design</a>
+          <a href="bicycle-rim-vibration.html"><span class="nav-dropdown-num">09</span> Bicycle Rim Radial Vibration</a>
+          <a href="jack-in-a-box.html"><span class="nav-dropdown-num">10</span> Jack-in-a-Box Simulation</a>
+          <a href="heat-sink.html"><span class="nav-dropdown-num">11</span> Binder-Jet Heat Sink Design</a>
+          <a href="brake-caliper.html"><span class="nav-dropdown-num">12</span> Bicycle Brake Caliper</a>
+          <a href="marley-roller.html"><span class="nav-dropdown-num">13</span> Marley Floor Roller</a>
+        </div>
+      </li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank" class="nav-resume">Résumé ↗</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="../index.html">Portfolio</a><span>→</span>
+    <a href="../projects.html">Projects</a><span>→</span>
+    <span>Bicycle Rim Radial Vibration</span>
+  </div>
+
+  <div class="project-hero">
+    <div class="project-hero-inner">
+      <div>
+        <p class="project-eyebrow reveal">09 · ME 363</p>
+        <h1 class="project-title reveal reveal-delay-1">Bicycle Rim Radial<br>Vibration Analysis</h1>
+        <p class="project-description reveal reveal-delay-2">
+          A finite element beam model, validated to under 1% error against an analytical ring 
+          solution, used alongside acoustic hammer-strike testing to back out the real radial 
+          bending stiffness of two bicycle rims - and to show, with real data, why a double-wall 
+          rim is stiffer than a single-wall one.
+        </p>
+        <div class="project-tags reveal reveal-delay-3">
+          <span class="tag tag-accent">MATLAB</span>
+          <span class="tag">Finite Element Method</span>
+          <span class="tag">Modal Analysis</span>
+          <span class="tag">FFT Signal Processing</span>
+          <span class="tag">Beam Theory</span>
+        </div>
+      </div>
+      <div class="project-meta reveal reveal-delay-2">
+        <div class="meta-item">
+          <p class="meta-label">Team</p>
+          <p class="meta-value">Rodrigo Diaz Salazar · Joshua Nickings · Alex Silveyra</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Rims Tested</p>
+          <p class="meta-value">Alex X404 (single-wall) · DT Swiss R460 (double-wall)</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">FEM Accuracy</p>
+          <p class="meta-value">&lt;1% error at N = 24 beam elements</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Key Result</p>
+          <p class="meta-value">Double-wall rim ~2.05x stiffer in radial bending</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-body">
+
+    <!-- OBJECTIVE -->
+    <div class="project-section reveal">
+      <p class="section-label">Objective</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">Rims are too geometrically complex to get bending stiffness from a formula alone</h2>
+      <div class="section-body">
+        <p>
+          Bicycle rims have complex cross-sections and structural connections, which makes their 
+          radial bending stiffness difficult to estimate from geometry alone. Dynamic testing 
+          offers a way around that: measure a rim's natural frequencies, compare them to a 
+          vibration model, and back out an effective bending stiffness EI - all without cutting 
+          the rim apart. This project built and validated a finite element beam model of a bicycle 
+          rim in MATLAB, then combined it with acoustic hammer-strike testing on two real rims to 
+          extract and compare their actual radial bending stiffness. The approach follows the 
+          method described by Ford, Peng, and Balogun in "Acoustic Modal Testing of Bicycle Rims," 
+          which classifies rim vibration into radial bending modes - the rim vibrating in its own 
+          plane - and lateral-torsional modes, where it vibrates out of plane.
+        </p>
+      </div>
+      <!-- IMAGE: rim_alex_x404.jpg - stock photo of the Alex X404 single-wall rim -->
+      <!-- IMAGE: rim_dtswiss_r460.jpg - stock photo of the DT Swiss R460 double-wall rim -->
+      <div class="img-grid-2 reveal" style="margin-top: 1.5rem;">
+        <div class="img-item wide">
+          <img src="../images/rim_alex_x404.jpg" alt="Alex X404 single-wall bicycle rim" />
+        </div>
+        <div class="img-item wide">
+          <img src="../images/rim_dtswiss_r460.jpg" alt="DT Swiss R460 double-wall bicycle rim" />
+        </div>
+      </div>
+      <p class="img-caption">The two rims tested - Alex X404, single-wall (R = 0.307 m, M = 0.594 kg), and DT Swiss R460, double-wall (R = 0.304 m, M = 0.459 kg)</p>
+    </div>
+
+    <!-- FEM -->
+    <div class="project-section reveal">
+      <p class="section-label">Finite Element Model</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">A rim modeled as N interconnected straight beam elements</h2>
+      <div class="section-body">
+        <p>
+          The rim was approximated as a closed ring of N interconnected straight beam elements, 
+          each node carrying horizontal, vertical, and angular displacement as its three degrees 
+          of freedom. The MATLAB code assembled global mass and stiffness matrices from these 
+          elements, then solved the resulting generalized eigenvalue problem to extract natural 
+          frequencies and mode shapes. Radial displacement at each node was recovered by projecting 
+          the horizontal and vertical DOFs onto the local radial direction, and the first mode - a 
+          zero-frequency rigid-body rotation with no actual deformation - was dropped, consistent 
+          with the ring theory used by Ford et al. Because a circular ring is axisymmetric, each 
+          flexible mode above the rigid-body mode appears as a repeated pair of identical 
+          frequencies; only one frequency from each pair was kept for comparison.
+        </p>
+        <p>
+          A convergence study determined how many elements were actually needed. Too few elements 
+          make the ring behave like a coarse polygon rather than a smooth circle, inflating the 
+          frequency error; too many waste computation for no real accuracy gain. The target was 
+          under 1% error against the analytical radial vibration solution across modes 2 through 7.
+        </p>
+      </div>
+      <div class="table-wrap reveal" style="margin-top: 1.5rem;">
+        <table class="metrics-table">
+          <thead><tr><th>N (elements)</th><th>Max Error, DT Swiss R460</th><th>Max Error, Alex X404</th></tr></thead>
+          <tbody>
+            <tr><td>10</td><td>19.67%</td><td>19.66%</td></tr>
+            <tr><td>15</td><td>3.33%</td><td>3.33%</td></tr>
+            <tr><td>20</td><td>1.63%</td><td>1.64%</td></tr>
+            <tr><td>22</td><td>1.19%</td><td>1.20%</td></tr>
+            <tr><td><strong>24</strong></td><td><strong>0.89%</strong></td><td><strong>0.90%</strong></td></tr>
+            <tr><td>25</td><td>0.78%</td><td>0.78%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top: 0.8rem;">
+        <strong>N = 24</strong> was selected as the minimum element count that cleared the 1% 
+        target for both rims - the smallest model that stays accurate rather than the largest one 
+        available, which keeps every downstream mode-shape and stiffness calculation as cheap as 
+        it can be without sacrificing accuracy.
+      </p>
+    </div>
+
+    <!-- VALIDATION -->
+    <div class="project-section reveal">
+      <p class="section-label">Model Validation</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">FEM frequencies track the analytical solution to well under 1%</h2>
+      <div class="section-body">
+        <p>
+          With N = 24 fixed, the FEM natural frequencies for modes 2 through 7 matched the 
+          analytical radial vibration solution closely for both rims - errors stayed at 0.26-0.60% 
+          for the Alex X404 and 0.26-0.89% for the DT Swiss R460, rising only slightly at the 
+          higher mode numbers where the beam-element approximation of the smooth ring geometry 
+          gets proportionally coarser relative to the deformation wavelength.
+        </p>
+      </div>
+      <!-- IMAGE: rim_fem_vs_analytical.png - FEM vs analytical natural frequency curves for both rims, modes 2-7 -->
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/rim_fem_vs_analytical.png" alt="FEM versus analytical natural frequency curves for the Alex X404 and DT Swiss R460 rims across modes 2 through 7" />
+        <p class="img-caption">FEM natural frequencies overlaid on the analytical solution, modes 2-7, for both rims - the two curves are visually indistinguishable at this scale</p>
+      </div>
+      <div class="section-body" style="margin-top: 1.5rem;">
+        <p>
+          The mode shapes themselves confirm the physics is being captured correctly, not just the 
+          frequency numbers. Mode 2 produces an elliptical deformation pattern with two alternating 
+          regions of inward and outward displacement around the rim; Mode 3 produces three; Mode 4, 
+          four; and so on up through Mode 7 - in every case the number of deformation waves around 
+          the circumference matches the mode number exactly, with lower modes showing longer, more 
+          pronounced waves and higher modes showing shorter, more closely spaced ones.
+        </p>
+      </div>
+      <!-- IMAGE: rim_mode_shapes.png - polar mode shape plots for both rims, modes 1-6 -->
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/rim_mode_shapes.png" alt="Polar plots of radial mode shapes for the Alex X404 and DT Swiss R460 rims, showing the undeformed circle and the deformed mode shape for each mode number" />
+        <p class="img-caption">Radial mode shapes as scaled polar plots - the number of alternating inward/outward lobes matches the mode number exactly for both rims, confirming the FEM is capturing genuine radial ring behavior</p>
+      </div>
+    </div>
+
+    <!-- EXPERIMENTAL TESTING -->
+    <div class="project-section reveal">
+      <p class="section-label">Acoustic Modal Testing</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">A hammer, a microphone, and an FFT to hear the rim's own resonances</h2>
+      <div class="section-body">
+        <p>
+          Each rim was struck with a hammer in two directions - radially, to excite the in-plane 
+          bending modes of interest, and laterally, as a comparison to help separate radial-bending 
+          resonances from out-of-plane lateral-torsional ones - while a smartphone running the 
+          Recorder Plus app captured the resulting sound. Three trials were run per rim per strike 
+          direction. Each recording was cropped to the window containing the main impact response 
+          and its decay, removing quiet regions and background noise, then converted to the 
+          frequency domain with a Fast Fourier Transform to reveal the resonance peaks.
+        </p>
+        <p>
+          Not every peak in a spectrum is a usable radial-bending data point. Peak selection followed 
+          three criteria: the peak had to appear clearly in the radial-strike spectrum specifically, 
+          it had to repeat across multiple trials where possible, and it had to follow the expected 
+          frequency spacing predicted for radial ring modes - since an FFT spectrum shows where 
+          resonances occur but says nothing on its own about which mode number a given peak actually 
+          corresponds to.
+        </p>
+      </div>
+      <!-- IMAGE: rim_waveform_fft.png - representative time-domain waveform and FFT peak-frequency plot -->
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/rim_waveform_fft.png" alt="Representative recorded impact waveform and the resulting FFT amplitude spectrum with labeled peak frequencies for radial and lateral strikes" />
+        <p class="img-caption">Recorded impact waveform (top) and the resulting FFT spectrum with labeled peaks (bottom) - radial and lateral strikes are compared to separate in-plane bending resonances from out-of-plane ones</p>
+      </div>
+    </div>
+
+    <!-- STIFFNESS EXTRACTION -->
+    <div class="project-section reveal">
+      <p class="section-label">Extracting Bending Stiffness</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">Fitting EI so the analytical frequencies match what was actually measured</h2>
+      <div class="section-body">
+        <p>
+          The analytical radial natural frequency of a ring depends on the mode number n, the rim 
+          radius R, the total rim mass M, and the radial bending stiffness EI:
+        </p>
+        <p style="text-align:center; font-size:1.05rem; margin: 1rem 0;">
+          f<sub>n</sub> = C<sub>n</sub> · √(EI / (2πR³M)), &nbsp; where &nbsp; C<sub>n</sub> = n(n² − 1) / √(n² + 1)
+        </p>
+        <p>
+          EI sets the overall scale of the frequencies, while the mode number n controls how they're 
+          spaced relative to each other - which makes that spacing a useful check before fitting 
+          anything. The theoretical ratio between Modes 2, 3, and 4 is C<sub>2</sub>:C<sub>3</sub>:C<sub>4</sub> 
+          = 1 : 2.83 : 5.42. The selected measured peaks for the double-wall rim (156.9, 436.4, 826.1 Hz) 
+          gave a ratio of 1 : 2.78 : 5.27 - very close to theory. The single-wall rim's peaks (83.3, 
+          264.9, 506.0 Hz) gave 1 : 3.18 : 6.07, following the same general trend but with a 
+          noticeably larger deviation at Mode 2, flagging that peak as the least reliable of the 
+          three before any stiffness value was even calculated.
+        </p>
+        <p>
+          With the mode assignments checked, EI was found by trial and error in MATLAB: sweep an 
+          assumed EI value through the analytical frequency equation, compare the predicted Mode 
+          2-4 frequencies to the measured ones, and keep the EI that minimizes the average percent 
+          error. This produced final stiffness estimates of <strong>130.57 N·m²</strong> for the 
+          single-wall Alex X404 and <strong>267.89 N·m²</strong> for the double-wall DT Swiss R460.
+        </p>
+      </div>
+
+      <div class="table-wrap reveal" style="margin-top: 1.5rem;">
+        <table class="metrics-table">
+          <thead><tr><th>Rim</th><th>Mode</th><th>Measured (Hz)</th><th>Calculated (Hz)</th><th>Error</th></tr></thead>
+          <tbody>
+            <tr><td rowspan="3">Single-Wall (Alex X404)</td><td>2</td><td>83.3</td><td>93.3</td><td>12.01%</td></tr>
+            <tr><td>3</td><td>264.9</td><td>263.9</td><td>0.38%</td></tr>
+            <tr><td>4</td><td>506.0</td><td>506.0</td><td>0.00%</td></tr>
+            <tr><td rowspan="3">Double-Wall (DT Swiss R460)</td><td>2</td><td>156.9</td><td>154.3</td><td>1.66%</td></tr>
+            <tr><td>3</td><td>436.4</td><td>436.4</td><td>0.00%</td></tr>
+            <tr><td>4</td><td>826.1</td><td>836.8</td><td>1.29%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top: 0.8rem;">
+        The double-wall rim's fit is strong across all three modes, none above 2% error, which 
+        gives real confidence in its 267.89 N·m² stiffness estimate. The single-wall rim's Modes 
+        3 and 4 fit just as well, but Mode 2 carries a real 12% error - consistent with the ratio 
+        check that already flagged it as the weakest data point. Rather than drop it, that peak 
+        was kept and reported honestly alongside the stronger modes, since the overall fit still 
+        held together well on the higher, more reliable modes.
+      </p>
+      <p class="note" style="margin-top: 0.8rem;">
+        Taking the ratio of the two stiffness values: 267.89 / 130.57 = <strong>2.05</strong> - the 
+        double-wall rim is roughly twice as stiff in radial bending as the single-wall rim. That's 
+        physically exactly what you'd expect: a double-wall cross-section places more material 
+        further from the neutral axis, which increases the second moment of area and, with it, 
+        bending stiffness - the same reason an I-beam outperforms a solid rectangular bar of equal 
+        cross-sectional area. Getting a measured result that lines up this cleanly with basic beam 
+        theory is a strong sign the whole pipeline - FEM, experiment, and stiffness fit - is 
+        measuring something real.
+      </p>
+    </div>
+
+    <!-- WHY THIS MATTERS -->
+    <div class="project-section reveal">
+      <p class="section-label">Why This Method Works</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">Getting real stiffness data without cutting a single rim apart</h2>
+      <div class="section-body">
+        <p>
+          The core value of this approach is that it turns a property that's genuinely hard to 
+          calculate from geometry - radial bending stiffness of a rim with spoke holes, valve 
+          holes, and a non-uniform cross-section - into something you can measure directly with a 
+          string, a hammer, a bicycle rim, and a microphone. The FEM model does the heavy lifting 
+          of connecting geometry to frequency in a way a closed-form formula can't for a shape this 
+          complex, and the acoustic test supplies the real, physical data point that the model gets 
+          calibrated against.
+        </p>
+        <p>
+          The mode shapes aren't just a nice visualization - they're the safeguard that makes the 
+          stiffness numbers trustworthy in the first place. An FFT spectrum only tells you where a 
+          resonance peak sits, not which mode number produced it, and assigning a measured peak to 
+          the wrong mode number will silently produce a wrong EI value even if every line of code 
+          and every equation is correct. Checking the measured frequency ratios against the 
+          theoretical C<sub>n</sub> spacing, and confirming the FEM mode shapes show the expected 
+          number of alternating lobes, is what turns "a peak in a spectrum" into "a verified radial 
+          bending mode" before it ever gets used to calculate a stiffness value.
+        </p>
+        <p>
+          The remaining error has clear, identifiable sources rather than being unexplained noise: 
+          the analytical model assumes an ideal uniform ring while real rims have spoke holes, 
+          valve holes, and manufacturing variation; acoustic impact testing is sensitive to strike 
+          location and direction, microphone placement, support conditions, and background noise, 
+          none of which were rigidly controlled with dedicated fixturing; and some spectral peaks 
+          likely reflect a mix of radial-bending and lateral-torsional behavior rather than a pure 
+          radial mode. None of that erases the result - the double-wall rim's clean fit and the 
+          physically sensible 2.05x stiffness ratio both hold up despite these limitations.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- KEY TAKEAWAYS -->
+  <div class="takeaways-section">
+    <div class="takeaways-inner">
+      <p class="takeaways-label">Reflection</p>
+      <h2 class="takeaways-title">Key Takeaways</h2>
+      <ul class="takeaway-list">
+        <li class="takeaway-item reveal">
+          <span class="takeaway-num">01</span>
+          <p class="takeaway-text">A frequency match alone doesn't prove a mode assignment is correct - it just proves a number lines up. Checking the measured frequency ratios against the theoretical C<sub>n</sub> spacing, and cross-referencing against the FEM mode shapes, is what actually validates that a spectral peak represents the radial mode it's assumed to be before it gets used to calculate anything.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-1">
+          <span class="takeaway-num">02</span>
+          <p class="takeaway-text">The convergence study wasn't a formality - it's what justified using the smallest model that still met the accuracy target instead of just running the largest one available. Picking N = 24 over a coarser or needlessly finer mesh is a concrete, defensible engineering decision, not a default setting.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-2">
+          <span class="takeaway-num">03</span>
+          <p class="takeaway-text">Reporting the single-wall rim's 12% Mode 2 error honestly, rather than quietly dropping it, made the overall result more credible, not less - the ratio check had already flagged that exact peak as unreliable before the fit was even run, and the higher modes still produced a physically sensible stiffness value despite it.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-nav">
+    <a href="gearbox-design.html" class="project-nav-item">
+      <span class="nav-dir">← Previous</span>
+      <span class="nav-proj-title">Two-Stage Gearbox Design</span>
+    </a>
+    <a href="jack-in-a-box.html" class="project-nav-item next">
+      <span class="nav-dir">Next →</span>
+      <span class="nav-proj-title">Jack-in-a-Box Simulation</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Rodrigo Diaz</span>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/in/rodrigo-diaz-salazar/" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="mailto:rdiazsalazar01@gmail.com">Email ↗</a></li>
+        <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank">Résumé ↗</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Rodrigo Diaz</span>
+    </div>
+  </footer>
+  <script src="../shared.js"></script>
+</body>
+</html>

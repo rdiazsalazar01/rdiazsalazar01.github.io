@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bicycle Brake Caliper — Rodrigo Diaz</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body class="project-page">
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Rodrigo <span>Diaz</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="../projects.html">Projects <span class="nav-dropdown-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="../projects.html"><span class="nav-dropdown-num">All</span> All Projects</a>
+          <a href="f1-rear-wing-cfd.html"><span class="nav-dropdown-num">01</span> F1 Rear Wing CFD Analysis</a>
+          <a href="mars-rover.html"><span class="nav-dropdown-num">02</span> Mars Rover EDL Optimization</a>
+          <a href="dragonfly-rotorcraft.html"><span class="nav-dropdown-num">03</span> Dragonfly Rotorcraft Power Analysis</a>
+          <a href="nustars-airframe.html"><span class="nav-dropdown-num">04</span> Fiberglass Composite Airframe</a>
+          <a href="onboard-camera.html"><span class="nav-dropdown-num">05</span> Onboard Video System</a>
+          <a href="high-power-rocket.html"><span class="nav-dropdown-num">06</span> High-Power Rocket Build</a>
+          <a href="aircraft-wing.html"><span class="nav-dropdown-num">07</span> Aircraft Wing Structural Analysis</a>
+          <a href="gearbox-design.html"><span class="nav-dropdown-num">08</span> Two-Stage Gearbox Design</a>
+          <a href="bicycle-rim-vibration.html"><span class="nav-dropdown-num">09</span> Bicycle Rim Radial Vibration</a>
+          <a href="jack-in-a-box.html"><span class="nav-dropdown-num">10</span> Jack-in-a-Box Simulation</a>
+          <a href="heat-sink.html"><span class="nav-dropdown-num">11</span> Binder-Jet Heat Sink Design</a>
+          <a href="brake-caliper.html"><span class="nav-dropdown-num">12</span> Bicycle Brake Caliper</a>
+          <a href="marley-roller.html"><span class="nav-dropdown-num">13</span> Marley Floor Roller</a>
+        </div>
+      </li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank" class="nav-resume">Résumé ↗</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="../index.html">Portfolio</a><span>→</span>
+    <a href="../projects.html">Projects</a><span>→</span>
+    <span>Bicycle Brake Caliper</span>
+  </div>
+
+  <div class="project-hero">
+    <div class="project-hero-inner">
+      <div>
+        <p class="project-eyebrow reveal">12 · ME 240</p>
+        <h1 class="project-title reveal reveal-delay-1">Bicycle<br>Brake Caliper</h1>
+        <p class="project-description reveal reveal-delay-2">
+          Full product development cycle for a bicycle brake caliper — needs analysis, 
+          Castigliano's method hand calculations, topology optimization, FEA, SLS 3D printing 
+          in Nylon 12, and ISO 4210 compliance testing across two design iterations.
+        </p>
+        <div class="project-tags reveal reveal-delay-3">
+          <span class="tag tag-accent">Siemens NX</span>
+          <span class="tag">Topology Optimization</span>
+          <span class="tag">FEA</span>
+          <span class="tag">Nylon 12 SLS</span>
+          <span class="tag">ISO 4210</span>
+        </div>
+      </div>
+      <div class="project-meta reveal reveal-delay-2">
+        <div class="meta-item">
+          <p class="meta-label">Role</p>
+          <p class="meta-value">Group Leader</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Tools</p>
+          <p class="meta-value">Siemens NX · NX FEA · NX Topology Optimization</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Material</p>
+          <p class="meta-value">Nylon 12, SLS 3D Printed</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Standards</p>
+          <p class="meta-value">ISO 4210-2 &amp; ISO 4210-4</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-body">
+
+    <div class="project-section reveal">
+      <p class="section-label">Objective</p>
+      <h2 class="section-title">A brake caliper has to do one thing well: reliably stop a bicycle.</h2>
+      <div class="section-body">
+        <p>
+          This project ran the complete engineering design process end-to-end — defining 
+          quantitative performance targets from ISO standards and benchmarking, generating 
+          concepts through Castigliano's method hand calculations, running topology optimization 
+          and FEA in Siemens NX, fabricating in Nylon 12 via SLS, and physically testing under 
+          real conditions. The project spanned two complete design-build-test-iterate cycles.
+        </p>
+        <p>
+          The headline story: Iteration 1 passed five of six quantitative targets but failed 
+          at the one that actually mattered — it could not stop a bicycle. It had been 
+          over-optimized for mass at the direct expense of stiffness. Iteration 2 reversed 
+          those priorities entirely. It worked.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Design Targets</p>
+      <h2 class="section-title">Six quantitative metrics, defined before any geometry was drawn.</h2>
+      <div class="section-body">
+        <p>
+          The ideal stopping distance (13.38 m) was derived directly from the ISO 4210-2 
+          formula using m = 100 kg, v = 25 kph, μ = 0.6, and the caliper's own component 
+          geometry. Bottom-out force was derived from a Castigliano's method cable-pull 
+          displacement analysis — a hand-calculation cross-check performed before any FEA was run.
+        </p>
+      </div>
+      <div class="table-wrap reveal" style="margin-top: 1.5rem;">
+        <table class="metrics-table">
+          <thead><tr><th>Metric</th><th>Ideal</th><th>Marginal</th></tr></thead>
+          <tbody>
+            <tr><td>Cost</td><td>$15.00</td><td>$24.00</td></tr>
+            <tr><td>Stopping distance at 25 kph</td><td>13.38 m</td><td>15 m</td></tr>
+            <tr><td>Weight</td><td>300 g</td><td>400 g</td></tr>
+            <tr><td>Volume of printed filament</td><td>297 cm³</td><td>396 cm³</td></tr>
+            <tr><td>Number of individual parts</td><td>5</td><td>15</td></tr>
+            <tr><td>Bottom-out force</td><td>100 N</td><td>95 N</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Load Path Analysis</p>
+      <h2 class="section-title">Topology optimization identified two primary load paths.</h2>
+      <div class="section-body">
+        <p>
+          Design-space FEA applied a 100 N tension load at the brake cable holes, a pivot 
+          constraint at the pivot holes, and combined normal and shear loads at the brake pad 
+          contact locations. Topology optimization in NX identified the two primary load paths: 
+          pivot hole → cable attachment, and pivot hole → brake pad contact point.
+        </p>
+        <p>
+          Stress singularities appeared around the pivot holes in both FEA and topology 
+          optimization results. These were correctly identified as numerical artifacts of the 
+          idealized pivot constraint, not genuine failure predictions.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Iteration 1 — Mass-Minimized</p>
+      <h2 class="section-title">Five of six targets passed. The one that matters most did not.</h2>
+      <div class="section-body">
+        <p>
+          Simple L-bracket geometry, deliberately thinned arms, prioritizing minimum mass 
+          and filament volume above all else.
+        </p>
+      </div>
+      <div class="table-wrap reveal" style="margin-top: 1.5rem;">
+        <table class="metrics-table">
+          <thead><tr><th>Metric</th><th>Ideal</th><th>Marginal</th><th>Iteration 1</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Cost</td><td>$15.00</td><td>$24.00</td><td>$8.20</td><td>PASS</td></tr>
+            <tr><td>Stopping distance</td><td>13.38 m</td><td>15 m</td><td><strong>46.48 m</strong></td><td><strong>FAIL</strong></td></tr>
+            <tr><td>Weight</td><td>300 g</td><td>400 g</td><td>27.2 g</td><td>PASS</td></tr>
+            <tr><td>Volume</td><td>297 cm³</td><td>396 cm³</td><td>26.71 cm³</td><td>PASS</td></tr>
+            <tr><td>Aesthetic satisfaction</td><td>80%</td><td>50%</td><td>85%</td><td>PASS</td></tr>
+            <tr><td>Bottom-out force</td><td>100 N</td><td>95 N</td><td><strong>80 N</strong></td><td><strong>FAIL</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top: 0.8rem;">The arms were simply too thin to generate sufficient braking force — stopping distance came in at more than triple the marginal limit.</p>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Iteration 2 — Full Redesign</p>
+      <h2 class="section-title">Priorities reversed. Stiffness first.</h2>
+      <div class="section-body">
+        <p>
+          Material was deliberately concentrated at the brake pad contact points and pivot 
+          holes; arm cross-sections were substantially thickened; a truss-like structure was 
+          introduced for the left caliper, with the right caliper made more robust throughout.
+        </p>
+      </div>
+      <div class="table-wrap reveal" style="margin-top: 1.5rem;">
+        <table class="metrics-table">
+          <thead><tr><th>Metric</th><th>Ideal</th><th>Marginal</th><th>Iter. 1</th><th>Iter. 2</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Cost</td><td>$15.00</td><td>$24.00</td><td>$8.20</td><td>$21.40</td><td>PASS</td></tr>
+            <tr><td>Stopping distance</td><td>13.38 m</td><td>15 m</td><td>46.48 m</td><td><strong>13.3 m</strong></td><td><strong>MEETS IDEAL</strong></td></tr>
+            <tr><td>Weight</td><td>300 g</td><td>400 g</td><td>27.2 g</td><td>139.7 g</td><td>PASS</td></tr>
+            <tr><td>Volume</td><td>297 cm³</td><td>396 cm³</td><td>26.71 cm³</td><td>138.3 cm³</td><td>PASS</td></tr>
+            <tr><td>Aesthetic satisfaction</td><td>80%</td><td>50%</td><td>85%</td><td>80%</td><td>PASS</td></tr>
+            <tr><td>Bottom-out force</td><td>100 N</td><td>95 N</td><td>80 N</td><td><strong>150 N</strong></td><td><strong>EXCEEDS IDEAL</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="project-section reveal">
+      <p class="section-label">Final Physical Testing</p>
+      <h2 class="section-title">13.3 m stopping distance. 150 N bottom-out force.</h2>
+      <div class="section-body">
+        <p>
+          The Iteration 2 calipers were printed in Nylon 12 via SLS and mounted to an actual 
+          bicycle for ISO 4210 compliance testing. In testing, they successfully stopped a 
+          bicycle cruising at 25 kph in 13.3 m — meeting the ideal stopping distance target — 
+          while producing a bottom-out force of 150 N, 50% above the 100 N ideal. The test 
+          directly confirmed that stiffness, not mass minimization, is the governing design 
+          requirement for a functional brake caliper.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="takeaways-section">
+    <div class="takeaways-inner">
+      <p class="takeaways-label">Reflection</p>
+      <h2 class="takeaways-title">Key Takeaways</h2>
+      <ul class="takeaway-list">
+        <li class="takeaway-item reveal">
+          <span class="takeaway-num">01</span>
+          <p class="takeaway-text">Five of six quantitative targets passing does not mean a design works. The one metric that defines the part's actual function — stopping distance — has to govern, even at the cost of every other metric.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-1">
+          <span class="takeaway-num">02</span>
+          <p class="takeaway-text">Stress singularities around the pivot holes in both FEA and topology optimization were correctly identified as numerical artifacts of the idealized constraint, not genuine failure predictions — a good example of engineering judgment layered on top of software output.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-2">
+          <span class="takeaway-num">03</span>
+          <p class="takeaway-text">The final design's high factor of safety indicates material overuse. Future work would use topology optimization not to arbitrarily cut weight, but to redistribute material more precisely — concentrating it near the pivot/pad contacts and removing it from low-stress side regions, with the specific goal of bringing cost back under the $24 marginal target.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-nav">
+    <a href="heat-sink.html" class="project-nav-item">
+      <span class="nav-dir">← Previous</span>
+      <span class="nav-proj-title">Binder-Jet Heat Sink Design</span>
+    </a>
+    <a href="marley-roller.html" class="project-nav-item next">
+      <span class="nav-dir">Next →</span>
+      <span class="nav-proj-title">Marley Floor Roller</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Rodrigo Diaz</span>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/in/rodrigo-diaz-salazar/" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="mailto:rdiazsalazar01@gmail.com">Email ↗</a></li>
+        <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank">Résumé ↗</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Rodrigo Diaz</span>
+    </div>
+  </footer>
+  <script src="../shared.js"></script>
+</body>
+</html>

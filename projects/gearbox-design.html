@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Two-Stage Gearbox Design - Rodrigo Diaz</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body class="project-page">
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Rodrigo <span>Diaz</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="../projects.html">Projects <span class="nav-dropdown-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="../projects.html"><span class="nav-dropdown-num">All</span> All Projects</a>
+          <a href="f1-rear-wing-cfd.html"><span class="nav-dropdown-num">01</span> F1 Rear Wing CFD Analysis</a>
+          <a href="mars-rover.html"><span class="nav-dropdown-num">02</span> Mars Rover EDL Optimization</a>
+          <a href="dragonfly-rotorcraft.html"><span class="nav-dropdown-num">03</span> Dragonfly Rotorcraft Power Analysis</a>
+          <a href="nustars-airframe.html"><span class="nav-dropdown-num">04</span> Fiberglass Composite Airframe</a>
+          <a href="onboard-camera.html"><span class="nav-dropdown-num">05</span> Onboard Video System</a>
+          <a href="high-power-rocket.html"><span class="nav-dropdown-num">06</span> High-Power Rocket Build</a>
+          <a href="aircraft-wing.html"><span class="nav-dropdown-num">07</span> Aircraft Wing Structural Analysis</a>
+          <a href="gearbox-design.html"><span class="nav-dropdown-num">08</span> Two-Stage Gearbox Design</a>
+          <a href="bicycle-rim-vibration.html"><span class="nav-dropdown-num">09</span> Bicycle Rim Radial Vibration</a>
+          <a href="jack-in-a-box.html"><span class="nav-dropdown-num">10</span> Jack-in-a-Box Simulation</a>
+          <a href="heat-sink.html"><span class="nav-dropdown-num">11</span> Binder-Jet Heat Sink Design</a>
+          <a href="brake-caliper.html"><span class="nav-dropdown-num">12</span> Bicycle Brake Caliper</a>
+          <a href="marley-roller.html"><span class="nav-dropdown-num">13</span> Marley Floor Roller</a>
+        </div>
+      </li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank" class="nav-resume">Résumé ↗</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="../index.html">Portfolio</a><span>→</span>
+    <a href="../projects.html">Projects</a><span>→</span>
+    <span>Two-Stage Gearbox Design</span>
+  </div>
+
+  <div class="project-hero">
+    <div class="project-hero-inner">
+      <div>
+        <p class="project-eyebrow reveal">08 · ME 315</p>
+        <h1 class="project-title reveal reveal-delay-1">Two-Stage Spur Gear<br>Reduction Gearbox</h1>
+        <p class="project-description reveal reveal-delay-2">
+          A fully sized and analyzed 70 kW gearbox - three shafts, four spur gears, and six 
+          bearings taken from free body diagram through AGMA gear stress, DE-Goodman shaft 
+          fatigue, and SKF bearing life selection, with every component carrying a calculated, 
+          traceable margin against failure.
+        </p>
+        <div class="project-tags reveal reveal-delay-3">
+          <span class="tag tag-accent">AGMA</span>
+          <span class="tag">Spur Gears</span>
+          <span class="tag">Shaft Design</span>
+          <span class="tag">DE-Goodman Fatigue</span>
+          <span class="tag">Bearing Selection</span>
+          <span class="tag">SolidWorks</span>
+        </div>
+      </div>
+      <div class="project-meta reveal reveal-delay-2">
+        <div class="meta-item">
+          <p class="meta-label">Power</p>
+          <p class="meta-value">70 kW (constant through train)</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Speed Reduction</p>
+          <p class="meta-value">2600 → 299.4 RPM (8.68:1)</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Components</p>
+          <p class="meta-value">3 Shafts · 4 Gears · 6 Bearings</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Governing Factor of Safety</p>
+          <p class="meta-value">1.59 (Shaft 3 coupling keyway)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-body">
+
+    <!-- SYSTEM OVERVIEW -->
+    <div class="project-section reveal">
+      <p class="section-label">System Overview</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">One motor, three shafts, two gear meshes, one output coupling</h2>
+      <div class="section-body">
+        <p>
+          The gearbox takes 70 kW in from a motor coupling at 2600 RPM and delivers it to an 
+          output coupling at 299.4 RPM - an overall reduction ratio of 0.11515, or roughly 
+          8.68:1, split across two spur gear stages. Shaft 1 carries the input pinion, Gear 1, 
+          which drives Gear 2 on Shaft 2. Shaft 2 is the intermediate shaft: Gear 2 receives 
+          power from the first mesh, and a second pinion on the same shaft, Gear 3, drives Gear 
+          4 on Shaft 3, which carries the output coupling. All three shafts run in a single 
+          housing on six rolling-element bearings, located with end caps, shims, and felt seals.
+        </p>
+        <p>
+          Power stays essentially constant at 70 kW across every stage, so as speed drops through 
+          the reduction, torque climbs by the same factor - from 257.1 N·m on Shaft 1 up to 
+          2,232.8 N·m on Shaft 3, an increase that tracks the 8.68:1 speed ratio almost exactly. 
+          That single relationship is what drives nearly every downstream decision in this project: 
+          shaft diameter, shaft material, and bearing capacity all had to scale up moving from 
+          input to output, even though the gears themselves get physically larger and slower.
+        </p>
+      </div>
+      <!-- IMAGE: gearbox_diagram.png - annotated top view with per-gear RPM, torque, and power labels -->
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/gearbox_diagram.png" alt="Annotated gearbox diagram showing shaft layout, gear mesh, and per-gear RPM, torque, and power values" />
+        <p class="img-caption">Full power flow through the gearbox - Gear 1 (2600 RPM, 257.1 N·m) drives Gear 2, Gear 3 on the same shaft drives Gear 4 (299.4 RPM, 2232.4 N·m) - power holds at 70 kW throughout</p>
+      </div>
+    </div>
+
+    <!-- DESIGN METHODOLOGY -->
+    <div class="project-section reveal">
+      <p class="section-label">Design Methodology</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">The same four-step analysis chain applied to every shaft, gear, and bearing</h2>
+      <div class="section-body">
+        <p>
+          Every component in the gearbox was sized using the same repeatable process, not a 
+          one-off calculation per part. First, each shaft's loading was broken into a free body 
+          diagram, then resolved into shear and bending moment diagrams in both orthogonal planes 
+          to find the resultant bending moment and reaction force at each bearing location. 
+          Second, the two most highly loaded cross-sections on each shaft - almost always a gear 
+          keyway carrying combined bending and torsion, and a coupling keyway carrying torque 
+          only - were checked against both static yield (distortion-energy / von Mises theory) 
+          and infinite-life fatigue (a DE-Goodman failure line), with stress concentration factors 
+          applied at each keyway to capture the real local stress riser.
+        </p>
+        <p>
+          Third, every gear mesh was checked independently for both bending stress (AGMA Lewis-based 
+          method) and surface contact stress (AGMA Hertzian-based method), each corrected with 
+          dynamic factors for pitch-line velocity and gear quality, load distribution factors, and 
+          life factors calibrated to that specific gear's actual cycle count over the design service 
+          life. Fourth, the resultant radial reaction forces computed in step one were used to select 
+          real SKF catalog bearings, sized so the L10 dynamic life rating meets or exceeds the same 
+          service life target used for the shafts and gears - a full design life of roughly 
+          14,560 hours.
+        </p>
+      </div>
+      <!-- IMAGE: gearbox_shaft1_fbd.png, gearbox_shaft2_fbd.png, gearbox_shaft3_fbd.png - hand free body/shear/moment/torque diagrams -->
+      <div class="img-grid-3 reveal" style="margin-top: 1.5rem;">
+        <div class="img-item contain" style="aspect-ratio:0.8;">
+          <img src="../images/gearbox_shaft1_fbd.png" alt="Shaft 1 free body, shear, bending moment, and torque diagrams" />
+        </div>
+        <div class="img-item contain" style="aspect-ratio:0.8;">
+          <img src="../images/gearbox_shaft2_fbd.png" alt="Shaft 2 free body, shear, bending moment, and torque diagrams" />
+        </div>
+        <div class="img-item contain" style="aspect-ratio:0.8;">
+          <img src="../images/gearbox_shaft3_fbd.png" alt="Shaft 3 free body, shear, bending moment, and torque diagrams" />
+        </div>
+      </div>
+      <p class="img-caption">Free body, shear, moment, and torque diagrams for Shafts 1-3 - the load path behind every reaction force and bending moment used downstream in the fatigue and bearing calculations</p>
+    </div>
+
+    <!-- ENGINEERING DRAWINGS -->
+    <div class="project-section reveal">
+      <p class="section-label">Engineering Drawings</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">Manufacturing-ready drawings, not just a CAD model</h2>
+      <div class="section-body">
+        <p>
+          Every shaft was fully detailed in SolidWorks: assembly drawings with a complete bill of 
+          materials, dimensioned shaft drawings, and gear drawings specifying module, pressure 
+          angle, addendum, dedendum, and clearance. Fits were specified at every seat, not left as 
+          nominal dimensions - gears are located on H7/p6 press fits and bearings on H7/k6 transition 
+          fits, with keyways, shims, spacers, felt seals, and end caps fully called out for assembly.
+        </p>
+      </div>
+      <div class="img-grid-3 reveal" style="margin-top: 1.5rem;">
+        <div class="img-item contain" style="aspect-ratio:1.3;">
+          <img src="../images/gearbox_shaft1_assembly.png" alt="Shaft 1 assembly drawing with bill of materials" />
+        </div>
+        <div class="img-item contain" style="aspect-ratio:1.3;">
+          <img src="../images/gearbox_shaft2_assembly.png" alt="Shaft 2 assembly drawing with bill of materials" />
+        </div>
+        <div class="img-item contain" style="aspect-ratio:1.3;">
+          <img src="../images/gearbox_shaft3_assembly.png" alt="Shaft 3 assembly drawing with bill of materials" />
+        </div>
+      </div>
+      <p class="img-caption">Assembly drawings for Shafts 1-3 - each with a full bill of materials and located H7/p6 gear and H7/k6 bearing fits</p>
+
+      <div class="img-grid-2 reveal" style="margin-top: 1.5rem;">
+        <div class="img-item wide">
+          <img src="../images/gearbox_shaft_drawing.png" alt="Dimensioned shaft drawing with tolerances and section views" />
+        </div>
+        <div class="img-item wide">
+          <img src="../images/gearbox_gear_drawing.png" alt="Dimensioned gear drawing specifying module, pressure angle, addendum, and dedendum" />
+        </div>
+      </div>
+      <p class="img-caption">Dimensioned shaft drawing with toleranced fits and section views (left) - gear drawing specifying module, pressure angle, addendum, dedendum, and material (right)</p>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="project-section reveal">
+      <p class="section-label">Results</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">Every component sized, checked, and margined against the same design target</h2>
+      <div class="section-body">
+        <p>
+          Pulling the shaft, gear, and bearing calculations together into one system-level result: 
+          the gearbox delivers 70 kW at an 8.68:1 reduction, and every single component - three 
+          shafts, four gears, six bearings - meets or exceeds the 14,560-hour design life target. 
+          The lowest safety margin anywhere in the system is 1.59, at the Shaft 3 coupling keyway, 
+          which makes it the one part of the design with the least room to spare and the first place 
+          to look if the gearbox ever needed to be lightened or re-optimized.
+        </p>
+      </div>
+
+      <div class="table-wrap reveal" style="margin-top: 1.5rem;">
+        <table class="metrics-table">
+          <thead><tr><th>Gear</th><th>Teeth</th><th>Speed (RPM)</th><th>Torque (N·m)</th><th>Bending n<sub>b</sub></th><th>Contact n<sub>c</sub></th></tr></thead>
+          <tbody>
+            <tr><td>Gear 1 (input pinion)</td><td>19</td><td>2600.0</td><td>257.1</td><td>4.93</td><td>2.83</td></tr>
+            <tr><td>Gear 2</td><td>55</td><td>898.2</td><td>744.3</td><td>4.41</td><td>2.36</td></tr>
+            <tr><td>Gear 3</td><td>19</td><td>898.2</td><td>744.3</td><td><strong>1.66</strong></td><td>1.91</td></tr>
+            <tr><td>Gear 4 (output gear)</td><td>57</td><td>299.4</td><td>2232.8</td><td>2.56</td><td>1.78</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top: 0.8rem;">
+        Both mesh stages hold a contact ratio above 1.4 (1.682 for stage one, 1.447 for stage two) 
+        - comfortably above the roughly 1.2 minimum generally used to guarantee smooth, continuous 
+        tooth engagement - and the full system transmission error works out to just −0.61 rpm, a 
+        strong indicator of accurate mesh geometry. Gear 3 carries the lowest bending margin in the 
+        train: it's the same 19-tooth pinion geometry as Gear 1, but running at the same 744.3 N·m 
+        torque Gear 2 sees, since it's mounted on the intermediate shaft downstream of the first 
+        reduction. Small pinion, high torque - that combination is exactly what drives its bending 
+        stress up and its factor of safety down relative to the other three gears. The two mating 
+        gear pairs were also intentionally given different Brinell hardness (450 HB pinions against 
+        375 HB gears, a 1.20 hardness ratio) - a standard AGMA practice that improves wear life on 
+        the pinion, which sees proportionally more load cycles than its mating gear.
+      </p>
+
+      <div class="table-wrap reveal" style="margin-top: 2rem;">
+        <table class="metrics-table">
+          <thead><tr><th>Shaft</th><th>Material</th><th>Max Torque</th><th>Max Bending Moment</th><th>Static n<sub>y</sub></th><th>Fatigue n<sub>f</sub></th><th>Life</th></tr></thead>
+          <tbody>
+            <tr><td>Shaft 1 (input)</td><td>SAE 1045</td><td>257.1 N·m</td><td>220.0 N·m</td><td>5.78</td><td>4.62</td><td>Infinite</td></tr>
+            <tr><td>Shaft 2 (intermediate)</td><td>8620</td><td>744.2 N·m</td><td>733.6 N·m</td><td>3.01</td><td>1.73</td><td>Infinite</td></tr>
+            <tr><td>Shaft 3 (output)</td><td>8620</td><td>2232.8 N·m</td><td>646.4 N·m</td><td>1.97</td><td><strong>1.59</strong></td><td>Infinite</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top: 0.8rem;">
+        Material selection tracks the torque climb through the train: Shaft 1 uses plain-carbon 
+        SAE 1045, appropriate for the lowest-torque, highest-speed member, while Shafts 2 and 3 
+        step up to alloy 8620 as torque rises nearly ninefold by the output end. Every shaft still 
+        clears infinite life at its governing keyway, but the margin shrinks steadily from Shaft 1 
+        (4.62) to Shaft 2 (1.73) to Shaft 3 (1.59) - the coupling keyway on Shaft 3, sized for the 
+        full 2,232.8 N·m of output torque, is the single tightest margin in the entire gearbox.
+      </p>
+
+      <div class="table-wrap reveal" style="margin-top: 2rem;">
+        <table class="metrics-table">
+          <thead><tr><th>Bearing Pair</th><th>Type</th><th>Bore</th><th>Required C</th><th>Selected C</th><th>Margin</th></tr></thead>
+          <tbody>
+            <tr><td>A &amp; B (Shaft 1)</td><td>SKF 6409 deep-groove ball</td><td>45 mm</td><td>52,623 N</td><td>76,100 N</td><td>1.4x - 4.7x life</td></tr>
+            <tr><td>C &amp; D (Shaft 2)</td><td>SKF NU 311 cylindrical roller</td><td>55 mm</td><td>98,351 N</td><td>156,000 N</td><td>1.6x rated capacity</td></tr>
+            <tr><td>E &amp; F (Shaft 3)</td><td>SKF 6313 deep-groove ball</td><td>65 mm</td><td>73,173 N</td><td>92,300 N</td><td>1.3x - 21x life</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top: 0.8rem;">
+        All six bearings clear the required dynamic load rating for the full design life, and none 
+        need a scheduled bearing-change service over that life. Every shaft uses the same bearing 
+        part number at both ends, even where one side technically carries a much lighter load than 
+        the other - Bearing B, for instance, is rated for a 318,800-hour life against a 14,560-hour 
+        requirement. That's a deliberate trade: standardizing on one bearing per shaft simplifies 
+        procurement and assembly and is worth more in practice than trimming a slightly smaller, 
+        cheaper bearing onto the lighter-loaded side.
+      </p>
+
+      <div class="section-body" style="margin-top: 2rem;">
+        <p>
+          <strong>What this analysis actually delivers</strong> is a gearbox where every part's 
+          margin against failure is a calculated number, not an assumption - which means the design 
+          can be defended, manufactured, and iterated on with confidence rather than guesswork. It 
+          also does something a purely qualitative design pass can't: it identifies exactly where 
+          the system's real limit lives. The Shaft 3 coupling keyway, at 1.59, is unambiguously the 
+          weakest link in the gearbox - so if this design ever needed to shed weight or cost, that's 
+          precisely where material can't be cut, while Shaft 1's 4.62 fatigue margin shows real room 
+          to downsize if a lighter, cheaper input shaft were ever worth pursuing.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- KEY TAKEAWAYS -->
+  <div class="takeaways-section">
+    <div class="takeaways-inner">
+      <p class="takeaways-label">Reflection</p>
+      <h2 class="takeaways-title">Key Takeaways</h2>
+      <ul class="takeaway-list">
+        <li class="takeaway-item reveal">
+          <span class="takeaway-num">01</span>
+          <p class="takeaway-text">Torque and speed trade off inversely at constant power, and that single relationship - not any one component in isolation - is what actually drives shaft material and diameter selection across a gear train. Recognizing that pattern early made the material choices for all three shafts fall out logically instead of by trial and error.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-1">
+          <span class="takeaway-num">02</span>
+          <p class="takeaway-text">A full margin-of-safety analysis doesn't just confirm a design works - it tells you exactly where it barely works. Finding that the Shaft 3 coupling keyway, at 1.59, is the true governing constraint in a six-bearing, four-gear system is the kind of result that only comes from checking every component the same rigorous way, not just the ones that look highest-loaded at a glance.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-2">
+          <span class="takeaway-num">03</span>
+          <p class="takeaway-text">Optimal on paper and optimal in practice aren't always the same thing. Selecting identical, deliberately oversized bearings at both ends of a shaft to simplify procurement and assembly - instead of the theoretically minimal part at each location - is a real engineering trade-off between analytical optimality and manufacturability.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-nav">
+    <a href="aircraft-wing.html" class="project-nav-item">
+      <span class="nav-dir">← Previous</span>
+      <span class="nav-proj-title">Aircraft Wing Structural Analysis</span>
+    </a>
+    <a href="bicycle-rim-vibration.html" class="project-nav-item next">
+      <span class="nav-dir">Next →</span>
+      <span class="nav-proj-title">Bicycle Rim Radial Vibration</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Rodrigo Diaz</span>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/in/rodrigo-diaz-salazar/" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="mailto:rdiazsalazar01@gmail.com">Email ↗</a></li>
+        <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank">Résumé ↗</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Rodrigo Diaz</span>
+    </div>
+  </footer>
+  <script src="../shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dragonfly Rotorcraft Hover Power Analysis - Rodrigo Diaz</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body class="project-page">
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Rodrigo <span>Diaz</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="../projects.html">Projects <span class="nav-dropdown-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="../projects.html"><span class="nav-dropdown-num">All</span> All Projects</a>
+          <a href="f1-rear-wing-cfd.html"><span class="nav-dropdown-num">01</span> F1 Rear Wing CFD Analysis</a>
+          <a href="mars-rover.html"><span class="nav-dropdown-num">02</span> Mars Rover EDL Optimization</a>
+          <a href="dragonfly-rotorcraft.html"><span class="nav-dropdown-num">03</span> Dragonfly Rotorcraft Power Analysis</a>
+          <a href="nustars-airframe.html"><span class="nav-dropdown-num">04</span> Fiberglass Composite Airframe</a>
+          <a href="onboard-camera.html"><span class="nav-dropdown-num">05</span> Onboard Video System</a>
+          <a href="high-power-rocket.html"><span class="nav-dropdown-num">06</span> High-Power Rocket Build</a>
+          <a href="aircraft-wing.html"><span class="nav-dropdown-num">07</span> Aircraft Wing Structural Analysis</a>
+          <a href="gearbox-design.html"><span class="nav-dropdown-num">08</span> Two-Stage Gearbox Design</a>
+          <a href="bicycle-rim-vibration.html"><span class="nav-dropdown-num">09</span> Bicycle Rim Radial Vibration</a>
+          <a href="jack-in-a-box.html"><span class="nav-dropdown-num">10</span> Jack-in-a-Box Simulation</a>
+          <a href="heat-sink.html"><span class="nav-dropdown-num">11</span> Binder-Jet Heat Sink Design</a>
+          <a href="brake-caliper.html"><span class="nav-dropdown-num">12</span> Bicycle Brake Caliper</a>
+          <a href="marley-roller.html"><span class="nav-dropdown-num">13</span> Marley Floor Roller</a>
+        </div>
+      </li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank" class="nav-resume">Résumé ↗</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="../index.html">Portfolio</a><span>→</span>
+    <a href="../projects.html">Projects</a><span>→</span>
+    <span>Dragonfly Rotorcraft Power Analysis</span>
+  </div>
+
+  <div class="project-hero">
+    <div class="project-hero-inner">
+      <div>
+        <p class="project-eyebrow reveal">03 · Aerospace Systems</p>
+        <h1 class="project-title reveal reveal-delay-1">Dragonfly Rotorcraft<br>Hover Power Analysis</h1>
+        <p class="project-description reveal reveal-delay-2">
+          A momentum-theory and CFD analysis of the hover power NASA's Dragonfly octocopter needs 
+          to fly on Titan - combining blade element aerodynamics with 2D airfoil CFD to correct 
+          the ideal induced power estimate for real profile drag, then closing the loop on why 
+          Dragonfly's mission has to be a "charge and hop" architecture rather than continuous flight.
+        </p>
+        <div class="project-tags reveal reveal-delay-3">
+          <span class="tag tag-accent">ANSYS Fluent</span>
+          <span class="tag">CFD</span>
+          <span class="tag">Momentum Theory</span>
+          <span class="tag">Blade Element Theory</span>
+          <span class="tag">Rotorcraft</span>
+          <span class="tag">k-ω SST</span>
+        </div>
+      </div>
+      <div class="project-meta reveal reveal-delay-2">
+        <div class="meta-item">
+          <p class="meta-label">Team</p>
+          <p class="meta-value">Drew Guardiola · Rodrigo Diaz Salazar · Shelton Shieh · Sujee Rubio</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Vehicle Mass</p>
+          <p class="meta-value">~875 kg</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Rotor Configuration</p>
+          <p class="meta-value">8 counter-rotating coaxial blades, D = 1.35 m each</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-label">Total Hover Power</p>
+          <p class="meta-value">~4.3 kW</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-body">
+
+    <!-- MISSION OVERVIEW -->
+    <div class="project-section reveal">
+      <p class="section-label">Mission Overview</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">A car-sized, nuclear-powered octocopter, flying on Saturn's largest moon</h2>
+      <div class="section-body">
+        <p>
+          Dragonfly is a car-sized, nuclear-powered rotorcraft - an octocopter, with eight rotors - 
+          that NASA will fly across the surface of Titan, Saturn's largest moon. If successful, it 
+          will be the first aircraft to fly on Titan and the first powered, fully controlled 
+          atmospheric flight on any moon in the solar system.
+        </p>
+        <p>
+          The science case is what justifies flying instead of landing once and staying put: Titan 
+          has carbon-rich organic chemistry, a thick nitrogen atmosphere, surface liquid methane, and 
+          a buried liquid-water ocean - a natural laboratory for the chemistry that precedes life, 
+          and one that can't be reproduced in an Earth lab. Dragonfly carries a mass spectrometer and 
+          a gamma-ray/neutron spectrometer to sample surface composition and search for biosignatures 
+          that could indicate water-based or hydrocarbon-based life. Selk crater, a roughly 50-mile-wide 
+          impact site likely to hold liquid water mixed with organics, is a primary target - Titan's 
+          dense nitrogen atmosphere without oxygen closely resembles what early Earth may have looked 
+          like billions of years ago.
+        </p>
+      </div>
+    </div>
+
+    <!-- LAUNCH AND CRUISE -->
+    <div class="project-section reveal">
+      <p class="section-label">Launch and Cruise</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">Six years to Titan, then a rotorcraft that relocates by air instead of driving or sitting still</h2>
+      <div class="section-body">
+        <p>
+          Dragonfly launches on a SpaceX Falcon Heavy from Kennedy Space Center pad LC-39A, with a 
+          launch window between July 5-25, 2028, arriving at Titan roughly six years later in 2034. 
+          Rather than the Jupiter gravity-assist typically used to reach Saturn, Dragonfly performs 
+          an Earth gravity-assist flyby on its way out, since Jupiter won't be usefully positioned 
+          along this particular flight path.
+        </p>
+        <p>
+          What makes Dragonfly different from every prior planetary surface mission is that it 
+          relocates by air. A fixed lander like Huygens or Phoenix studies one spot; a rover like 
+          Curiosity or Perseverance drives slowly between sites. Dragonfly flies - and flying happens 
+          to be far easier on Titan than on Earth: the atmosphere is roughly 4x as dense and gravity 
+          is only about 13.8% of Earth's, so the power needed to fly is roughly 40x lower than an 
+          equivalent vehicle would need here. This will be only the second powered rotorcraft to fly 
+          beyond Earth. Power comes from a Multi-Mission Radioisotope Thermoelectric Generator (MMRTG), 
+          which recharges the craft's battery during Titan's long, roughly 8-Earth-day night, and 
+          Dragonfly communicates straight home over a high-gain antenna with no relay orbiter needed.
+        </p>
+      </div>
+      <!-- GIF: dragonfly_trajectory.gif - trajectory simulation of the Earth-to-Titan flight path, converted from mp4 -->
+      <div class="img-full reveal img-centered" style="margin-top: 1.5rem; max-width: 640px;">
+        <img src="../images/dragonfly_trajectory.gif" alt="Simulated Earth-to-Titan trajectory showing the Earth gravity-assist flyby and six-year cruise to Saturn" style="display:block; margin:0 auto;" />
+        <p class="img-caption" style="text-align:center;">Simulated trajectory - Earth gravity-assist flyby followed by the roughly six-year cruise out to Titan</p>
+      </div>
+      <div class="section-body" style="margin-top: 1.5rem;">
+        <p>
+          The rotorcraft doesn't operate independently during transit. The cruise stage handles deep 
+          space navigation, communication with Earth's Deep Space Network, and thermal control through 
+          the freezing outer solar system, while the car-sized rotorcraft itself rides encapsulated 
+          inside a 3.7-meter-diameter heatshield/aeroshell (built by Lockheed Martin Space) that 
+          protects it in deep space and shields it during atmospheric entry. Since solar power isn't 
+          viable this far from the sun, the MMRTG converts the decay heat of radioisotope materials 
+          directly into electricity, and a dedicated pumped fluid loop keeps propellant tanks, 
+          electronics, and valves warm without ever having to draw down the battery.
+        </p>
+      </div>
+      <!-- IMAGE: dragonfly_aeroshell.png - aeroshell/heatshield diagram showing the 3.7m heatshield and backshell -->
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/dragonfly_aeroshell.png" alt="Aeroshell diagram showing the 3.7 meter diameter heatshield and backshell encapsulating the Dragonfly rotorcraft" />
+        <p class="img-caption">Aeroshell configuration - the 3.7 m heatshield and backshell protect the rotorcraft through deep space cruise and atmospheric entry</p>
+      </div>
+    </div>
+
+    <!-- EDL -->
+    <div class="project-section reveal">
+      <p class="section-label">Entry, Descent, and Landing</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">No sky crane needed - Titan's atmosphere lets the rotorcraft fly itself down</h2>
+      <div class="section-body">
+        <p>
+          The aeroshell enters Titan's atmosphere at roughly 7.4 km/s, deploying a drogue parachute 
+          at Mach 1.5 to stabilize the descent. The heat shield uses PICA-D (Phenolic Impregnated 
+          Carbon Ablator), rated for a peak heating of 254 W/cm² at entry. A 16-meter main parachute 
+          deploys near 5 km altitude, slowing descent to under 3 m/s over a total descent duration of 
+          105 minutes, at which point the heatshield separates and exposes Dragonfly to Titan's 
+          environment ahead of the transition to powered flight.
+        </p>
+        <p>
+          Dragonfly is released from the backshell at 1,000 m altitude and flies itself the rest of 
+          the way to the surface under rotor power - no sky crane required. That's a direct consequence 
+          of Titan's atmosphere: 4x denser and roughly 1/7 the gravity of Earth's, which together make 
+          rotorcraft-powered descent both feasible and efficient in a way it simply isn't for a Mars 
+          lander of similar size.
+        </p>
+      </div>
+    </div>
+
+    <!-- HOVER POWER PHYSICS -->
+    <div class="project-section reveal">
+      <p class="section-label">Hover Power Physics</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">Momentum theory says Titan needs about 2.5% of Earth's hover power</h2>
+      <div class="section-body">
+        <p>
+          Titan's atmosphere sets the whole power budget: density ρ = 5.35 kg/m³ (4.4x Earth's), 
+          gravitational acceleration g = 1.352 m/s² (13.8% of Earth's), surface temperature around 
+          95 K, and a composition that's roughly 95% nitrogen. Under simple momentum theory, lift 
+          scales as L = ½ρv²C<sub>L</sub>, so the 4.4x denser atmosphere generates 4.4x more lift 
+          per unit rotor speed than the same rotor would produce on Earth. Ideal hover power follows 
+          from P = T<sup>3/2</sup>/√(2ρA), where T is hover thrust, ρ is air density, and A is total 
+          disk area - meaning power scales as 1/√ρ, so a denser atmosphere directly reduces the power 
+          needed to generate a given amount of thrust.
+        </p>
+        <p>
+          Dragonfly's 8 counter-rotating coaxial rotors (1.35 m diameter each) cancel torque against 
+          each other by design. Combining Titan's higher density and lower gravity into a single ratio 
+          against Earth - P<sub>T</sub>/P<sub>E</sub> = (g<sub>T</sub>/g<sub>E</sub>)<sup>3/2</sup> / 
+          √(ρ<sub>T</sub>/ρ<sub>E</sub>) - shows that Dragonfly needs only about <strong>2.5% of the 
+          power</strong> an equivalent vehicle would need to hover on Earth, which is the entire reason 
+          aerial exploration of Titan is viable in the first place.
+        </p>
+      </div>
+      <!-- IMAGE: dragonfly_hover_power_chart.png - Earth vs Titan hover power required vs vehicle mass -->
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/dragonfly_hover_power_chart.png" alt="Chart comparing total hover power required on Earth versus Titan across a range of vehicle masses" />
+        <p class="img-caption">Total hover power required, Earth vs. Titan, across a range of vehicle masses - Earth's curve rises past 160 kW at 600 kg while Titan's stays under 5 kW across the same range</p>
+      </div>
+    </div>
+
+    <!-- WHY CFD -->
+    <div class="project-section reveal">
+      <p class="section-label">Why Bring In CFD</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">Momentum theory alone ignores the drag of the blades spinning themselves</h2>
+      <div class="section-body">
+        <p>
+          The momentum theory result above is a genuinely useful first-order estimate, but it only 
+          captures <strong>induced power</strong> - the power needed to accelerate air downward and 
+          generate thrust. It ignores <strong>profile drag power</strong>: the power needed just to 
+          spin the blades themselves through the air, independent of the lift they produce. Total 
+          hover power is really P<sub>total</sub> = P<sub>drag</sub> + P<sub>induced</sub>, and getting 
+          drag power requires actually resolving the flow around a real rotor blade cross-section - 
+          which is what the 2D airfoil CFD analysis was built to do, connecting Titan's atmospheric 
+          conditions, low gravity, and rotor geometry to a true total power estimate rather than an 
+          idealized lower bound. Getting this right matters beyond academic completeness: power 
+          availability directly limits Dragonfly's flight time, hop distance, battery sizing, and 
+          overall mission planning.
+        </p>
+      </div>
+    </div>
+
+    <!-- CFD MODEL SETUP -->
+    <div class="project-section reveal">
+      <p class="section-label">CFD Model Setup</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">2D airfoil CFD in Titan's cryogenic, compressible-at-the-rotor-tip atmosphere</h2>
+      <div class="section-body">
+        <p>
+          A C-mesh was built around a representative rotor blade cross-section, with 100 divisions 
+          along the arc and 50 divisions along the straight edges, biased toward the airfoil surface. 
+          The mesh was refined near the leading edge, trailing edge, and wake specifically so drag 
+          would not be dominated by numerical error rather than real flow physics. Boundary conditions: 
+          a velocity inlet at 45 m/s with components set for each angle of attack tested, a pressure 
+          outlet at gauge pressure zero, and a no-slip wall on the airfoil surface itself.
+        </p>
+      </div>
+      <!-- IMAGE: dragonfly_cfd_mesh.png - C-mesh close-up around the airfoil -->
+      <!-- IMAGE: dragonfly_cfd_bc.png - boundary condition diagram: inlet, outlet, no-slip wall -->
+      <div class="img-grid-2 reveal" style="margin-top: 1.5rem;">
+        <div class="img-item wide">
+          <img src="../images/dragonfly_cfd_mesh.png" alt="C-mesh around the rotor blade airfoil cross section" />
+        </div>
+        <div class="img-item wide">
+          <img src="../images/dragonfly_cfd_bc.png" alt="Boundary condition diagram showing velocity inlet, pressure outlet, and no-slip airfoil wall" />
+        </div>
+      </div>
+      <p class="img-caption">C-mesh refined at the leading edge, trailing edge, and wake (left) - boundary conditions: velocity inlet, pressure outlet, no-slip airfoil wall (right)</p>
+
+      <div class="section-body" style="margin-top: 1.5rem;">
+        <p>
+          The 45 m/s inlet velocity isn't arbitrary - it's the representative blade velocity at the 
+          70% radial station (r/R = 0.7), the standard reference point for characterizing rotor blade 
+          aerodynamics. With a rotor speed of 900 RPM and rotor radius R = 0.675 m, V = ωr = 
+          (2π · 900/60)(0.7 × 0.675 m) ≈ 45 m/s. Titan's atmosphere was modeled with dynamic viscosity 
+          μ = 6.5×10⁻⁶ Pa·s, specific heat 1040 J/(kg·K), thermal conductivity 0.009 W/(m·K), and 
+          molecular weight 27.4 kg/kmol, at a temperature of 94 K and operating pressure of 147 kPa.
+        </p>
+        <p>
+          Compressibility couldn't be ignored despite the modest 45 m/s freestream: Titan is extremely 
+          cold (~95 K), so the speed of sound there is only about 198 m/s - meaning 45 m/s already sits 
+          around Mach 0.23, and flow accelerating over the top of the airfoil locally exceeds Mach 0.3, 
+          the threshold where compressibility effects start to matter. Fluent was set up accordingly: 
+          pressure-based solver, steady, 2D, k-ω SST turbulence model, constant density, gravity off, 
+          energy equation on, and second-order upwind momentum discretization.
+        </p>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="project-section reveal">
+      <p class="section-label">Results</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">Best lift-to-drag efficiency lands near 5 degrees angle of attack</h2>
+      <div class="table-wrap reveal" style="margin-top: 1.5rem;">
+        <table class="metrics-table">
+          <thead><tr><th>AoA</th><th>C<sub>d</sub></th><th>C<sub>l</sub></th><th>Drag</th><th>Lift</th><th>C<sub>l</sub>/C<sub>d</sub></th></tr></thead>
+          <tbody>
+            <tr><td>0°</td><td>0.0213</td><td>0.4398</td><td>10.93 N</td><td>226 N</td><td>20.65</td></tr>
+            <tr><td>5°</td><td>0.0302</td><td>0.822</td><td>15.65 N</td><td>423 N</td><td><strong>27.22</strong></td></tr>
+            <tr><td>10°</td><td>0.0712</td><td>0.9143</td><td>35.9 N</td><td>471 N</td><td>12.84</td></tr>
+            <tr><td>15°</td><td>0.1431</td><td>0.9202</td><td>73.14 N</td><td>474 N</td><td>6.43</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top: 0.8rem;">
+        C<sub>l</sub> rises steadily from 0° to 10-15° of angle of attack, but drag rises much faster 
+        at the higher angles - C<sub>d</sub> nearly triples between 5° and 10° while lift barely 
+        increases. The best aerodynamic efficiency in this data set lands at <strong>5°</strong>, 
+        where C<sub>l</sub>/C<sub>d</sub> peaks at 27.22 - this is the operating point used for the 
+        final power calculation below.
+      </p>
+      <!-- IMAGE: dragonfly_results_contours.png - Mach number and static pressure contours at 5 degree AoA -->
+      <div class="img-full reveal" style="margin-top: 1.5rem;">
+        <img src="../images/dragonfly_results_contours.png" alt="Mach number and static pressure contours around the airfoil at 5 degree angle of attack" />
+        <p class="img-caption">Mach number (top) and static pressure (bottom) contours at 5° angle of attack - flow accelerates and locally exceeds Mach 0.3 over the upper surface, confirming the need to model compressibility</p>
+      </div>
+    </div>
+
+    <!-- FINAL CALCULATION -->
+    <div class="project-section reveal">
+      <p class="section-label">Closing the Loop</p>
+      <h2 class="section-title" style="font-size: 1.35rem;">Scaling the 5-degree CFD result up to the full 8-rotor vehicle</h2>
+      <div class="section-body">
+        <p>
+          The CFD result is for one 2D airfoil section at one operating point - the last step is 
+          scaling it up to the real 8-rotor vehicle at its actual hover condition, using the 5° 
+          result as the reference since it's the most aerodynamically efficient point tested.
+        </p>
+      </div>
+      <div class="table-wrap reveal" style="margin-top: 1rem;">
+        <table class="metrics-table">
+          <thead><tr><th>Quantity</th><th>Expression</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Hover thrust</td><td>T = mg</td><td>1,182 N</td></tr>
+            <tr><td>Total disk area</td><td>A<sub>total</sub> = 8πR²</td><td>11.45 m²</td></tr>
+            <tr><td>Ideal induced power</td><td>P<sub>ideal</sub> = T<sup>3/2</sup>/√(2ρA<sub>total</sub>)</td><td>2,374 W</td></tr>
+            <tr><td>Actual induced power</td><td>P<sub>induced</sub> = P<sub>ideal</sub>/FM, FM ≈ 0.75</td><td>3,165 W</td></tr>
+            <tr><td>Required lift per rotor</td><td>L<sub>req</sub> = T/8</td><td>147.7 N</td></tr>
+            <tr><td>Effective tip speed</td><td>V<sub>eff</sub> = 45·√(L<sub>req</sub>/L<sub>CFD</sub>)</td><td>26.6 m/s</td></tr>
+            <tr><td>Scaled drag per rotor</td><td>D<sub>eff</sub> = D<sub>CFD</sub>·(L<sub>req</sub>/L<sub>CFD</sub>)</td><td>5.47 N</td></tr>
+            <tr><td>Profile drag power (8 rotors)</td><td>P<sub>drag</sub> = 8·D<sub>eff</sub>·V<sub>eff</sub></td><td>1,164 W</td></tr>
+            <tr><td><strong>Total hover power</strong></td><td>P<sub>total</sub> = P<sub>induced</sub> + P<sub>drag</sub></td><td><strong>4,329 W</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="section-body" style="margin-top: 1.5rem;">
+        <p>
+          Titan's thick atmosphere and low gravity mean Dragonfly only needs about <strong>4.3 kW</strong> 
+          to hover - roughly the power draw of a residential central AC unit. The CFD-derived profile 
+          drag term accounts for about 25% of that total, which is exactly the piece the momentum-theory-only 
+          estimate misses. But 4.3 kW is still a substantial amount of continuous power for a deep-space 
+          probe - the MMRTG only generates about 100 W of continuous electrical power, more than an order 
+          of magnitude short of what's needed to fly. The direct mission-design consequence: Dragonfly 
+          cannot fly continuously. It has to sit and charge its battery for an extended period before 
+          each short flight - a "charge and hop" architecture dictated entirely by this power gap.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- KEY TAKEAWAYS -->
+  <div class="takeaways-section">
+    <div class="takeaways-inner">
+      <p class="takeaways-label">Reflection</p>
+      <h2 class="takeaways-title">Key Takeaways</h2>
+      <ul class="takeaway-list">
+        <li class="takeaway-item reveal">
+          <span class="takeaway-num">01</span>
+          <p class="takeaway-text">Momentum theory alone gets you 73% of the answer - the 2,374 to 3,165 W induced power estimate is real and useful, but it's silent on the roughly 25% of total hover power that goes into just spinning the blades through the air. Knowing which physics a first-order model leaves out, and having a way to go get it, is the actual engineering skill here.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-1">
+          <span class="takeaway-num">02</span>
+          <p class="takeaway-text">Scaling a single 2D CFD result up to a full vehicle estimate required real engineering judgment, not just a lookup: picking the 5° operating point as the efficiency reference, then scaling both drag and effective tip speed by the ratio between the CFD lift and the true required lift per rotor. That scaling logic is the bridge between a section-level simulation and a vehicle-level power budget.</p>
+        </li>
+        <li class="takeaway-item reveal reveal-delay-2">
+          <span class="takeaway-num">03</span>
+          <p class="takeaway-text">The 4.3 kW result versus the MMRTG's 100 W continuous output isn't just a number - it's the reason Dragonfly's entire mission architecture is "charge and hop" instead of continuous flight. A power budget calculation, done carefully, doesn't just describe a vehicle's performance - it determines the shape of the whole mission.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-nav">
+    <a href="mars-rover.html" class="project-nav-item">
+      <span class="nav-dir">← Previous</span>
+      <span class="nav-proj-title">Mars Rover EDL Optimization</span>
+    </a>
+    <a href="nustars-airframe.html" class="project-nav-item next">
+      <span class="nav-dir">Next →</span>
+      <span class="nav-proj-title">Fiberglass Composite Airframe</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Rodrigo Diaz</span>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/in/rodrigo-diaz-salazar/" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="mailto:rdiazsalazar01@gmail.com">Email ↗</a></li>
+        <li><a href="../Rodrigo_Diaz_Resume.pdf" target="_blank">Résumé ↗</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Rodrigo Diaz</span>
+    </div>
+  </footer>
+  <script src="../shared.js"></script>
+</body>
+</html>
