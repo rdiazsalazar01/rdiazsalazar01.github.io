@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Rodrigo Diaz</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Rodrigo <span>Diaz</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="projects.html">Projects <span class="nav-dropdown-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="projects.html"><span class="nav-dropdown-num">All</span> All Projects</a>
+          <a href="projects/f1-rear-wing-cfd.html"><span class="nav-dropdown-num">01</span> F1 Rear Wing CFD Analysis</a>
+          <a href="projects/mars-rover.html"><span class="nav-dropdown-num">02</span> Mars Rover EDL Optimization</a>
+          <a href="projects/dragonfly-rotorcraft.html"><span class="nav-dropdown-num">03</span> Dragonfly Rotorcraft Power Analysis</a>
+          <a href="projects/nustars-airframe.html"><span class="nav-dropdown-num">04</span> Fiberglass Composite Airframe</a>
+          <a href="projects/onboard-camera.html"><span class="nav-dropdown-num">05</span> Onboard Video System</a>
+          <a href="projects/high-power-rocket.html"><span class="nav-dropdown-num">06</span> High-Power Rocket Build</a>
+          <a href="projects/aircraft-wing.html"><span class="nav-dropdown-num">07</span> Aircraft Wing Structural Analysis</a>
+          <a href="projects/gearbox-design.html"><span class="nav-dropdown-num">08</span> Two-Stage Gearbox Design</a>
+          <a href="projects/bicycle-rim-vibration.html"><span class="nav-dropdown-num">09</span> Bicycle Rim Radial Vibration</a>
+          <a href="projects/jack-in-a-box.html"><span class="nav-dropdown-num">10</span> Jack-in-a-Box Simulation</a>
+          <a href="projects/heat-sink.html"><span class="nav-dropdown-num">11</span> Binder-Jet Heat Sink Design</a>
+          <a href="projects/brake-caliper.html"><span class="nav-dropdown-num">12</span> Bicycle Brake Caliper</a>
+          <a href="projects/marley-roller.html"><span class="nav-dropdown-num">13</span> Marley Floor Roller</a>
+        </div>
+      </li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="Rodrigo_Diaz_Resume.pdf" target="_blank" class="nav-resume">Résumé ↗</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <p class="page-hero-label reveal">Engineering Portfolio</p>
+    <h1 class="page-hero-title reveal reveal-delay-1">Thirteen Projects.<br><em style="font-style:italic; color:var(--terracotta);">One Engineer.</em></h1>
+    <p class="page-hero-desc reveal reveal-delay-2">
+      A record of aerodynamics, flight systems, structural and dynamic analysis, and hands-on 
+      design and manufacturing — from CFD and finite element models to physical hardware that 
+      actually flew, launched, or got put through real testing.
+    </p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="projects-section-header reveal" style="max-width: 1100px; margin: 3rem auto 0; padding: 0 2rem;">
+    <p class="section-label">01 — 06</p>
+    <h2 class="section-title" style="font-size: 1.6rem; margin-top: 0.25rem;">Aerodynamics &amp; Flight Systems</h2>
+  </div>
+  <div class="projects-grid" style="border-top: 1px solid var(--border); margin-top: 1.5rem;">
+
+    <a href="projects/f1-rear-wing-cfd.html" class="project-card reveal">
+      <div class="card-img"><img src="images/thumb_f1wing.gif" alt="F1 Active Rear Wing CFD Analysis" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">01</p>
+        <h3 class="card-title">F1 Active Rear Wing CFD Analysis</h3>
+        <p class="card-desc">Transient sliding-mesh CFD comparing a conventional DRS flap against Ferrari's 230° "Macarena" mechanism — revealing an aerodynamic airbrake spike during actuation invisible to steady-state analysis alone.</p>
+        <div class="card-tags"><span class="tag">ANSYS Fluent</span><span class="tag">CFD</span><span class="tag">Transient Analysis</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="projects/mars-rover.html" class="project-card reveal reveal-delay-1">
+      <div class="card-img"><img src="images/thumb_mars.png" alt="Mars Rover EDL Fuel Optimization" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">02</p>
+        <h3 class="card-title">Mars Rover EDL Fuel Optimization</h3>
+        <p class="card-desc">Constrained nonlinear optimization of entry, descent, and landing fuel consumption across normal and modified atmospheric conditions using COBYLA and SLSQP in Python.</p>
+        <div class="card-tags"><span class="tag">Python</span><span class="tag">SciPy</span><span class="tag">Optimization</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="projects/dragonfly-rotorcraft.html" class="project-card reveal">
+      <div class="card-img"><img src="images/thumb_dragonfly.png" alt="Dragonfly Rotorcraft Hover Power Analysis" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">03</p>
+        <h3 class="card-title">Dragonfly Rotorcraft Hover Power Analysis</h3>
+        <p class="card-desc">Momentum theory and CFD blade-drag analysis of NASA's Dragonfly octocopter, computing the true hover power needed to fly on Titan and explaining why the mission has to be "charge and hop."</p>
+        <div class="card-tags"><span class="tag">ANSYS Fluent</span><span class="tag">CFD</span><span class="tag">Momentum Theory</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="projects/nustars-airframe.html" class="project-card reveal reveal-delay-1">
+      <div class="card-img"><img src="images/thumb_airframe.png" alt="NUStars Fiberglass Airframe" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">04 — NUStars · NASA Student Launch</p>
+        <h3 class="card-title">NUStars Fiberglass Composite Airframe</h3>
+        <p class="card-desc">In-house manufactured fiberglass airframe and Von Karman nose cone through six vacuum-bagged layup iterations, validated with ANSYS FEA and CFD aerodynamic analysis.</p>
+        <div class="card-tags"><span class="tag">Composites</span><span class="tag">Vacuum Bagging</span><span class="tag">ANSYS</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="projects/onboard-camera.html" class="project-card reveal">
+      <div class="card-img"><img src="images/thumb_camera.png" alt="NUStars Onboard Video System" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">05 — NUStars · NASA Student Launch</p>
+        <h3 class="card-title">NUStars Onboard Video System</h3>
+        <p class="card-desc">Aerodynamic camera housing developed from PDR through a competition flight at Huntsville, AL — capturing in-flight footage that confirmed active drag system actuation for the first time.</p>
+        <div class="card-tags"><span class="tag">Systems Design</span><span class="tag">3D Printing ABS</span><span class="tag">ANSYS</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="projects/high-power-rocket.html" class="project-card reveal reveal-delay-1">
+      <div class="card-img"><img src="images/thumb_rocket.png" alt="High-Power Rocket Build" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">06 — Independent Build</p>
+        <h3 class="card-title">High-Power Rocket Build &amp; Launch</h3>
+        <p class="card-desc">Solo design, build, and launch of a 3" fiberglass H-motor rocket — plus a custom altimeter system and 3D-printed nose cone mount added on top of the base kit to record real flight data.</p>
+        <div class="card-tags"><span class="tag">OnShape</span><span class="tag">OpenRocket</span><span class="tag">Fabrication</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="projects-section-header reveal" style="max-width: 1100px; margin: 4rem auto 0; padding: 0 2rem;">
+    <p class="section-label">07 — 10</p>
+    <h2 class="section-title" style="font-size: 1.6rem; margin-top: 0.25rem;">Structures, Dynamics &amp; Mechanical Analysis</h2>
+  </div>
+  <div class="projects-grid" style="border-top: 1px solid var(--border); margin-top: 1.5rem;">
+
+    <a href="projects/aircraft-wing.html" class="project-card reveal">
+      <div class="card-img"><img src="images/thumb_wing.png" alt="Aircraft Wing Structural Analysis" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">07</p>
+        <h3 class="card-title">Aircraft Wing Structural Analysis &amp; Rib Layout Trade Study</h3>
+        <p class="card-desc">FEA and analytical validation of a Cessna 172 wing — combining ANSYS simulation with Euler-Bernoulli beam theory and the Rayleigh-Ritz method to validate tip deflection and stress.</p>
+        <div class="card-tags"><span class="tag">ANSYS</span><span class="tag">FEA</span><span class="tag">Structural</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="projects/gearbox-design.html" class="project-card reveal reveal-delay-1">
+      <div class="card-img"><img src="images/thumb_gearbox.png" alt="Two-Stage Gearbox Design" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">08</p>
+        <h3 class="card-title">Two-Stage Gearbox Design</h3>
+        <p class="card-desc">Full AGMA-based design of a 70 kW two-stage spur gearbox — three shafts, four gears, six bearings — each sized with a calculated, traceable margin against fatigue and static failure.</p>
+        <div class="card-tags"><span class="tag">AGMA</span><span class="tag">Shaft Design</span><span class="tag">Bearing Selection</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="projects/bicycle-rim-vibration.html" class="project-card reveal">
+      <div class="card-img"><img src="images/thumb_bicycle_rim.png" alt="Bicycle Rim Radial Vibration Analysis" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">09</p>
+        <h3 class="card-title">Bicycle Rim Radial Vibration Analysis</h3>
+        <p class="card-desc">A finite element beam model validated to under 1% error, combined with acoustic hammer-strike testing, to measure real radial bending stiffness — proving a double-wall rim is roughly 2x stiffer than a single-wall one.</p>
+        <div class="card-tags"><span class="tag">MATLAB</span><span class="tag">FEM</span><span class="tag">Modal Analysis</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="projects/jack-in-a-box.html" class="project-card reveal reveal-delay-1">
+      <div class="card-img"><img src="images/thumb_jib.png" alt="Jack-in-a-Box Simulation" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">10</p>
+        <h3 class="card-title">Jack-in-a-Box Multi-Body Dynamics Simulation</h3>
+        <p class="card-desc">Multi-body rigid body dynamics simulation with Euler-Lagrange formulation, impact constraints via Lagrange multipliers, and Hamiltonian energy conservation in Python/Plotly.</p>
+        <div class="card-tags"><span class="tag">Python</span><span class="tag">SymPy</span><span class="tag">Lagrangian Mechanics</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="projects-section-header reveal" style="max-width: 1100px; margin: 4rem auto 0; padding: 0 2rem;">
+    <p class="section-label">11 — 13</p>
+    <h2 class="section-title" style="font-size: 1.6rem; margin-top: 0.25rem;">Design, Manufacturing &amp; Testing</h2>
+  </div>
+  <div class="projects-grid" style="border-top: 1px solid var(--border); margin-top: 1.5rem;">
+
+    <a href="projects/heat-sink.html" class="project-card reveal">
+      <div class="card-img"><img src="images/thumb_heatsink.png" alt="Modular Heat Sink" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">11</p>
+        <h3 class="card-title">Modular Binder-Jetted Heat Sink</h3>
+        <p class="card-desc">Wavy-fin modular heat sink in 316L stainless steel designed for binder-jet printing, achieving a 7°C average temperature reduction over a conventional straight-fin baseline.</p>
+        <div class="card-tags"><span class="tag">316L Steel</span><span class="tag">Binder Jetting</span><span class="tag">ANSYS Fluent</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="projects/brake-caliper.html" class="project-card reveal reveal-delay-1">
+      <div class="card-img"><img src="images/thumb_caliper.png" alt="Bicycle Brake Caliper" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">12</p>
+        <h3 class="card-title">Bicycle Brake Caliper — Full Product Development Cycle</h3>
+        <p class="card-desc">Full product development cycle from needs analysis through topology-optimized FEA, 3D printing in Nylon 12, and ISO 4210 compliance testing across two design iterations.</p>
+        <div class="card-tags"><span class="tag">Siemens NX</span><span class="tag">Topology Opt.</span><span class="tag">Nylon 12</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <a href="projects/marley-roller.html" class="project-card reveal">
+      <div class="card-img"><img src="images/thumb_roller.png" alt="Marley Roller" loading="lazy" /></div>
+      <div class="card-body">
+        <p class="card-number">13 — Independent Design</p>
+        <h3 class="card-title">Marley Floor Roller</h3>
+        <p class="card-desc">Purpose-built mechanical device for rolling and storing Marley dance floor — plywood frame, PVC roller, crank mechanism, and locking caster wheel system.</p>
+        <div class="card-tags"><span class="tag">SolidWorks</span><span class="tag">Mechanical Design</span><span class="tag">Fabrication</span></div>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Rodrigo Diaz</span>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/in/rodrigo-diaz-salazar/" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="mailto:rdiazsalazar01@gmail.com">Email ↗</a></li>
+        <li><a href="Rodrigo_Diaz_Resume.pdf" target="_blank">Résumé ↗</a></li>
+      </ul>
+      <span class="footer-copy">© 2025 Rodrigo Diaz</span>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
+</body>
+</html>
